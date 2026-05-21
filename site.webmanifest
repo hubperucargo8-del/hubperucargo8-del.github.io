@@ -1,0 +1,15 @@
+{
+  "name": "Hub Peru Cargo",
+  "short_name": "Hub Cargo",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#003272",
+  "icons": [
+    {
+      "src": "assets/img/cropped-LOGO-2-80x123.png",
+      "sizes": "80x123",
+      "type": "image/png"
+    }
+  ]
+}
