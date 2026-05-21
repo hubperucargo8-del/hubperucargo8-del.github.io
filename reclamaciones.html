@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Libro de Reclamaciones — Hub Peru Cargo</title>
+<meta name="description" content="Libro de Reclamaciones Virtual de Hub Peru Cargo S.A.C. Registra tu reclamo o queja conforme a la Ley N° 29571.">
+<link rel="icon" href="assets/img/cropped-LOGO-2-80x123.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --red:    #dc2626; --red-d:  #b91c1c; --red-l:  #fee2e2;
+  --blue:   #003272; --blue-l: #004fa3;
+  --orange: #ff8024;
+  --gray:   #6b7280; --gray-l: #f4f6f9;
+  --text:   #1f2937; --white:  #ffffff;
+  --font-h: 'Montserrat', sans-serif; --font-b: 'Source Sans 3', sans-serif;
+  --radius: 12px; --radius-lg: 20px;
+  --shadow: 0 4px 24px rgba(0,0,0,.10); --shadow-lg: 0 20px 60px rgba(0,0,0,.18);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-b); background: #fef3f2; color: var(--text); min-height: 100vh; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+input, select, textarea, button { font-family: var(--font-b); }
+
+.container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+/* TOPBAR */
+.topbar {
+  background: var(--blue); padding: 14px 0;
+  border-bottom: 3px solid var(--red);
+}
+.topbar .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.topbar-logo { display: flex; align-items: center; gap: 12px; }
+.topbar-logo-wrap { background: #fff; border-radius: 8px; padding: 4px 6px; }
+.topbar-logo-wrap img { height: 42px; width: auto; }
+.topbar-logo-text .l1 { font-family: var(--font-h); font-weight: 800; color: #fff; font-size: .95rem; }
+.topbar-logo-text .l2 { font-size: .58rem; color: rgba(255,255,255,.65); letter-spacing: 1.5px; text-transform: uppercase; }
+.back-btn {
+  display: flex; align-items: center; gap: 8px; color: #fff;
+  font-family: var(--font-h); font-weight: 700; font-size: .82rem;
+  padding: 8px 16px; border: 1.5px solid rgba(255,255,255,.5);
+  border-radius: 50px; transition: all .3s ease;
+}
+.back-btn:hover { background: rgba(255,255,255,.15); border-color: #fff; }
+
+/* HERO BANNER */
+.rec-banner {
+  background: linear-gradient(135deg, var(--red) 0%, #7f1d1d 100%);
+  padding: 40px 0 36px;
+}
+.rec-banner .container { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.rec-banner-img { width: 88px; height: 88px; object-fit: contain; flex-shrink: 0; filter: drop-shadow(0 4px 12px rgba(0,0,0,.3)); }
+.rec-banner-text h1 { font-family: var(--font-h); font-weight: 900; color: #fff; font-size: clamp(1.5rem,4vw,2.2rem); }
+.rec-banner-text p  { color: rgba(255,255,255,.8); font-size: .9rem; margin-top: 4px; }
+.rec-banner-badge {
+  margin-left: auto; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3);
+  color: #fff; padding: 10px 18px; border-radius: 10px; text-align: center; flex-shrink: 0;
+}
+.rec-banner-badge .n { font-family: var(--font-h); font-weight: 900; font-size: 1.1rem; }
+.rec-banner-badge .t { font-size: .7rem; opacity: .8; margin-top: 2px; }
+
+/* LEGAL NOTICE */
+.legal-box {
+  background: var(--red-l); border: 1px solid #fca5a5; border-radius: var(--radius);
+  padding: 16px 20px; margin: 28px 0 24px; font-size: .83rem; color: #7f1d1d; line-height: 1.65;
+}
+.legal-box strong { color: #991b1b; }
+
+/* FORM CARD */
+.form-card { background: #fff; border-radius: var(--radius-lg); padding: 44px; box-shadow: var(--shadow-lg); margin-bottom: 40px; }
+
+.sec-title {
+  font-family: var(--font-h); font-weight: 700; font-size: .88rem;
+  color: var(--blue); margin: 28px 0 14px; padding-bottom: 8px;
+  border-bottom: 2px solid var(--gray-l); text-transform: uppercase; letter-spacing: .5px;
+}
+.sec-title:first-child { margin-top: 0; }
+
+.fg { margin-bottom: 18px; }
+.fg label { display: block; font-size: .83rem; font-weight: 600; color: var(--text); margin-bottom: 7px; }
+.fg label .req { color: var(--red); margin-left: 2px; }
+.fi, .fs, .fta {
+  width: 100%; padding: 13px 15px; border: 2px solid #e5e7eb;
+  border-radius: var(--radius); font-size: .93rem; color: var(--text);
+  transition: all .3s ease; background: #fff;
+}
+.fi:focus, .fs:focus, .fta:focus { outline: none; border-color: var(--red); }
+.fta { resize: vertical; min-height: 120px; }
+.fr2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fr3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+/* TIPO SELECTOR */
+.tipo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+.tipo-opt {
+  border: 2px solid #e5e7eb; border-radius: var(--radius); padding: 18px 16px;
+  cursor: pointer; transition: all .3s ease; user-select: none;
+}
+.tipo-opt:hover { border-color: var(--orange); }
+.tipo-opt.sel   { border-color: var(--red); background: #fff5f5; }
+.tipo-opt h4 { font-family: var(--font-h); font-weight: 700; font-size: .95rem; margin-bottom: 6px; }
+.tipo-opt p  { font-size: .79rem; color: var(--gray); line-height: 1.5; }
+
+/* CHECKBOX */
+.check-wrap { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 24px; }
+.check-wrap input { width: 16px; height: 16px; margin-top: 3px; flex-shrink: 0; accent-color: var(--red); }
+.check-wrap label { font-size: .82rem; color: var(--gray); cursor: pointer; line-height: 1.55; }
+
+/* SUBMIT AREA */
+.submit-area { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 8px; }
+.submit-btn {
+  display: flex; align-items: center; gap: 9px;
+  background: var(--red); color: #fff; border: none; cursor: pointer;
+  padding: 15px 36px; border-radius: 50px; font-family: var(--font-h);
+  font-weight: 700; font-size: 1rem; transition: all .3s ease;
+}
+.submit-btn:hover { background: var(--red-d); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(220,38,38,.35); }
+.submit-btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+.rec-num-display { font-size: .82rem; color: var(--gray); }
+
+/* SUCCESS / ERROR */
+.result-msg { display: none; padding: 16px 20px; border-radius: var(--radius); margin-top: 20px; font-size: .9rem; }
+.result-msg.success { background: #f0fdf4; border: 1px solid #86efac; color: #166534; }
+.result-msg.error   { background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; }
+
+.rec-note { font-size: .78rem; color: var(--gray); margin-top: 18px; line-height: 1.65; padding: 14px; background: var(--gray-l); border-radius: var(--radius); }
+.rec-note a { color: var(--red); text-decoration: underline; }
+
+/* FOOTER */
+.rec-footer {
+  background: #050e1d; color: rgba(255,255,255,.6);
+  padding: 20px 0; text-align: center; font-size: .78rem;
+}
+.rec-footer a { color: var(--orange); }
+
+/* LOADING OVERLAY */
+.loading-overlay {
+  display: none; position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,50,114,.85); backdrop-filter: blur(4px);
+  flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+}
+.loading-overlay.show { display: flex; }
+.loading-spinner { width: 56px; height: 56px; border: 4px solid rgba(255,255,255,.25); border-top-color: var(--orange); border-radius: 50%; animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading-text { font-family: var(--font-h); color: #fff; font-weight: 700; font-size: 1rem; }
+
+@media (max-width: 600px) {
+  .form-card { padding: 24px 18px; }
+  .fr2, .fr3, .tipo-grid { grid-template-columns: 1fr; }
+  .rec-banner .container { flex-direction: column; align-items: flex-start; }
+  .rec-banner-badge { margin-left: 0; }
+  .submit-area { flex-direction: column; align-items: stretch; }
+  .submit-btn { justify-content: center; }
+  .topbar .container { flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADING OVERLAY -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loading-spinner"></div>
+  <div class="loading-text">Registrando tu reclamación...</div>
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="container">
+    <a href="index.html#inicio" class="topbar-logo">
+      <div class="topbar-logo-wrap"><img src="assets/img/cropped-LOGO-2-80x123.png" alt="Hub Peru Cargo"></div>
+      <div class="topbar-logo-text">
+        <div class="l1">Hub Peru Cargo</div>
+        <div class="l2">Agencia de Carga Internacional</div>
+      </div>
+    </a>
+    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Volver al sitio</a>
+  </div>
+</div>
+
+<!-- BANNER -->
+<div class="rec-banner">
+  <div class="container">
+    <img src="assets/img/libro_reclamacion.png" alt="Libro de Reclamaciones" class="rec-banner-img">
+    <div class="rec-banner-text">
+      <h1>Libro de Reclamaciones</h1>
+      <p>Hub Peru Cargo S.A.C. — RUC: 20602031188 — Lima, Perú</p>
+    </div>
+    <div class="rec-banner-badge">
+      <div class="n">30 días</div>
+      <div class="t">plazo máx. de respuesta</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div style="padding: 32px 0 60px;">
+  <div class="container">
+
+    <div class="legal-box">
+      <strong>Conforme al Código de Protección y Defensa del Consumidor — Ley N° 29571:</strong>
+      Este Libro de Reclamaciones se encuentra a disposición del consumidor. La empresa dará respuesta
+      en un plazo máximo de <strong>30 días calendario</strong> a partir de su registro, conforme al
+      artículo 24° del reglamento del Libro de Reclamaciones (D.S. N° 011-2011-PCM).
+      INDECOPI es la autoridad competente para la protección de los derechos de los consumidores.
+    </div>
+
+    <div class="form-card">
+      <form id="formRec" onsubmit="enviarReclamacion(event)" novalidate>
+
+        <!-- SECCIÓN I -->
+        <p class="sec-title"><i class="fas fa-user" style="margin-right:8px;color:var(--red)"></i>I. Datos del Consumidor Reclamante</p>
+        <div class="fr2">
+          <div class="fg">
+            <label>Apellidos y Nombres <span class="req">*</span></label>
+            <input type="text" class="fi" id="rNombre" required placeholder="Apellidos y Nombres completos">
+          </div>
+          <div class="fg">
+            <label>DNI / CE / RUC <span class="req">*</span></label>
+            <input type="text" class="fi" id="rDoc" required placeholder="N° de documento de identidad">
+          </div>
+        </div>
+        <div class="fr2">
+          <div class="fg">
+            <label>Domicilio <span class="req">*</span></label>
+            <input type="text" class="fi" id="rDom" required placeholder="Dirección completa">
+          </div>
+          <div class="fg">
+            <label>Teléfono <span class="req">*</span></label>
+            <input type="tel" class="fi" id="rTel" required placeholder="+51 999 999 999">
+          </div>
+        </div>
+        <div class="fg">
+          <label>Correo Electrónico <span class="req">*</span></label>
+          <input type="email" class="fi" id="rEmail" required placeholder="correo@ejemplo.com">
+        </div>
+        <div class="fr2">
+          <div class="fg">
+            <label>Nombre de Empresa (si aplica)</label>
+            <input type="text" class="fi" id="rEmpresa" placeholder="Razón social o nombre comercial">
+          </div>
+          <div class="fg">
+            <label>RUC de Empresa (si aplica)</label>
+            <input type="text" class="fi" id="rRucEmp" placeholder="20602031188">
+          </div>
+        </div>
+
+        <!-- SECCIÓN II -->
+        <p class="sec-title"><i class="fas fa-box" style="margin-right:8px;color:var(--red)"></i>II. Identificación del Bien o Servicio</p>
+        <div class="fr3">
+          <div class="fg">
+            <label>Monto Reclamado (USD)</label>
+            <input type="number" class="fi" id="rMonto" placeholder="0.00" min="0" step="0.01">
+          </div>
+          <div class="fg">
+            <label>N° de Pedido / BL / AWB</label>
+            <input type="text" class="fi" id="rPedido" placeholder="Número de referencia">
+          </div>
+          <div class="fg">
+            <label>Fecha del Servicio</label>
+            <input type="date" class="fi" id="rFechaServ">
+          </div>
+        </div>
+        <div class="fg">
+          <label>Descripción del Servicio Contratado <span class="req">*</span></label>
+          <input type="text" class="fi" id="rBien" required placeholder="Ej: Flete marítimo FCL 20' China – Callao, B/L N° XXXX">
+        </div>
+        <div class="fg">
+          <label>Tipo de Servicio</label>
+          <select class="fs" id="rTipoServ">
+            <option value="">Seleccionar...</option>
+            <option>Importación Marítima FCL</option>
+            <option>Importación Marítima LCL</option>
+            <option>Exportación Marítima FCL</option>
+            <option>Exportación Marítima LCL</option>
+            <option>Flete Aéreo</option>
+            <option>Agenciamiento Aduanero</option>
+            <option>Transporte Local</option>
+            <option>Seguro de Carga</option>
+            <option>Otro</option>
+          </select>
+        </div>
+
+        <!-- SECCIÓN III -->
+        <p class="sec-title"><i class="fas fa-tags" style="margin-right:8px;color:var(--red)"></i>III. Tipo de Reclamación — Selecciona una opción</p>
+        <div class="tipo-grid">
+          <div class="tipo-opt" id="t-reclamo" onclick="elegirTipo('reclamo')">
+            <h4>🔴 RECLAMO</h4>
+            <p>Disconformidad relacionada al producto o servicio recibido. Implica la posible vulneración de un derecho del consumidor.</p>
+          </div>
+          <div class="tipo-opt" id="t-queja" onclick="elegirTipo('queja')">
+            <h4>🟡 QUEJA</h4>
+            <p>Disconformidad no relacionada al producto o servicio; o malestar respecto a la atención al público brindada.</p>
+          </div>
+        </div>
+        <input type="hidden" id="rTipo" value="">
+
+        <!-- SECCIÓN IV -->
+        <p class="sec-title"><i class="fas fa-file-alt" style="margin-right:8px;color:var(--red)"></i>IV. Detalle de la Reclamación o Queja</p>
+        <div class="fg">
+          <label>Descripción detallada de los hechos <span class="req">*</span></label>
+          <textarea class="fta" id="rDesc" required style="min-height:150px"
+            placeholder="Describe con detalle lo sucedido: fecha en que ocurrió, circunstancias, personas involucradas y cualquier información relevante para el análisis de tu caso..."></textarea>
+        </div>
+        <div class="fg">
+          <label>¿Qué solución o compensación esperas? <span class="req">*</span></label>
+          <textarea class="fta" id="rSol" required
+            placeholder="Indica de forma clara qué solución esperas de Hub Peru Cargo (reembolso, corrección del servicio, disculpas formales, etc.)..."></textarea>
+        </div>
+
+        <!-- SECCIÓN V — Autorización -->
+        <p class="sec-title"><i class="fas fa-shield-alt" style="margin-right:8px;color:var(--red)"></i>V. Autorización y Firma</p>
+        <div class="check-wrap">
+          <input type="checkbox" id="rAut1" required>
+          <label for="rAut1">
+            Declaro que los datos proporcionados en este formulario son verídicos y fidedignos,
+            y que soy el consumidor afectado o actúo en representación del mismo.
+          </label>
+        </div>
+        <div class="check-wrap">
+          <input type="checkbox" id="rAut2" required>
+          <label for="rAut2">
+            Autorizo a Hub Peru Cargo S.A.C. a utilizar mis datos personales para el tratamiento
+            de esta reclamación, de conformidad con la <strong>Ley N° 29733 — Ley de Protección de Datos Personales</strong>.
+          </label>
+        </div>
+        <div class="check-wrap">
+          <input type="checkbox" id="rAut3">
+          <label for="rAut3">
+            Deseo recibir actualizaciones sobre el estado de mi reclamación por correo electrónico.
+          </label>
+        </div>
+
+        <!-- SUBMIT -->
+        <div class="submit-area">
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <i class="fas fa-paper-plane"></i> Registrar Reclamación
+          </button>
+          <div class="rec-num-display" id="recNumDisplay"></div>
+        </div>
+
+        <div class="result-msg" id="resultMsg"></div>
+
+        <div class="rec-note">
+          <i class="fas fa-info-circle" style="color:var(--red);margin-right:6px"></i>
+          La empresa dará respuesta a su reclamación en un plazo máximo de <strong>30 días calendario</strong>
+          contados desde la fecha de registro. Recibirá una confirmación por correo con el número de su caso.
+          Para más información, visite <a href="https://www.indecopi.gob.pe" target="_blank">INDECOPI</a>
+          o llame al <strong>224-7777</strong> (Lima) / <strong>0800-4-4040</strong> (Provincias, gratuito).
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="rec-footer">
+  <p>© 2025 Hub Peru Cargo S.A.C. | RUC: 20602031188 | Lima, Perú |
+    <a href="index.html">Volver al sitio principal</a>
+  </p>
+</div>
+
+<script>
+/* ============================================================
+   CONFIGURACIÓN — igual que en index.html
+   ⚙️ Reemplaza con tu URL de Google Apps Script
+============================================================ */
+const CONFIG = {
+  ENDPOINT: 'https://script.google.com/macros/s/AKfycbw2e9qceObxajq3q0MuXST-ON87iUX-So9yYYthxfT3aZDsJrLxA401q_Tbf-7DHE6l8w/exec',
+};
+
+/* ---------- Elegir tipo ---------- */
+function elegirTipo(tipo) {
+  document.querySelectorAll('.tipo-opt').forEach(el => el.classList.remove('sel'));
+  document.getElementById('t-' + tipo).classList.add('sel');
+  document.getElementById('rTipo').value = tipo;
+}
+
+/* ---------- Generar número de reclamación ---------- */
+function generarNumero() {
+  const d = new Date(), p = n => String(n).padStart(2,'0');
+  return `HPC-REC-${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}-${Math.floor(Math.random()*90000+10000)}`;
+}
+
+/* ---------- Validar campos ---------- */
+function validar() {
+  const campos = [
+    { id:'rNombre',  msg:'Por favor ingresa tus apellidos y nombres.' },
+    { id:'rDoc',     msg:'Por favor ingresa tu número de documento.' },
+    { id:'rDom',     msg:'Por favor ingresa tu domicilio.' },
+    { id:'rTel',     msg:'Por favor ingresa tu teléfono de contacto.' },
+    { id:'rEmail',   msg:'Por favor ingresa un correo electrónico válido.' },
+    { id:'rBien',    msg:'Por favor describe el servicio contratado.' },
+    { id:'rDesc',    msg:'Por favor describe detalladamente los hechos.' },
+    { id:'rSol',     msg:'Por favor indica qué solución esperas.' },
+  ];
+  for (const c of campos) {
+    const el = document.getElementById(c.id);
+    if (!el.value.trim()) { alert(c.msg); el.focus(); return false; }
+  }
+  if (!document.getElementById('rTipo').value) {
+    alert('Por favor selecciona el tipo de reclamación (Reclamo o Queja).');
+    return false;
+  }
+  if (!document.getElementById('rAut1').checked || !document.getElementById('rAut2').checked) {
+    alert('Por favor acepta las declaraciones de autorización para continuar.');
+    return false;
+  }
+  return true;
+}
+
+/* ---------- Enviar reclamación ---------- */
+async function enviarReclamacion(e) {
+  e.preventDefault();
+  if (!validar()) return;
+
+  const numero = generarNumero();
+  const datos = {
+    numero_reclamacion:  numero,
+    tipo:                document.getElementById('rTipo').value.toUpperCase(),
+    nombre:              document.getElementById('rNombre').value.trim(),
+    documento:           document.getElementById('rDoc').value.trim(),
+    domicilio:           document.getElementById('rDom').value.trim(),
+    telefono:            document.getElementById('rTel').value.trim(),
+    email:               document.getElementById('rEmail').value.trim(),
+    empresa:             document.getElementById('rEmpresa').value.trim(),
+    ruc_empresa:         document.getElementById('rRucEmp').value.trim(),
+    monto_reclamado_usd: document.getElementById('rMonto').value.trim(),
+    pedido_referencia:   document.getElementById('rPedido').value.trim(),
+    fecha_servicio:      document.getElementById('rFechaServ').value,
+    tipo_servicio:       document.getElementById('rTipoServ').value,
+    servicio_contratado: document.getElementById('rBien').value.trim(),
+    descripcion:         document.getElementById('rDesc').value.trim(),
+    solucion_esperada:   document.getElementById('rSol').value.trim(),
+    desea_notificacion:  document.getElementById('rAut3').checked ? 'SI' : 'NO',
+    estado:              'PENDIENTE',
+    fecha_registro:      new Date().toLocaleString('es-PE', { timeZone: 'America/Lima' }),
+    timestamp_iso:       new Date().toISOString(),
+  };
+
+  // Mostrar loading
+  document.getElementById('loadingOverlay').classList.add('show');
+  document.getElementById('submitBtn').disabled = true;
+
+  // 1. Guardar en localStorage
+  try {
+    const recs = JSON.parse(localStorage.getItem('hpc_reclamaciones') || '[]');
+    recs.push(datos);
+    localStorage.setItem('hpc_reclamaciones', JSON.stringify(recs));
+  } catch(err) {}
+
+  // 2. Enviar a Google Apps Script (base de datos)
+  let enviado = false;
+  if (CONFIG.ENDPOINT && !CONFIG.ENDPOINT.includes('PEGA_AQUI')) {
+    try {
+      await fetch(CONFIG.ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'reclamacion', datos }),
+      });
+      enviado = true;
+    } catch(err) {
+      enviado = false;
+    }
+  }
+
+  // Ocultar loading
+  document.getElementById('loadingOverlay').classList.remove('show');
+
+  // Mostrar resultado
+  const numDisplay = document.getElementById('recNumDisplay');
+  numDisplay.innerHTML = `
+    <strong style="color:#16a34a;font-size:.95rem">
+      ✓ Registrado: <span style="font-family:var(--font-h)">${numero}</span>
+    </strong><br>
+    <span style="font-size:.75rem;color:var(--gray)">Guarda este número de referencia.</span>
+  `;
+
+  const msg = document.getElementById('resultMsg');
+  msg.className = 'result-msg success';
+  msg.style.display = 'block';
+  msg.innerHTML = `
+    <i class="fas fa-check-circle" style="color:#16a34a;margin-right:8px"></i>
+    <strong>Reclamación registrada exitosamente.</strong><br>
+    Tu número de caso es: <strong style="font-family:var(--font-h)">${numero}</strong><br>
+    Recibirás respuesta en un máximo de <strong>30 días calendario</strong>.
+    ${enviado ? ' Los datos han sido enviados a nuestro sistema.' : ' Los datos han sido guardados localmente.'}
+  `;
+
+  // Reset form
+  document.getElementById('formRec').reset();
+  document.querySelectorAll('.tipo-opt').forEach(el => el.classList.remove('sel'));
+  document.getElementById('rTipo').value = '';
+  document.getElementById('submitBtn').disabled = false;
+
+  // Scroll al resultado
+  msg.scrollIntoView({ behavior:'smooth', block:'start' });
+
+  // Alerta
+  setTimeout(() => {
+    alert(`✅ Reclamación registrada\n\nNúmero de caso: ${numero}\n\nConserva este número. Recibirás respuesta en máximo 30 días calendario.\n\nContacto: ventas@hubperucargo.com`);
+  }, 400);
+}
+</script>
+</body>
+</html>

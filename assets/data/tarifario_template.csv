@@ -1,0 +1,58 @@
+INSTRUCCIONES,Edita los valores en las columnas de color (precio_base_usd). No cambies los nombres de columna. Para agregar rutas nuevas copia una fila existente y ajusta los datos. Cuando termines guarda como CSV y actualiza el array TARIFAS en index.html con los mismos datos.,,,,,,,
+,,,,,,,
+TIPO,ORIGEN_PAIS,PUERTO_ORIGEN,DESTINO_PAIS,PUERTO_DESTINO,LINEA_NAVIERA_AEROLINEA,TRANSITO_ESTIMADO,PRECIO_BASE_USD,UNIDAD
+FCL20,CN,SHANGHAI,PE,CALLAO,COSCO Shipping,28-32 dias,1200,USD / contenedor
+FCL20,CN,NINGBO,PE,CALLAO,Evergreen Line,30-35 dias,1100,USD / contenedor
+FCL20,CN,GUANGZHOU,PE,CALLAO,MSC,32-38 dias,1150,USD / contenedor
+FCL20,CN,QINGDAO,PE,CALLAO,CMA CGM,30-34 dias,1180,USD / contenedor
+FCL20,US,LOS ANGELES,PE,CALLAO,Hapag-Lloyd,14-18 dias,1800,USD / contenedor
+FCL20,US,MIAMI,PE,CALLAO,Maersk,10-14 dias,1600,USD / contenedor
+FCL20,ES,BARCELONA,PE,CALLAO,MSC,20-25 dias,2200,USD / contenedor
+FCL20,MX,MANZANILLO,PE,CALLAO,CMA CGM,12-16 dias,1400,USD / contenedor
+FCL20,BR,SANTOS,PE,CALLAO,Hamburg Sud,8-12 dias,1000,USD / contenedor
+FCL20,DE,HAMBURGO,PE,CALLAO,Hapag-Lloyd,22-28 dias,2400,USD / contenedor
+FCL20,JP,TOKIO,PE,CALLAO,ONE (Ocean Network),22-26 dias,1900,USD / contenedor
+FCL20,KR,BUSAN,PE,CALLAO,HMM,24-28 dias,1750,USD / contenedor
+FCL20,TR,MERSIN,PE,CALLAO,MSC,25-30 dias,2100,USD / contenedor
+FCL20,IT,GENOVA,PE,CALLAO,CMA CGM,22-27 dias,2300,USD / contenedor
+FCL20,CO,BUENAVENTURA,PE,CALLAO,Hapag-Lloyd,5-8 dias,800,USD / contenedor
+FCL20,CL,VALPARAISO,PE,CALLAO,CSAV,4-6 dias,700,USD / contenedor
+FCL20,IN,NHAVA SHEVA,PE,CALLAO,Maersk,28-34 dias,2000,USD / contenedor
+FCL40,CN,SHANGHAI,PE,CALLAO,COSCO Shipping,28-32 dias,1600,USD / contenedor
+FCL40,CN,NINGBO,PE,CALLAO,Evergreen Line,30-35 dias,1500,USD / contenedor
+FCL40,US,LOS ANGELES,PE,CALLAO,Hapag-Lloyd,14-18 dias,2400,USD / contenedor
+FCL40,US,MIAMI,PE,CALLAO,Maersk,10-14 dias,2200,USD / contenedor
+FCL40,ES,BARCELONA,PE,CALLAO,MSC,20-25 dias,3000,USD / contenedor
+FCL40,DE,HAMBURGO,PE,CALLAO,Hapag-Lloyd,22-28 dias,3200,USD / contenedor
+FCL40,JP,TOKIO,PE,CALLAO,ONE (Ocean Network),22-26 dias,2600,USD / contenedor
+FCL40,KR,BUSAN,PE,CALLAO,HMM,24-28 dias,2400,USD / contenedor
+FCL40,BR,SANTOS,PE,CALLAO,Hamburg Sud,8-12 dias,1400,USD / contenedor
+FCL40,CO,BUENAVENTURA,PE,CALLAO,Hapag-Lloyd,5-8 dias,1100,USD / contenedor
+FCL40HQ,CN,SHANGHAI,PE,CALLAO,COSCO Shipping,28-32 dias,1800,USD / contenedor
+FCL40HQ,CN,GUANGZHOU,PE,CALLAO,CMA CGM,30-36 dias,1700,USD / contenedor
+FCL40HQ,US,LOS ANGELES,PE,CALLAO,Maersk,14-18 dias,2700,USD / contenedor
+FCL40HQ,DE,HAMBURGO,PE,CALLAO,Hapag-Lloyd,22-28 dias,3600,USD / contenedor
+LCL,CN,SHANGHAI,PE,CALLAO,Hub Consolidador,35-40 dias,45,USD / CBM
+LCL,CN,NINGBO,PE,CALLAO,Hub Consolidador,38-42 dias,42,USD / CBM
+LCL,CN,GUANGZHOU,PE,CALLAO,Hub Consolidador,36-41 dias,44,USD / CBM
+LCL,US,LOS ANGELES,PE,CALLAO,Hub Consolidador,18-22 dias,65,USD / CBM
+LCL,US,MIAMI,PE,CALLAO,Hub Consolidador,15-19 dias,60,USD / CBM
+LCL,ES,BARCELONA,PE,CALLAO,Hub Consolidador,28-32 dias,75,USD / CBM
+LCL,MX,MANZANILLO,PE,CALLAO,Hub Consolidador,15-19 dias,55,USD / CBM
+LCL,BR,SANTOS,PE,CALLAO,Hub Consolidador,10-14 dias,40,USD / CBM
+LCL,DE,HAMBURGO,PE,CALLAO,Hub Consolidador,30-35 dias,80,USD / CBM
+LCL,IT,GENOVA,PE,CALLAO,Hub Consolidador,28-33 dias,78,USD / CBM
+LCL,CO,BUENAVENTURA,PE,CALLAO,Hub Consolidador,5-8 dias,30,USD / CBM
+LCL,CL,VALPARAISO,PE,CALLAO,Hub Consolidador,4-6 dias,28,USD / CBM
+LCL,IN,NHAVA SHEVA,PE,CALLAO,Hub Consolidador,32-38 dias,70,USD / CBM
+AEREO,CN,SHANGHAI PVG,PE,LIM,LATAM Cargo,3-5 dias,4.5,USD / kg
+AEREO,CN,GUANGZHOU CAN,PE,LIM,Avianca Cargo,4-6 dias,4.2,USD / kg
+AEREO,US,MIAMI MIA,PE,LIM,American Airlines Cargo,1-2 dias,3.8,USD / kg
+AEREO,US,NUEVA YORK JFK,PE,LIM,United Cargo,1-2 dias,4.0,USD / kg
+AEREO,ES,MADRID MAD,PE,LIM,Iberia Cargo,2-3 dias,5.5,USD / kg
+AEREO,DE,FRANKFURT FRA,PE,LIM,Lufthansa Cargo,2-3 dias,5.8,USD / kg
+AEREO,MX,CDMX MEX,PE,LIM,Aeromexico Cargo,1-2 dias,3.2,USD / kg
+AEREO,CO,BOGOTA BOG,PE,LIM,Avianca Cargo,1 dia,2.8,USD / kg
+AEREO,JP,TOKIO NRT,PE,LIM,ANA Cargo,3-4 dias,6.2,USD / kg
+AEREO,KR,SEUL ICN,PE,LIM,Korean Air Cargo,3-4 dias,6.0,USD / kg
+AEREO,IT,MILAN MXP,PE,LIM,Alitalia Cargo,2-3 dias,5.6,USD / kg

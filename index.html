@@ -1,0 +1,2247 @@
+﻿<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hub Peru Cargo - Agencia de Carga Internacional</title>
+<meta name="description" content="Hub Peru Cargo S.A.C. - Agencia de carga internacional. Importación y exportación FCL, LCL y Aéreo. Conectamos tu negocio con el mundo desde 2017.">
+<link rel="icon" href="assets/img/cropped-LOGO-2-80x123.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ============================================================
+   VARIABLES & RESET
+============================================================ */
+:root {
+  --orange:      #ff8024;
+  --orange-d:    #e8652c;
+  --blue:        #003272;
+  --blue-l:      #004fa3;
+  --dark:        #080f1e;
+  --gray:        #6b7280;
+  --gray-l:      #f4f6f9;
+  --white:       #ffffff;
+  --text:        #1f2937;
+  --green:       #10b981;
+  --red:         #dc2626;
+  --font-h:      'Montserrat', sans-serif;
+  --font-b:      'Source Sans 3', sans-serif;
+  --ease:        all 0.3s ease;
+  --radius:      12px;
+  --radius-lg:   24px;
+  --shadow:      0 4px 24px rgba(0,0,0,0.10);
+  --shadow-lg:   0 20px 60px rgba(0,0,0,0.22);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-b); color: var(--text); background: var(--white); overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+input, select, textarea, button { font-family: var(--font-b); }
+
+/* ============================================================
+   UTILITIES
+============================================================ */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.sec       { padding: 100px 0; }
+.sec-sm    { padding: 64px 0; }
+.tc        { text-align: center; }
+
+.tag {
+  display: inline-block; font-size: .72rem; font-weight: 700;
+  letter-spacing: 2.5px; text-transform: uppercase; color: var(--orange); margin-bottom: 10px;
+}
+.h-title {
+  font-family: var(--font-h); font-weight: 800; line-height: 1.18;
+  font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 16px;
+}
+.h-sub { font-size: 1.05rem; color: var(--gray); line-height: 1.75; max-width: 620px; }
+.h-sub.center { margin: 0 auto; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 30px; border-radius: 50px; border: none; cursor: pointer;
+  font-family: var(--font-h); font-weight: 700; font-size: .9rem;
+  letter-spacing: .4px; transition: var(--ease); white-space: nowrap;
+}
+.btn-orange { background: var(--orange); color: #fff; }
+.btn-orange:hover { background: var(--orange-d); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,128,36,.4); }
+.btn-blue   { background: var(--blue); color: #fff; }
+.btn-blue:hover { background: var(--blue-l); transform: translateY(-2px); }
+.btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.7); }
+.btn-outline:hover { background: #fff; color: var(--blue); }
+.btn-ghost  { background: transparent; color: var(--orange); border: 2px solid var(--orange); }
+.btn-ghost:hover { background: var(--orange); color: #fff; }
+.btn-red    { background: var(--red); color: #fff; }
+.btn-red:hover { background: #b91c1c; transform: translateY(-2px); }
+.btn-full   { width: 100%; justify-content: center; }
+
+/* ============================================================
+   ANIMATIONS
+============================================================ */
+@keyframes fadeInUp   { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn     { from { opacity:0; } to { opacity:1; } }
+@keyframes float      { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+@keyframes pulseRing  { 0%{transform:scale(.9);opacity:.8} 100%{transform:scale(1.55);opacity:0} }
+@keyframes scrollBar  { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top}
+                        51%{transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
+@keyframes pageIn     { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+@keyframes popIn      { from{opacity:0;transform:scale(.92)} to{opacity:1;transform:scale(1)} }
+
+.reveal   { opacity:0; transform:translateY(36px); transition:opacity .65s ease,transform .65s ease; }
+.reveal-l { opacity:0; transform:translateX(-36px); transition:opacity .65s ease,transform .65s ease; }
+.reveal-r { opacity:0; transform:translateX(36px); transition:opacity .65s ease,transform .65s ease; }
+.reveal.vis,.reveal-l.vis,.reveal-r.vis { opacity:1; transform:translate(0); }
+.d1{transition-delay:.1s!important} .d2{transition-delay:.2s!important}
+.d3{transition-delay:.3s!important} .d4{transition-delay:.4s!important}
+
+/* ============================================================
+   TAB PAGES
+============================================================ */
+.tab-page { display: none; }
+.tab-page.active { display: block; animation: pageIn .4s ease; }
+
+/* ============================================================
+   NAVBAR
+============================================================ */
+.navbar {
+  position: fixed; top:0; left:0; right:0; z-index:1000;
+  padding: 14px 0; transition: var(--ease);
+  background: rgba(0,50,114,.15); backdrop-filter: blur(8px);
+}
+.navbar.scrolled {
+  background: rgba(0,50,114,.97);
+  backdrop-filter: blur(14px);
+  padding: 8px 0;
+  box-shadow: 0 4px 30px rgba(0,0,0,.28);
+}
+.navbar .container { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+
+/* Logo with white background so blue+orange shows on dark navbar */
+.nav-logo { display:flex; align-items:center; gap:10px; cursor:pointer; flex-shrink:0; }
+.nav-logo-img-wrap {
+  background: #fff; border-radius: 10px; padding: 5px 7px;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow: 0 2px 10px rgba(0,0,0,.25);
+}
+.nav-logo-img-wrap img { height:46px; width:auto; display:block; }
+.nav-logo-text .l1 { font-family:var(--font-h); font-weight:800; font-size:.98rem; color:#fff; line-height:1.1; }
+.nav-logo-text .l2 { font-size:.58rem; color:rgba(255,255,255,.65); letter-spacing:1.5px; text-transform:uppercase; }
+
+.nav-links { display:flex; align-items:center; gap:1px; }
+.nav-link {
+  padding: 7px 11px; border-radius:8px;
+  font-family:var(--font-h); font-weight:600; font-size:.75rem;
+  letter-spacing:.5px; color:#fff; transition:var(--ease); text-transform:uppercase;
+  cursor:pointer; border:none; background:transparent;
+}
+.nav-link:hover { background:rgba(255,255,255,.14); color:var(--orange); }
+.nav-link.active { color:var(--orange); background:rgba(255,128,36,.15); }
+.nav-track {
+  display:inline-flex; align-items:center; justify-content:center; gap:6px;
+  white-space:nowrap; min-width:max-content;
+  color:rgba(255,180,100,.95);
+  border:1px solid rgba(255,128,36,.3);
+}
+.nav-track i { font-size:.72rem; line-height:1; }
+
+.nav-wa {
+  display:flex; align-items:center; gap:7px; padding:9px 16px;
+  background:#25d366; color:#fff; border-radius:50px;
+  font-family:var(--font-h); font-weight:700; font-size:.8rem;
+  transition:var(--ease); flex-shrink:0; cursor:pointer; border:none;
+}
+.nav-wa:hover { background:#1db855; transform:translateY(-1px); }
+
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; background:none; border:none; }
+.hamburger span { display:block; width:24px; height:2px; background:#fff; border-radius:2px; transition:var(--ease); }
+.hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+/* MOBILE DRAWER */
+.mob-nav {
+  display:none; position:fixed; inset:0; z-index:999;
+  background:var(--blue); flex-direction:column;
+  align-items:center; justify-content:center; gap:14px;
+}
+.mob-nav.open { display:flex; animation:fadeIn .25s ease; }
+.mob-nav .nav-link { font-size:1.15rem; padding:12px 28px; }
+.mob-close { position:absolute; top:20px; right:22px; color:#fff; font-size:1.5rem; cursor:pointer; background:none; border:none; }
+
+/* ============================================================
+   HERO (inside tab-inicio)
+============================================================ */
+.hero {
+  position:relative; height:100vh; min-height:620px;
+  display:flex; align-items:center; justify-content:center; overflow:hidden;
+}
+.hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+.hero-overlay {
+  position:absolute; inset:0; z-index:1;
+  background:linear-gradient(135deg,rgba(0,50,114,.88) 0%,rgba(8,15,30,.76) 100%);
+}
+.hero-content { position:relative; z-index:2; color:#fff; padding:0 24px; max-width:920px; text-align:center; }
+.hero-eyebrow {
+  display:inline-flex; align-items:center; gap:8px; padding:8px 20px;
+  background:rgba(255,128,36,.18); border:1px solid rgba(255,128,36,.4); border-radius:50px;
+  font-size:.75rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--orange);
+  margin-bottom:24px; backdrop-filter:blur(4px); animation:fadeInUp .6s ease both;
+}
+.hero h1 {
+  font-family:var(--font-h); font-weight:900; line-height:1.08;
+  font-size:clamp(2.6rem,7.5vw,5.2rem); text-transform:uppercase;
+  margin-bottom:20px; animation:fadeInUp .7s .1s ease both;
+}
+.hero h1 span { color:var(--orange); }
+.hero-desc {
+  font-size:clamp(.98rem,2vw,1.22rem); color:rgba(255,255,255,.82);
+  max-width:660px; margin:0 auto 38px; line-height:1.75;
+  animation:fadeInUp .7s .2s ease both;
+}
+.hero-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; animation:fadeInUp .7s .3s ease both; }
+.hero-stats {
+  display:flex; gap:36px; justify-content:center; flex-wrap:wrap;
+  margin-top:50px; padding-top:32px; border-top:1px solid rgba(255,255,255,.14);
+  animation:fadeInUp .7s .45s ease both;
+}
+.stat-num { font-family:var(--font-h); font-size:2.3rem; font-weight:900; color:var(--orange); line-height:1; }
+.stat-lbl { font-size:.72rem; color:rgba(255,255,255,.65); text-transform:uppercase; letter-spacing:1px; margin-top:4px; }
+.scroll-cue {
+  position:absolute; bottom:28px; left:50%; transform:translateX(-50%); z-index:2;
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  color:rgba(255,255,255,.45); font-size:.62rem; letter-spacing:2px; text-transform:uppercase;
+}
+.scroll-bar { width:1px; height:40px; background:linear-gradient(to bottom,transparent,var(--orange)); animation:scrollBar 2s ease infinite; }
+
+/* ============================================================
+   ABOUT (inside tab-inicio)
+============================================================ */
+.about { background:#fff; }
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:start; }
+.about-img-wrap { position:relative; }
+.about-img-wrap img { border-radius:var(--radius-lg); animation:float 6s ease infinite; filter:drop-shadow(0 24px 44px rgba(0,50,114,.18)); }
+.about-badge {
+  position:absolute; bottom:-18px; right:-18px;
+  background:var(--orange); color:#fff; border-radius:var(--radius); padding:18px 22px;
+  text-align:center; box-shadow:var(--shadow-lg);
+}
+.about-badge .n { font-family:var(--font-h); font-size:2.3rem; font-weight:900; line-height:1; }
+.about-badge .t { font-size:.7rem; text-transform:uppercase; letter-spacing:1px; opacity:.9; }
+.about-text p { color:var(--gray); line-height:1.82; margin-bottom:18px; }
+.features-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:26px; }
+.feat { display:flex; align-items:flex-start; gap:12px; padding:15px; background:var(--gray-l); border-radius:var(--radius); }
+.feat-icon { width:38px; height:38px; border-radius:9px; flex-shrink:0; background:var(--orange); color:#fff; display:flex; align-items:center; justify-content:center; }
+.feat h4 { font-family:var(--font-h); font-weight:700; font-size:.87rem; margin-bottom:3px; }
+.feat p  { font-size:.76rem; color:var(--gray); margin:0; }
+
+/* ============================================================
+   STEPS (inside tab-inicio)
+============================================================ */
+.steps { background:linear-gradient(to right, var(--blue), #004fa3); }
+.steps .h-title { color:#fff; }
+.steps-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:38px;
+  margin-top:52px; position:relative;
+}
+.steps-grid::before {
+  content:''; position:absolute; top:38px; left:16%; right:16%;
+  height:2px; background:rgba(255,255,255,.2); z-index:0;
+}
+.step-card { text-align:center; position:relative; z-index:1; }
+.step-num {
+  width:76px; height:76px; border-radius:50%; background:var(--orange); color:#fff;
+  font-family:var(--font-h); font-weight:900; font-size:1.7rem;
+  display:flex; align-items:center; justify-content:center;
+  margin:0 auto 22px; box-shadow:0 8px 24px rgba(255,128,36,.45);
+}
+.step-card h3 { font-family:var(--font-h); font-weight:800; color:#fff; font-size:1.05rem; margin-bottom:10px; }
+.step-card p  { font-size:.88rem; color:rgba(255,255,255,.68); line-height:1.65; }
+
+/* ============================================================
+   SERVICES (tab-servicios)
+============================================================ */
+.services { background:linear-gradient(135deg,#080f1e 0%,#003272 100%); }
+.services .h-title { color:#fff; }
+.services .h-sub   { color:rgba(255,255,255,.68); }
+.srv-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:54px; }
+.srv-card {
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--radius-lg); padding:36px 26px; text-align:center; transition:var(--ease);
+}
+.srv-card:hover { background:rgba(255,255,255,.1); border-color:var(--orange); transform:translateY(-8px); box-shadow:0 24px 50px rgba(0,0,0,.35); }
+.srv-icon { width:76px; height:76px; border-radius:20px; margin:0 auto 22px; background:linear-gradient(135deg,var(--orange),var(--orange-d)); display:flex; align-items:center; justify-content:center; font-size:2rem; color:#fff; }
+.srv-title { font-family:var(--font-h); font-weight:800; font-size:1.25rem; color:#fff; margin-bottom:10px; }
+.srv-desc  { font-size:.87rem; color:rgba(255,255,255,.66); line-height:1.72; margin-bottom:18px; }
+.srv-list  { display:flex; flex-direction:column; gap:8px; text-align:left; }
+.srv-list li { display:flex; align-items:center; gap:10px; font-size:.82rem; color:rgba(255,255,255,.78); }
+.srv-list li i { color:var(--orange); font-size:.65rem; flex-shrink:0; }
+.others-wrap { margin-top:42px; }
+.others-title { font-family:var(--font-h); color:#fff; font-size:1.22rem; font-weight:800; text-align:center; margin-bottom:20px; }
+.others-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.other-card { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius); padding:22px 18px; text-align:center; transition:var(--ease); }
+.other-card:hover { border-color:var(--orange); background:rgba(255,128,36,.1); }
+.other-card i { font-size:1.7rem; color:var(--orange); margin-bottom:10px; }
+.other-card h4 { font-family:var(--font-h); font-weight:700; font-size:.85rem; color:#fff; }
+
+/* ============================================================
+   NETWORK (tab-network)
+============================================================ */
+/* ============================================================
+   NETWORK (tab-network)
+============================================================ */
+.network-sec {
+  background:
+    linear-gradient(90deg,rgba(8,15,30,.96) 0%,rgba(8,15,30,.86) 48%,rgba(8,15,30,.78) 100%),
+    url('assets/img/network 5.jfif') center/cover no-repeat;
+  position:relative; overflow:hidden;
+}
+.network-sec::before {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(8,15,30,.12),rgba(8,15,30,.82)),
+    radial-gradient(circle at 86% 12%,rgba(255,128,36,.18),transparent 28%);
+}
+.network-sec .container { position:relative; z-index:1; }
+.net-hero { padding:76px 0 54px; position:relative; display:grid; grid-template-columns:minmax(0,1fr) minmax(360px,520px); gap:54px; align-items:center; }
+.net-hero-content { max-width:620px; }
+.net-tag { display:inline-flex; align-items:center; gap:8px; background:rgba(255,128,36,.12); border:1px solid rgba(255,128,36,.3); color:var(--orange); font-size:.72rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:6px 18px; border-radius:50px; margin-bottom:22px; }
+.net-title { font-family:var(--font-h); font-weight:900; font-size:clamp(2rem,5vw,3.2rem); color:#fff; line-height:1.15; margin-bottom:16px; }
+.net-title em { font-style:normal; color:var(--orange); }
+.net-subtitle { font-size:1.05rem; color:rgba(255,255,255,.68); max-width:620px; margin:0 0 10px; line-height:1.72; }
+.net-subtitle-en { font-size:.88rem; color:rgba(255,255,255,.42); font-style:italic; max-width:600px; margin:0; line-height:1.65; }
+.net-visual { position:relative; min-height:380px; display:flex; align-items:center; justify-content:center; }
+.net-world {
+  width:min(100%,430px); aspect-ratio:1; object-fit:contain;
+  filter:drop-shadow(0 28px 54px rgba(0,0,0,.38));
+  animation:float 7s ease infinite;
+}
+.net-visual::before {
+  content:''; position:absolute; inset:28px; border-radius:50%;
+  border:1px solid rgba(255,128,36,.18);
+  box-shadow:0 0 44px rgba(255,128,36,.13), inset 0 0 50px rgba(0,191,255,.08);
+}
+.net-globe { display:flex; align-items:center; justify-content:center; gap:60px; margin-bottom:70px; flex-wrap:wrap; }
+.net-stat { text-align:center; }
+.net-stat .num { font-family:var(--font-h); font-size:2.8rem; font-weight:900; color:var(--orange); line-height:1; }
+.net-stat .label { font-size:.78rem; color:rgba(255,255,255,.55); letter-spacing:1px; text-transform:uppercase; margin-top:6px; }
+.net-stat .label-en { font-size:.68rem; color:rgba(255,255,255,.3); display:block; font-style:italic; }
+.net-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-bottom:70px; }
+.net-card { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07); border-radius:16px; padding:34px 28px; transition:all .3s ease; position:relative; overflow:hidden; }
+.net-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--orange),transparent); opacity:0; transition:.3s; }
+.net-card:hover { background:rgba(0,50,114,.15); border-color:rgba(0,50,114,.4); transform:translateY(-4px); box-shadow:0 16px 48px rgba(0,0,0,.3); }
+.net-card:hover::before { opacity:1; }
+.net-icon { width:52px; height:52px; border-radius:14px; background:rgba(0,50,114,.3); border:1px solid rgba(0,50,114,.5); display:flex; align-items:center; justify-content:center; font-size:1.3rem; color:var(--orange); margin-bottom:20px; }
+.net-card h3 { font-family:var(--font-h); font-weight:800; font-size:1.05rem; color:#fff; margin-bottom:4px; }
+.net-card .h3-en { font-size:.75rem; color:rgba(255,255,255,.35); font-style:italic; margin-bottom:14px; display:block; }
+.net-card p { font-size:.86rem; color:rgba(255,255,255,.58); line-height:1.65; }
+.net-cta-block { background:linear-gradient(135deg,rgba(8,15,30,.88) 0%,rgba(0,50,114,.62) 100%); border:1px solid rgba(255,128,36,.22); border-radius:20px; padding:56px 48px; text-align:center; position:relative; overflow:hidden; margin-bottom:20px; }
+.net-cta-block::before { content:''; position:absolute; inset:0; background:linear-gradient(rgba(8,15,30,.78),rgba(8,15,30,.88)), url('assets/img/world-2-1024x1024.png') center/520px no-repeat; opacity:.26; pointer-events:none; }
+.net-cta-block h2 { font-family:var(--font-h); font-weight:900; font-size:clamp(1.4rem,3vw,2rem); color:#fff; margin-bottom:10px; }
+.net-cta-block h2 span { color:var(--orange); }
+.net-cta-block p { color:rgba(255,255,255,.62); font-size:.94rem; max-width:560px; margin:0 auto 30px; }
+.net-cta-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.net-cta-btns .btn { white-space:normal; text-align:center; justify-content:center; }
+.net-cta-block > * { position:relative; z-index:1; }
+.net-badge-row { display:flex; gap:24px; justify-content:center; flex-wrap:wrap; margin-top:32px; padding-top:28px; border-top:1px solid rgba(255,255,255,.08); }
+.net-badge { display:flex; align-items:center; gap:8px; font-size:.79rem; color:rgba(255,255,255,.5); }
+.net-badge i { color:var(--orange); }
+
+/* ============================================================
+   TARIFARIO (tab-tarifario)
+============================================================ */
+.tarifario { background:#fff; }
+.quoter-box { background:linear-gradient(135deg,var(--blue) 0%,#080f1e 100%); border-radius:var(--radius-lg); padding:46px; box-shadow:var(--shadow-lg); }
+.q-title { font-family:var(--font-h); font-weight:800; font-size:1.4rem; color:#fff; margin-bottom:6px; }
+.q-sub   { font-size:.87rem; color:rgba(255,255,255,.65); margin-bottom:28px; }
+.q-form  { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.q-group { display:flex; flex-direction:column; gap:7px; }
+.q-group.full { grid-column:1/-1; }
+.q-label { font-size:.72rem; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:rgba(255,255,255,.78); }
+.q-ctrl {
+  width:100%; padding:13px 14px; background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14); border-radius:10px;
+  color:#fff; font-size:.92rem; transition:var(--ease); appearance:none; cursor:pointer;
+}
+.q-ctrl:focus  { outline:none; border-color:var(--orange); background:rgba(255,255,255,.13); }
+.q-ctrl option { background:#003272; color:#fff; }
+.q-ctrl::placeholder { color:rgba(255,255,255,.38); }
+.q-btn { grid-column:1/-1; }
+.q-btn .btn { width:100%; justify-content:center; font-size:1rem; padding:15px; }
+.q-results { margin-top:36px; display:none; animation:pageIn .5s ease; }
+.q-results.show { display:block; }
+.q-results-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; flex-wrap:wrap; gap:12px; }
+.q-results-title { font-family:var(--font-h); font-weight:800; color:#fff; font-size:1.1rem; }
+.disc-badge { display:flex; align-items:center; gap:8px; background:linear-gradient(135deg,#e85d04,var(--orange)); color:#fff; padding:9px 18px; border-radius:50px; font-family:var(--font-h); font-weight:800; font-size:.82rem; }
+.tbl-wrap { overflow-x:auto; border-radius:10px; }
+.rtbl { width:100%; border-collapse:collapse; background:rgba(255,255,255,.03); min-width:680px; }
+.rtbl th { background:rgba(255,128,36,.2); color:var(--orange); font-family:var(--font-h); font-weight:700; font-size:.72rem; letter-spacing:1px; text-transform:uppercase; padding:13px 14px; text-align:left; }
+.rtbl td { padding:13px 14px; font-size:.86rem; color:rgba(255,255,255,.82); border-bottom:1px solid rgba(255,255,255,.05); vertical-align:middle; }
+.rtbl tr:last-child td { border:none; }
+.rtbl tr:hover td { background:rgba(255,255,255,.04); }
+.td-price { font-family:var(--font-h); font-weight:700; color:var(--orange); font-size:1.05rem; }
+.td-disc  { font-family:var(--font-h); font-weight:700; color:var(--green); font-size:1.05rem; }
+.td-disc small { display:block; font-size:.67rem; font-weight:400; color:rgba(16,185,129,.72); font-family:var(--font-b); }
+.tag-opt  { background:var(--orange); color:#fff; padding:3px 10px; border-radius:50px; font-size:.7rem; font-weight:700; }
+.q-cta { margin-top:20px; background:rgba(255,128,36,.1); border:1px solid rgba(255,128,36,.3); border-radius:var(--radius); padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+.q-cta p { color:rgba(255,255,255,.88); font-size:.9rem; }
+.q-cta strong { color:var(--orange); }
+
+/* ============================================================
+   CLIENTS (tab-clientes) — fondo oscuro para logos blancos
+============================================================ */
+.clients-dark { background:linear-gradient(135deg,#080f1e 0%,#003272 100%); }
+.clients-dark .h-title { color:#fff; }
+.clients-dark .tag { color:rgba(255,128,36,.9); }
+.clients-logos { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:44px; margin-top:48px; padding:0 20px; }
+.cli-logo {
+  height:64px; object-fit:contain; max-width:160px;
+  filter:brightness(0) invert(1) opacity(.65);
+  transition:var(--ease);
+}
+.cli-logo:hover { filter:brightness(0) invert(1) opacity(1); transform:scale(1.1) translateY(-4px); }
+
+/* ============================================================
+   CONTACT (tab-contacto)
+============================================================ */
+.contact { background:#fff; }
+.contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:start; }
+.contact-info { display:flex; flex-direction:column; gap:22px; }
+.c-item { display:flex; align-items:flex-start; gap:15px; }
+.c-icon { width:44px; height:44px; border-radius:11px; flex-shrink:0; background:rgba(255,128,36,.1); color:var(--orange); display:flex; align-items:center; justify-content:center; font-size:1.1rem; }
+.c-item h4 { font-family:var(--font-h); font-weight:700; font-size:.87rem; margin-bottom:4px; }
+.c-item p, .c-item a { font-size:.92rem; color:var(--gray); }
+.c-item a:hover { color:var(--orange); }
+.contact-actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:6px; }
+.cf { background:var(--gray-l); border-radius:var(--radius-lg); padding:36px; }
+.cf h3 { font-family:var(--font-h); font-weight:800; font-size:1.32rem; margin-bottom:22px; }
+.fg { margin-bottom:17px; }
+.fg label { display:block; font-size:.83rem; font-weight:600; color:var(--text); margin-bottom:7px; }
+.fi, .fs, .fta { width:100%; padding:13px 15px; border:2px solid #e5e7eb; border-radius:10px; font-size:.92rem; color:var(--text); transition:var(--ease); background:#fff; }
+.fi:focus,.fs:focus,.fta:focus { outline:none; border-color:var(--orange); }
+.fta { resize:vertical; min-height:115px; }
+.fr2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+
+/* ============================================================
+   RECLAMACIONES — solo botón flotante + footer
+============================================================ */
+.rec-float {
+  position:fixed; bottom:30px; left:30px; z-index:900;
+  display:flex; flex-direction:column; align-items:center; gap:4px;
+  cursor:pointer; text-decoration:none;
+}
+.rec-float img { width:54px; height:54px; object-fit:contain; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,.25); transition:var(--ease); }
+.rec-float:hover img { transform:scale(1.1) translateY(-2px); box-shadow:0 8px 24px rgba(220,38,38,.35); }
+.rec-float span { font-size:.58rem; font-weight:700; color:#dc2626; letter-spacing:.5px; text-transform:uppercase; text-align:center; line-height:1.2; }
+
+/* ============================================================
+   FOOTER
+============================================================ */
+.footer { background:#050e1d; color:rgba(255,255,255,.72); }
+.footer-main { padding:72px 0 52px; }
+.footer-grid { display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:46px; }
+.fb img { height:56px; width:auto; margin-bottom:14px; background:#fff; border-radius:8px; padding:5px 7px; }
+.fb p   { font-size:.84rem; line-height:1.82; margin-bottom:22px; }
+.socials { display:flex; gap:10px; }
+.soc { width:36px; height:36px; border-radius:9px; background:rgba(255,255,255,.08); color:rgba(255,255,255,.65); display:flex; align-items:center; justify-content:center; transition:var(--ease); }
+.soc:hover { background:var(--orange); color:#fff; }
+.fc h4 { font-family:var(--font-h); font-weight:700; font-size:.84rem; color:#fff; letter-spacing:1px; text-transform:uppercase; margin-bottom:16px; }
+.fc ul { display:flex; flex-direction:column; gap:9px; }
+.fc li a,.fc li button { font-size:.83rem; transition:var(--ease); background:none; border:none; cursor:pointer; color:rgba(255,255,255,.72); padding:0; text-align:left; font-family:var(--font-b); }
+.fc li a:hover,.fc li button:hover { color:var(--orange); padding-left:4px; }
+.fci { display:flex; align-items:flex-start; gap:9px; font-size:.83rem; margin-bottom:10px; }
+.fci i { color:var(--orange); margin-top:2px; flex-shrink:0; }
+.fci a:hover { color:var(--orange); }
+.footer-bot { border-top:1px solid rgba(255,255,255,.07); padding:20px 0; }
+.footer-bot .container { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+.footer-bot p { font-size:.77rem; }
+.footer-bot a,.footer-bot button { color:var(--orange); background:none; border:none; cursor:pointer; font-size:.77rem; font-family:var(--font-b); }
+.fbadges { display:flex; gap:10px; }
+.fbadge  { padding:3px 10px; border:1px solid rgba(255,255,255,.18); border-radius:4px; font-size:.67rem; letter-spacing:1px; }
+
+/* ============================================================
+   WHATSAPP FLOAT
+============================================================ */
+.wa-float { position:fixed; bottom:30px; right:30px; z-index:900; }
+.wa-btn { width:56px; height:56px; border-radius:50%; background:#25d366; color:#fff; font-size:1.7rem; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(37,211,102,.5); transition:var(--ease); position:relative; text-decoration:none; }
+.wa-btn:hover { transform:scale(1.1); background:#1db855; }
+.wa-btn::before { content:''; position:absolute; inset:0; border-radius:50%; background:rgba(37,211,102,.4); animation:pulseRing 2s ease infinite; }
+.wa-tip { position:absolute; right:66px; bottom:50%; transform:translateY(50%); background:var(--dark); color:#fff; font-size:.77rem; font-weight:600; padding:7px 12px; border-radius:8px; white-space:nowrap; opacity:0; transition:var(--ease); pointer-events:none; }
+.wa-tip::after { content:''; position:absolute; right:-5px; top:50%; transform:translateY(-50%); border:5px solid transparent; border-right:none; border-left-color:var(--dark); }
+.wa-float:hover .wa-tip { opacity:1; }
+
+/* ============================================================
+   WORLD MAP CANVAS
+============================================================ */
+.world-map-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #081225;
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 191, 255, .12),
+    inset 0 0 55px rgba(0, 157, 255, .13),
+    0 24px 70px rgba(0, 0, 0, .42);
+}
+.world-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: crosshair;
+}
+.map-tooltip {
+  position:absolute; z-index:4; min-width:150px; padding:10px 12px;
+  border:1px solid rgba(110,210,255,.32); border-radius:10px;
+  background:rgba(4,14,31,.88);
+  box-shadow:0 12px 28px rgba(0,0,0,.36),0 0 20px rgba(0,180,255,.12);
+  color:#fff; pointer-events:none; opacity:0; transform:translateY(6px);
+  transition:opacity .16s ease,transform .16s ease; backdrop-filter:blur(10px);
+}
+.map-tooltip.vis { opacity:1; transform:translateY(0); }
+.map-tt-name { font-size:13px; font-weight:800; line-height:1.2; }
+.map-tt-sub  { margin-top:3px; font-size:11px; color:rgba(195,226,255,.82); }
+.map-tt-hub  { margin-top:6px; font-size:10px; font-weight:800; color:#ff9a3c; text-transform:uppercase; letter-spacing:.04em; }
+.map-badge {
+  position:absolute; right:18px; bottom:18px; z-index:3;
+  min-width:160px; padding:12px 15px;
+  border:1px solid rgba(0,191,255,.30); border-radius:12px;
+  background:linear-gradient(135deg,rgba(3,15,35,.72),rgba(5,32,68,.48));
+  color:#fff; text-align:left;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 0 24px rgba(0,191,255,.18),0 10px 30px rgba(0,0,0,.30);
+  backdrop-filter:blur(10px);
+}
+.map-badge .n { font-size:25px; font-weight:800; line-height:1; color:#ff8c1a; text-shadow:0 0 15px rgba(255,122,0,.75); }
+.map-badge .t { margin-top:3px; font-size:10px; font-weight:700; color:rgba(215,235,255,.82); text-transform:uppercase; line-height:1.25; }
+.map-badge .g { margin-top:2px; font-size:8px; font-weight:800; color:rgba(0,191,255,.78); letter-spacing:.12em; text-transform:uppercase; }
+.about-map {
+  align-self: start;
+  min-width: 0;
+  padding-top: 8px;
+}
+.about-map .world-map-wrap {
+  min-height: 300px;
+}
+@media(max-width:620px){
+  .map-badge { right:10px; bottom:10px; min-width:94px; padding:8px 10px; }
+  .map-badge .n { font-size:20px; }
+  .map-badge .t { font-size:8px; }
+}
+
+/* ============================================================
+   COOKIE CONSENT BANNER
+============================================================ */
+.cookie-banner {
+  position:fixed; bottom:0; left:0; right:0; z-index:9999;
+  background:rgba(8,15,30,.97); backdrop-filter:blur(12px);
+  border-top:2px solid var(--orange); padding:18px 24px;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:20px; flex-wrap:wrap; transform:translateY(100%);
+  transition:transform .4s ease; box-shadow:0 -8px 32px rgba(0,0,0,.4);
+}
+.cookie-banner.show { transform:translateY(0); }
+.cookie-icon { font-size:2rem; flex-shrink:0; }
+.cookie-text { flex:1; min-width:220px; }
+.cookie-text h4 { font-family:var(--font-h); font-weight:800; color:#fff; font-size:.95rem; margin-bottom:5px; }
+.cookie-text p  { font-size:.78rem; color:rgba(255,255,255,.65); line-height:1.6; }
+.cookie-text a  { color:var(--orange); text-decoration:underline; }
+.cookie-btns { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+.cookie-btn-accept { background:var(--orange); color:#fff; border:none; padding:11px 22px; border-radius:50px; font-family:var(--font-h); font-weight:700; font-size:.85rem; cursor:pointer; transition:var(--ease); }
+.cookie-btn-accept:hover { background:var(--orange-d); transform:translateY(-1px); }
+.cookie-btn-decline { background:transparent; color:rgba(255,255,255,.55); border:1.5px solid rgba(255,255,255,.3); padding:10px 18px; border-radius:50px; font-family:var(--font-h); font-weight:600; font-size:.82rem; cursor:pointer; transition:var(--ease); }
+.cookie-btn-decline:hover { border-color:rgba(255,255,255,.7); color:#fff; }
+.cookie-reopen { position:fixed; bottom:14px; left:50%; transform:translateX(-50%); z-index:888; background:rgba(8,15,30,.85); border:1px solid rgba(255,255,255,.18); color:rgba(255,255,255,.6); padding:5px 14px; border-radius:50px; font-size:.68rem; cursor:pointer; display:none; backdrop-filter:blur(8px); transition:var(--ease); }
+.cookie-reopen:hover { color:#fff; border-color:var(--orange); }
+
+/* ============================================================
+   TRACKER BADGE (dev indicator — hidden in production)
+============================================================ */
+#trackerBadge { display:none; }
+
+/* ============================================================
+   BASC CERTIFICATION
+============================================================ */
+.basc-cert {
+  display:flex; align-items:flex-start; gap:14px;
+  margin-top:22px; padding:14px 16px;
+  background:rgba(0,50,114,.05); border:1px solid rgba(0,50,114,.14);
+  border-radius:var(--radius);
+}
+.basc-img { width:86px; height:86px; object-fit:contain; flex-shrink:0; border-radius:10px; background:#fff; }
+.basc-body { flex:1; }
+.basc-text { font-size:.81rem; color:var(--gray); line-height:1.65; margin-bottom:5px; }
+.basc-code { font-size:.7rem; font-weight:700; color:var(--blue); letter-spacing:.5px; text-transform:uppercase; }
+.about-map .basc-cert {
+  margin-top:20px;
+  padding:16px;
+  background:linear-gradient(135deg,rgba(0,50,114,.06),rgba(255,128,36,.07));
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width:1024px) {
+  .srv-grid { grid-template-columns:1fr 1fr; }
+  .others-grid { grid-template-columns:1fr 1fr; }
+  .footer-grid { grid-template-columns:1fr 1fr; gap:32px; }
+  .q-form { grid-template-columns:1fr 1fr; }
+  .net-hero { grid-template-columns:1fr; text-align:center; }
+  .net-hero-content { max-width:760px; margin:0 auto; }
+  .net-subtitle, .net-subtitle-en { margin-left:auto; margin-right:auto; }
+  .net-visual { min-height:340px; max-width:560px; margin:0 auto; width:100%; }
+}
+@media (max-width:768px) {
+  .sec { padding:64px 0; }
+  .nav-links,.nav-wa { display:none; }
+  .hamburger { display:flex; }
+  .about-grid { grid-template-columns:1fr; gap:44px; }
+  .about-img-wrap { max-width:360px; margin:0 auto; }
+  .about-badge, .map-badge { bottom:0; right:0; }
+  .srv-grid { grid-template-columns:1fr; }
+  .net-grid { grid-template-columns:1fr; }
+  .net-globe { gap:32px; }
+  .net-hero { padding:52px 0 38px; gap:34px; }
+  .net-visual { min-height:310px; }
+  .net-cta-block { padding:36px 24px; }
+  .steps-grid { grid-template-columns:1fr; gap:28px; }
+  .steps-grid::before { display:none; }
+  .contact-grid { grid-template-columns:1fr; gap:40px; }
+  .footer-grid { grid-template-columns:1fr; gap:28px; }
+  .quoter-box { padding:28px 18px; }
+  .q-form { grid-template-columns:1fr; }
+  .q-group.full { grid-column:span 1; }
+  .q-btn { grid-column:span 1; }
+  .fr2 { grid-template-columns:1fr; }
+  .hero-stats { gap:20px; }
+  .others-grid { grid-template-columns:1fr 1fr; }
+  .cf { padding:24px 18px; }
+}
+@media (max-width:480px) {
+  .hero h1 { font-size:2.1rem; }
+  .hero-btns { flex-direction:column; align-items:center; }
+  .features-grid { grid-template-columns:1fr; }
+  .clients-logos { gap:28px; }
+  .hero-stats { flex-direction:column; gap:16px; align-items:center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+============================================================ -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <div class="nav-logo" onclick="showTab('inicio')">
+      <div class="nav-logo-img-wrap">
+        <img src="assets/img/cropped-LOGO-2-80x123.png" alt="Hub Peru Cargo">
+      </div>
+      <div class="nav-logo-text">
+        <span class="l1">Hub Peru Cargo</span>
+        <span class="l2">Agencia de Carga Internacional</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><button class="nav-link active" data-tab="inicio">Inicio</button></li>
+      <li><button class="nav-link" data-tab="servicios">Servicios</button></li>
+      <li><button class="nav-link" data-tab="network">Network</button></li>
+      <li><button class="nav-link" data-tab="tarifario">Tarifario</button></li>
+      <li><button class="nav-link" data-tab="clientes">Clientes</button></li>
+      <li><button class="nav-link" data-tab="contacto">Contacto</button></li>
+      <li><a class="nav-link nav-track" href="https://nube10.intelisoft.ws/HUBPeruCargo/NET/LoginINTRACKING.aspx" target="_blank" rel="noopener noreferrer"><i class="fas fa-satellite-dish"></i>Tracking</a></li>
+    </ul>
+    <a href="https://wa.me/51923996689" class="nav-wa" target="_blank" rel="noopener" id="navWaBtn">
+      <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="mob-nav" id="mobNav">
+  <button class="mob-close" id="mobClose"><i class="fas fa-times"></i></button>
+  <button class="nav-link" data-tab="inicio">Inicio</button>
+  <button class="nav-link" data-tab="servicios">Servicios</button>
+  <button class="nav-link" data-tab="network">Network</button>
+  <button class="nav-link" data-tab="tarifario">Tarifario</button>
+  <button class="nav-link" data-tab="clientes">Clientes</button>
+  <button class="nav-link" data-tab="contacto">Contacto</button>
+  <a class="nav-link nav-track" href="https://nube10.intelisoft.ws/HUBPeruCargo/NET/LoginINTRACKING.aspx" target="_blank" rel="noopener noreferrer"><i class="fas fa-satellite-dish"></i>Tracking Online</a>
+  <a href="https://wa.me/51923996689" class="btn btn-orange" target="_blank">
+    <i class="fab fa-whatsapp"></i> WhatsApp
+  </a>
+</div>
+
+<!-- ============================================================
+     MAIN CONTENT — TAB PAGES
+============================================================ -->
+<main id="mainContent">
+
+  <!-- ======= TAB: INICIO ======= -->
+  <div class="tab-page active" id="tab-inicio">
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="assets/video/IMG_1333.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-eyebrow"><i class="fas fa-globe-americas"></i> Conectando el Perú con el Mundo</div>
+        <h1>HUB PERU <span>CARGO</span></h1>
+        <p class="hero-desc">Agencia de carga internacional especializada en importaciones y exportaciones. FCL, LCL y Flete Aéreo con la más alta eficiencia logística desde 2017.</p>
+        <div class="hero-btns">
+          <button class="btn btn-orange" onclick="showTab('tarifario')" data-track="hero_cta_tarifario">
+            <i class="fas fa-calculator"></i> Cotizar ahora
+          </button>
+          <button class="btn btn-outline" onclick="showTab('servicios')" data-track="hero_cta_servicios">
+            <i class="fas fa-info-circle"></i> Nuestros Servicios
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div><div class="stat-num">8+</div><div class="stat-lbl">Años de experiencia</div></div>
+          <div><div class="stat-num">500+</div><div class="stat-lbl">Clientes satisfechos</div></div>
+          <div><div class="stat-num">50+</div><div class="stat-lbl">Países conectados</div></div>
+          <div><div class="stat-num">3000+</div><div class="stat-lbl">Embarques exitosos</div></div>
+        </div>
+      </div>
+      <div class="scroll-cue"><div class="scroll-bar"></div><span>Scroll</span></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about sec">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-map reveal-l">
+            <div class="world-map-wrap"></div>
+            <div class="basc-cert">
+              <img src="assets/img/CERTIFICADO BASC.png" alt="Certificación BASC" class="basc-img">
+              <div class="basc-body">
+                <p class="basc-text">Contamos con certificación BASC, lo que refuerza nuestro compromiso con la seguridad, la confianza y las buenas prácticas en nuestras operaciones logísticas internacionales.</p>
+                <span class="basc-code">Empresa certificada BASC · Código PERLIM01286</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-text reveal-r">
+            <p class="tag">Sobre Nosotros</p>
+            <h2 class="h-title">Somos <span style="color:var(--orange)">Hub Peru Cargo</span></h2>
+            <p>Hub Peru Cargo S.A.C. es una agencia de carga internacional que ha logrado un crecimiento constante gracias a la confianza de las diversas compañías que apostaron por el servicio de calidad que brindamos. Hoy somos referentes en logística internacional con presencia en más de 50 países.</p>
+            <p>Contamos con un grandioso equipo humano que labora diariamente para otorgar la asesoría adecuada ante las complejas necesidades logísticas de nuestros clientes. Apostamos por el crecimiento de nuestro país y nuestra meta se basa en ser partícipes del crecimiento de su negocio.</p>
+            <div class="features-grid">
+              <div class="feat"><div class="feat-icon"><i class="fas fa-award"></i></div><div><h4>Certificados</h4><p>Operadores autorizados</p></div></div>
+              <div class="feat"><div class="feat-icon"><i class="fas fa-headset"></i></div><div><h4>Soporte 24/7</h4><p>Siempre disponibles</p></div></div>
+              <div class="feat"><div class="feat-icon"><i class="fas fa-route"></i></div><div><h4>Seguimiento</h4><p>Tracking en tiempo real</p></div></div>
+              <div class="feat"><div class="feat-icon"><i class="fas fa-handshake"></i></div><div><h4>Alianzas</h4><p>Red global de agentes</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEPS -->
+    <section class="steps sec-sm">
+      <div class="container">
+        <div class="tc reveal">
+          <p class="tag" style="color:rgba(255,128,36,.8)">¿Cómo funciona?</p>
+          <h2 class="h-title" style="color:#fff">La cadena logística <span style="color:var(--orange)">a tu disposición</span></h2>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card reveal">
+            <div class="step-num">1</div>
+            <h3>Contáctanos</h3>
+            <p>A través de nuestra web o número de contacto para mostrarte las mejores soluciones para tu empresa.</p>
+          </div>
+          <div class="step-card reveal d1">
+            <div class="step-num">2</div>
+            <h3>Conversemos</h3>
+            <p>Nuestros asesores pondrán toda su experiencia para cumplir con éxito tu importación y/o exportación.</p>
+          </div>
+          <div class="step-card reveal d2">
+            <div class="step-num">3</div>
+            <h3>Empecemos</h3>
+            <p>Estamos listos para apoyarte desde el inicio al final del servicio. Tu éxito es nuestro éxito.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /tab-inicio -->
+
+  <!-- ======= TAB: SERVICIOS ======= -->
+  <div class="tab-page" id="tab-servicios">
+    <section class="services sec">
+      <div class="container">
+        <div class="tc reveal">
+          <p class="tag" style="color:rgba(255,128,36,.9)">Lo que Ofrecemos</p>
+          <h2 class="h-title" style="color:#fff">Servicios con <span style="color:var(--orange)">calidad, eficiencia y agilidad</span></h2>
+          <p class="h-sub center" style="color:rgba(255,255,255,.65)">Somos profesionales comprometidos con facilitar el comercio internacional, conectando su negocio a nivel mundial.</p>
+        </div>
+        <div class="srv-grid">
+          <div class="srv-card reveal" data-track="service_view_fcl">
+            <div class="srv-icon"><i class="fas fa-ship"></i></div>
+            <h3 class="srv-title">Marítimo FCL</h3>
+            <p class="srv-desc">Full Container Load — contenedor completo para tu carga. La solución más eficiente para volúmenes grandes.</p>
+            <ul class="srv-list">
+              <li><i class="fas fa-circle"></i> Contenedores 20' y 40'</li>
+              <li><i class="fas fa-circle"></i> High Cube y Reefer disponibles</li>
+              <li><i class="fas fa-circle"></i> Carga general y peligrosa</li>
+              <li><i class="fas fa-circle"></i> Incoterms DDP, EXW, FOB, CIF</li>
+            </ul>
+          </div>
+          <div class="srv-card reveal d1" data-track="service_view_lcl">
+            <div class="srv-icon"><i class="fas fa-boxes-stacked"></i></div>
+            <h3 class="srv-title">Marítimo LCL</h3>
+            <p class="srv-desc">Less than Container Load — paga solo por el espacio que utilizas. Ideal para volúmenes pequeños.</p>
+            <ul class="srv-list">
+              <li><i class="fas fa-circle"></i> Desde 1 CBM</li>
+              <li><i class="fas fa-circle"></i> Consolidación de carga</li>
+              <li><i class="fas fa-circle"></i> Múltiples destinos</li>
+              <li><i class="fas fa-circle"></i> Costo altamente optimizado</li>
+            </ul>
+          </div>
+          <div class="srv-card reveal d2" data-track="service_view_aereo">
+            <div class="srv-icon"><i class="fas fa-plane"></i></div>
+            <h3 class="srv-title">Flete Aéreo</h3>
+            <p class="srv-desc">La velocidad que tu negocio necesita. Envíos urgentes o mercancía de alto valor con tránsitos exprés.</p>
+            <ul class="srv-list">
+              <li><i class="fas fa-circle"></i> Carga urgente y express</li>
+              <li><i class="fas fa-circle"></i> Temperatura controlada</li>
+              <li><i class="fas fa-circle"></i> Documentación especializada</li>
+              <li><i class="fas fa-circle"></i> Door to door disponible</li>
+            </ul>
+          </div>
+        </div>
+        <div class="others-wrap reveal">
+          <p class="others-title">Otros Servicios</p>
+          <div class="others-grid">
+            <div class="other-card"><i class="fas fa-file-contract"></i><h4>Agenciamiento Aduanero</h4></div>
+            <div class="other-card"><i class="fas fa-warehouse"></i><h4>Almacenamiento</h4></div>
+            <div class="other-card"><i class="fas fa-truck"></i><h4>Transporte Local</h4></div>
+            <div class="other-card"><i class="fas fa-shield-alt"></i><h4>Seguro de Carga</h4></div>
+          </div>
+        </div>
+        <div class="tc reveal" style="margin-top:48px;">
+          <button class="btn btn-orange" onclick="showTab('tarifario')" data-track="servicios_cta_tarifario">
+            <i class="fas fa-calculator"></i> Cotizar mi embarque
+          </button>
+        </div>
+      </div>
+    </section>
+  </div><!-- /tab-servicios -->
+
+  <!-- ======= TAB: NETWORK ======= -->
+  <div class="tab-page" id="tab-network">
+    <section class="network-sec sec">
+      <div class="container">
+
+        <!-- Hero header -->
+        <div class="net-hero reveal">
+          <div class="net-hero-content">
+            <div class="net-tag"><i class="fas fa-globe-americas"></i>&nbsp; Global Network</div>
+            <h2 class="net-title">Tu Aliado Estratégico en<br><em>Logística Internacional</em></h2>
+            <p class="net-subtitle">Conectamos tu empresa con el mundo. Operamos como tu agente local en Perú con acceso a redes globales de freight forwarders, navieras y aerolíneas.</p>
+            <p class="net-subtitle-en">We act as your trusted local partner in Peru — connecting international freight forwarders, agents and carriers to seamless South American trade lanes.</p>
+          </div>
+          <div class="net-visual" aria-hidden="true">
+            <img src="assets/img/world-2-1024x1024.png" alt="" class="net-world">
+          </div>
+        </div>
+
+        <!-- Stats bar -->
+        <div class="net-globe reveal d1">
+          <div class="net-stat">
+            <div class="num">+50</div>
+            <div class="label">Países Activos<span class="label-en">Active Countries</span></div>
+          </div>
+          <div class="net-stat">
+            <div class="num">+200</div>
+            <div class="label">Socios Globales<span class="label-en">Global Partners</span></div>
+          </div>
+          <div class="net-stat">
+            <div class="num">24/7</div>
+            <div class="label">Soporte Operativo<span class="label-en">Operational Support</span></div>
+          </div>
+          <div class="net-stat">
+            <div class="num">BASC</div>
+            <div class="label">Certificados<span class="label-en">Certified</span></div>
+          </div>
+        </div>
+
+        <!-- Benefits grid -->
+        <div class="net-grid">
+
+          <div class="net-card reveal">
+            <div class="net-icon"><i class="fas fa-handshake"></i></div>
+            <h3>Agente Corresponsal</h3>
+            <span class="h3-en">Correspondent Agent</span>
+            <p>Actuamos como tu representante exclusivo en Perú. Gestionamos operaciones locales con la misma calidad y estándares que tus clientes esperan de ti.</p>
+          </div>
+
+          <div class="net-card reveal d1">
+            <div class="net-icon"><i class="fas fa-ship"></i></div>
+            <h3>Co-loading & Consolidación</h3>
+            <span class="h3-en">Co-loading & Consolidation</span>
+            <p>Compartimos espacios en contenedores FCL y servicios LCL consolidados desde los principales puertos del mundo hacia Callao, Paita y más.</p>
+          </div>
+
+          <div class="net-card reveal d2">
+            <div class="net-icon"><i class="fas fa-file-contract"></i></div>
+            <h3>Despacho Aduanero Local</h3>
+            <span class="h3-en">Local Customs Clearance</span>
+            <p>Agencia de Aduana licenciada ante SUNAT. Gestionamos importaciones y exportaciones bajo los más altos estándares de compliance peruano.</p>
+          </div>
+
+          <div class="net-card reveal">
+            <div class="net-icon"><i class="fas fa-plane"></i></div>
+            <h3>Operaciones Aéreas</h3>
+            <span class="h3-en">Air Freight Operations</span>
+            <p>Manejo de carga aérea en el aeropuerto Jorge Chávez (LIM). Coordinamos con las principales aerolíneas cargo para entregas express y prioritarias.</p>
+          </div>
+
+          <div class="net-card reveal d1">
+            <div class="net-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>Certificación BASC</h3>
+            <span class="h3-en">BASC Certified</span>
+            <p>Certificación N° PERLIM01286. Cumplimos con los más altos estándares de seguridad en la cadena de suministro para comercio exterior.</p>
+          </div>
+
+          <div class="net-card reveal d2">
+            <div class="net-icon"><i class="fas fa-satellite-dish"></i></div>
+            <h3>Tracking en Tiempo Real</h3>
+            <span class="h3-en">Real-Time Tracking</span>
+            <p>Portal de rastreo integrado para que tú y tus clientes monitoreen cada embarque en tiempo real. Visibilidad total de la cadena logística.</p>
+          </div>
+
+        </div>
+
+        <!-- CTA block -->
+        <div class="net-cta-block reveal">
+          <h2>¿Listo para <span>Hacer Negocios?</span></h2>
+          <p>Contáctanos directamente. Nuestro Pricing Specialist responde en menos de 2 horas hábiles para evaluar tu operación y proponer la mejor estructura de alianza.</p>
+          <div class="net-cta-btns">
+            <a href="https://wa.me/51924252492?text=Hola%20Hub%20Peru%20Cargo%2C%20quiero%20explorar%20una%20alianza%20como%20agente%20corresponsal" class="btn btn-orange" target="_blank" data-track="network_cta_wa">
+              <i class="fab fa-whatsapp"></i> WhatsApp Directo
+            </a>
+            <a href="mailto:pricing@hubperucargo.com?subject=Propuesta%20de%20Alianza%20%E2%80%94%20Network%20Hub%20Peru%20Cargo" class="btn btn-outline" target="_blank" data-track="network_cta_email">
+              <i class="fas fa-envelope"></i> pricing@hubperucargo.com
+            </a>
+          </div>
+          <div class="net-badge-row">
+            <span class="net-badge"><i class="fas fa-check-circle"></i> Sin costo de afiliación</span>
+            <span class="net-badge"><i class="fas fa-check-circle"></i> Respuesta en &lt;2 horas hábiles</span>
+            <span class="net-badge"><i class="fas fa-check-circle"></i> Operamos desde Lima, Perú</span>
+            <span class="net-badge"><i class="fas fa-check-circle"></i> +10 años de experiencia</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div><!-- /tab-network -->
+
+  <!-- ======= TAB: TARIFARIO ======= -->
+  <div class="tab-page" id="tab-tarifario">
+    <section class="tarifario sec">
+      <div class="container">
+        <div class="tc reveal" style="margin-bottom:46px;">
+          <p class="tag">Calculadora de Fletes</p>
+          <h2 class="h-title">Tarifario <span style="color:var(--orange)">Interactivo</span></h2>
+          <p class="h-sub center">
+            Tarifas <strong>referenciales</strong> actualizadas desde nuestro archivo de tarifas.
+            Contáctanos para obtener hasta un <strong>50% de descuento</strong>.
+          </p>
+        </div>
+        <div class="quoter-box reveal">
+          <h3 class="q-title"><i class="fas fa-calculator" style="color:var(--orange);margin-right:10px;"></i>Cotizador de Fletes</h3>
+          <p class="q-sub">Selecciona tu ruta y tipo de carga para ver opciones disponibles.</p>
+          <div class="q-form">
+            <div class="q-group">
+              <label class="q-label">País de Origen</label>
+              <select class="q-ctrl" id="qOrigen">
+                <option value="">— Seleccionar —</option>
+                <option value="CN">🇨🇳 China</option>
+                <option value="US">🇺🇸 Estados Unidos</option>
+                <option value="ES">🇪🇸 España</option>
+                <option value="MX">🇲🇽 México</option>
+                <option value="BR">🇧🇷 Brasil</option>
+                <option value="CO">🇨🇴 Colombia</option>
+                <option value="CL">🇨🇱 Chile</option>
+                <option value="JP">🇯🇵 Japón</option>
+                <option value="KR">🇰🇷 Corea del Sur</option>
+                <option value="DE">🇩🇪 Alemania</option>
+                <option value="IT">🇮🇹 Italia</option>
+                <option value="TR">🇹🇷 Turquía</option>
+                <option value="IN">🇮🇳 India</option>
+              </select>
+            </div>
+            <div class="q-group">
+              <label class="q-label">País de Destino</label>
+              <select class="q-ctrl" disabled>
+                <option value="PE">🇵🇪 Perú (destino principal)</option>
+              </select>
+            </div>
+            <div class="q-group">
+              <label class="q-label">Tipo de Carga</label>
+              <select class="q-ctrl" id="qTipo">
+                <option value="">— Seleccionar —</option>
+                <option value="FCL20">FCL — Contenedor 20'</option>
+                <option value="FCL40">FCL — Contenedor 40'</option>
+                <option value="FCL40HQ">FCL — Contenedor 40' HC</option>
+                <option value="LCL">LCL — Carga suelta (CBM)</option>
+                <option value="AEREO">Flete Aéreo (kg)</option>
+              </select>
+            </div>
+            <div class="q-group">
+              <label class="q-label">Puerto de Origen</label>
+              <select class="q-ctrl" id="qPuertoO">
+                <option value="">— Primero selecciona país —</option>
+              </select>
+            </div>
+            <div class="q-group">
+              <label class="q-label">Puerto de Destino</label>
+              <select class="q-ctrl" id="qPuertoD">
+                <option value="CALLAO">Callao, Perú</option>
+                <option value="PAITA">Paita, Perú</option>
+              </select>
+            </div>
+            <div class="q-group">
+              <label class="q-label" id="qCantLabel">Cantidad</label>
+              <input type="number" class="q-ctrl" id="qCant" placeholder="Ej: 1" min="1" value="1">
+            </div>
+            <div class="q-group">
+              <label class="q-label">Incoterm</label>
+              <select class="q-ctrl" id="qInco">
+                <option value="">— Seleccionar —</option>
+                <option value="EXW">EXW — Ex Works</option>
+                <option value="FOB">FOB — Free on Board</option>
+                <option value="CIF">CIF — Cost, Insurance, Freight</option>
+                <option value="DDP">DDP — Delivered Duty Paid</option>
+              </select>
+            </div>
+            <div class="q-group">
+              <label class="q-label">Tipo de Mercancía</label>
+              <select class="q-ctrl" id="qMerca">
+                <option value="GENERAL">Carga General</option>
+                <option value="PELIGROSA">Carga Peligrosa (IMO)</option>
+                <option value="REFRIGERADA">Refrigerada / Reefer</option>
+                <option value="SOBREDIM">Sobredimensionada / OOG</option>
+              </select>
+            </div>
+            <div class="q-group">
+              <label class="q-label">Valor Mercancía (USD)</label>
+              <input type="number" class="q-ctrl" id="qValor" placeholder="Ej: 15000">
+            </div>
+            <div class="q-btn">
+              <button class="btn btn-orange" onclick="calcularTarifa()" data-track="quoter_search">
+                <i class="fas fa-search-dollar"></i> Ver Tarifas Referenciales
+              </button>
+            </div>
+          </div>
+          <div class="q-results" id="qResults">
+            <div class="q-results-head">
+              <div class="q-results-title"><i class="fas fa-list" style="color:var(--orange);margin-right:8px;"></i>Opciones disponibles</div>
+              <div class="disc-badge"><i class="fas fa-comments"></i> Consulta tu tarifa personalizada</div>
+            </div>
+            <div class="tbl-wrap">
+              <table class="rtbl">
+                <thead>
+                  <tr>
+                    <th>Opción</th><th>Línea / Agente</th><th>Ruta</th><th>Tránsito</th>
+                    <th>Tarifa Referencial</th><th>Tarifa Personalizada</th><th>Acción</th>
+                  </tr>
+                </thead>
+                <tbody id="qTbody"></tbody>
+              </table>
+            </div>
+            <div class="q-cta">
+              <p>Las tarifas mostradas son <strong>referenciales</strong>. Puedes acceder a una tarifa personalizada con hasta <strong>50% de descuento</strong> según ruta, volumen y disponibilidad — sujeto a evaluación comercial. <strong>Contáctanos para cotizar.</strong></p>
+              <a href="https://wa.me/51923996689?text=Hola%20Hub%20Peru%20Cargo%2C%20quiero%20una%20cotizaci%C3%B3n%20con%20descuento" class="btn btn-orange" target="_blank" data-track="quoter_wa_click">
+                <i class="fab fa-whatsapp"></i> Obtener descuento
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div><!-- /tab-tarifario -->
+
+  <!-- ======= TAB: CLIENTES ======= -->
+  <div class="tab-page" id="tab-clientes">
+    <section class="clients-dark sec">
+      <div class="container">
+        <div class="tc reveal">
+          <p class="tag" style="color:rgba(255,128,36,.85)">Quienes confían en nosotros</p>
+          <h2 class="h-title" style="color:#fff">Nuestros clientes, <span style="color:var(--orange)">nuestra razón de ser</span></h2>
+          <p class="h-sub center" style="color:rgba(255,255,255,.65)">Empresas líderes que apuestan por nuestro servicio de calidad para sus operaciones de comercio exterior.</p>
+        </div>
+        <div class="clients-logos">
+          <img src="assets/img/socopur-1.png"  alt="Socopur"    class="cli-logo reveal">
+          <img src="assets/img/ZENDY.png"       alt="Zendy"      class="cli-logo reveal d1">
+          <img src="assets/img/ARTESCO.png"     alt="Artesco"    class="cli-logo reveal d2">
+          <img src="assets/img/PERU-GRASS.png"  alt="Peru Grass" class="cli-logo reveal d3">
+          <img src="assets/img/clienty-1.png"   alt="Cliente"    class="cli-logo reveal">
+          <img src="assets/img/casalinda.png"   alt="Casalinda"  class="cli-logo reveal d1">
+        </div>
+        <div class="tc reveal" style="margin-top:56px;">
+          <button class="btn btn-orange" onclick="showTab('contacto')" data-track="clientes_cta_contacto">
+            <i class="fas fa-handshake"></i> Únete a nuestros clientes
+          </button>
+        </div>
+      </div>
+    </section>
+  </div><!-- /tab-clientes -->
+
+  <!-- ======= TAB: CONTACTO ======= -->
+  <div class="tab-page" id="tab-contacto">
+    <section class="contact sec">
+      <div class="container">
+        <div class="tc reveal" style="margin-bottom:54px;">
+          <p class="tag">Hablemos</p>
+          <h2 class="h-title">¿Listo para iniciar <span style="color:var(--orange)">tu operación?</span></h2>
+          <p class="h-sub center">Brindamos atención exclusiva a empresas. ¡Contáctanos y te asesoramos sin costo!</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info reveal-l">
+            <div class="c-item">
+              <div class="c-icon"><i class="fas fa-envelope"></i></div>
+              <div><h4>Email Comercial</h4><a href="mailto:ventas@hubperucargo.com">ventas@hubperucargo.com</a></div>
+            </div>
+            <div class="c-item">
+              <div class="c-icon"><i class="fab fa-whatsapp"></i></div>
+              <div>
+                <h4>WhatsApp</h4>
+                <a href="https://wa.me/51923996689" target="_blank">+51 923 996 689</a>
+                <p style="font-size:.78rem;margin-top:3px;">Lun – Vie: 9:00 am – 6:00 pm</p>
+              </div>
+            </div>
+            <div class="c-item">
+              <div class="c-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div><h4>Oficina Principal</h4><p>Lima, Perú</p></div>
+            </div>
+            <div class="c-item">
+              <div class="c-icon"><i class="fas fa-globe"></i></div>
+              <div><h4>Sitio Web</h4><a href="https://hubperucargo.com" target="_blank">hubperucargo.com</a></div>
+            </div>
+            <div class="contact-actions">
+              <button class="btn btn-blue" onclick="showTab('clientes')" data-track="contact_portal_clientes"><i class="fas fa-users"></i> Portal Clientes</button>
+              <a href="https://info.hubperucargo.com/tarifas" class="btn btn-ghost" target="_blank" data-track="contact_tarifas_oficiales"><i class="fas fa-file-invoice-dollar"></i> Tarifas Oficiales</a>
+            </div>
+          </div>
+          <div class="cf reveal-r">
+            <h3>Envíanos un Mensaje</h3>
+            <form id="contactForm" onsubmit="submitContact(event)">
+              <div class="fr2">
+                <div class="fg"><label>Nombre completo *</label><input type="text" class="fi" id="cNombre" required placeholder="Tu nombre"></div>
+                <div class="fg"><label>Empresa *</label><input type="text" class="fi" id="cEmpresa" required placeholder="Nombre de empresa"></div>
+              </div>
+              <div class="fr2">
+                <div class="fg"><label>Email *</label><input type="email" class="fi" id="cEmail" required placeholder="correo@empresa.com"></div>
+                <div class="fg"><label>Teléfono</label><input type="tel" class="fi" id="cTel" placeholder="+51 923 996 689"></div>
+              </div>
+              <div class="fg">
+                <label>Tipo de servicio</label>
+                <select class="fs" id="cServicio">
+                  <option value="">Seleccionar servicio...</option>
+                  <option>Importación FCL</option><option>Importación LCL</option>
+                  <option>Exportación FCL</option><option>Exportación LCL</option>
+                  <option>Flete Aéreo</option><option>Agenciamiento Aduanero</option>
+                  <option>Consulta General</option>
+                </select>
+              </div>
+              <div class="fg"><label>Mensaje *</label><textarea class="fta" id="cMensaje" required placeholder="Cuéntanos sobre tu operación..."></textarea></div>
+              <button type="submit" class="btn btn-orange btn-full" id="contactSubmitBtn">
+                <i class="fas fa-paper-plane"></i> Enviar Mensaje
+              </button>
+              <p id="contactMsg" style="margin-top:12px;font-size:.85rem;display:none;"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div><!-- /tab-contacto -->
+
+  <!-- ======= TAB: RECLAMACIONES ======= -->
+  <div class="tab-page" id="tab-reclamaciones">
+    <section style="background:#fef3f2;border-top:4px solid #dc2626;padding:64px 0 80px;">
+      <div class="container">
+
+        <!-- HEADER -->
+        <div style="display:flex;align-items:center;gap:20px;margin-bottom:32px;" class="reveal">
+          <img src="assets/img/libro_reclamacion.png" alt="Libro de Reclamaciones" style="width:82px;height:82px;object-fit:contain;">
+          <div>
+            <h2 style="font-family:var(--font-h);font-weight:900;font-size:clamp(1.5rem,4vw,2.1rem);color:#dc2626;">Libro de Reclamaciones</h2>
+            <p style="font-size:.84rem;color:var(--gray);">Hub Peru Cargo S.A.C. — RUC: 20602031188 — Lima, Perú</p>
+          </div>
+        </div>
+
+        <!-- AVISO LEGAL -->
+        <div style="background:#fee2e2;border:1px solid #fca5a5;border-radius:var(--radius);padding:15px 20px;margin-bottom:28px;font-size:.82rem;color:#7f1d1d;line-height:1.65;" class="reveal">
+          <strong>Conforme al Código de Protección y Defensa del Consumidor — Ley N° 29571:</strong>
+          La empresa dará respuesta en un plazo máximo de <strong>30 días calendario</strong> a partir del registro,
+          conforme al D.S. N° 011-2011-PCM. INDECOPI es la autoridad competente.
+        </div>
+
+        <!-- FORMULARIO -->
+        <div style="background:#fff;border-radius:var(--radius-lg);padding:44px;box-shadow:var(--shadow-lg);" class="reveal">
+          <form id="formRecInline" onsubmit="enviarRecInline(event)" novalidate>
+
+            <p style="font-family:var(--font-h);font-weight:700;font-size:.88rem;color:var(--blue);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--gray-l);text-transform:uppercase;letter-spacing:.5px;">
+              <i class="fas fa-user" style="color:#dc2626;margin-right:8px"></i>I. Datos del Consumidor Reclamante
+            </p>
+            <div class="fr2">
+              <div class="fg"><label style="font-size:.83rem;font-weight:600;display:block;margin-bottom:7px">Apellidos y Nombres <span style="color:#dc2626">*</span></label><input type="text" class="fi" id="ri-nombre" required placeholder="Apellidos y Nombres completos"></div>
+              <div class="fg"><label style="font-size:.83rem;font-weight:600;display:block;margin-bottom:7px">DNI / CE / RUC <span style="color:#dc2626">*</span></label><input type="text" class="fi" id="ri-doc" required placeholder="N° de documento"></div>
+            </div>
+            <div class="fr2">
+              <div class="fg"><label style="font-size:.83rem;font-weight:600;display:block;margin-bottom:7px">Domicilio <span style="color:#dc2626">*</span></label><input type="text" class="fi" id="ri-dom" required placeholder="Dirección completa"></div>
+              <div class="fg"><label style="font-size:.83rem;font-weight:600;display:block;margin-bottom:7px">Teléfono <span style="color:#dc2626">*</span></label><input type="tel" class="fi" id="ri-tel" required placeholder="+51 923 996 689"></div>
+            </div>
+            <div class="fg"><label style="font-size:.83rem;font-weight:600;display:block;margin-bottom:7px">Correo Electrónico <span style="color:#dc2626">*</span></label><input type="email" class="fi" id="ri-email" required placeholder="correo@ejemplo.com"></div>
+
+            <p style="font-family:var(--font-h);font-weight:700;font-size:.88rem;color:var(--blue);margin:24px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--gray-l);text-transform:uppercase;letter-spacing:.5px;">
+              <i class="fas fa-box" style="color:#dc2626;margin-right:8px"></i>II. Bien o Servicio
+            </p>
+            <div class="fr2">
+              <div class="fg"><label style="font-size:.83rem;font-weight:600;display:block;margin-bottom:7px">Monto Reclamado (USD)</label><input type="number" class="fi" id="ri-monto" placeholder="0.00" min="0"></div>
+              <div class="fg"><label style="font-size:.83rem;font-weight:600;display:block;margin-bottom:7px">N° Pedido / BL</label><input type="text" class="fi" id="ri-pedido" placeholder="Número de referencia"></div>
+            </div>
+            <div class="fg"><label style="font-size:.83rem;font-weight:600;display:block;margin-bottom:7px">Servicio Contratado <span style="color:#dc2626">*</span></label><input type="text" class="fi" id="ri-bien" required placeholder="Ej: Flete marítimo FCL 20' China – Callao, BL N° XXXX"></div>
+
+            <p style="font-family:var(--font-h);font-weight:700;font-size:.88rem;color:var(--blue);margin:24px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--gray-l);text-transform:uppercase;letter-spacing:.5px;">
+              <i class="fas fa-tags" style="color:#dc2626;margin-right:8px"></i>III. Tipo de Reclamación
+            </p>
+            <div class="tipo-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;">
+              <div style="border:2px solid #e5e7eb;border-radius:var(--radius);padding:16px;cursor:pointer;transition:var(--ease);" id="ri-t-reclamo" onclick="elegirTipoInline('reclamo')">
+                <h4 style="font-family:var(--font-h);font-weight:700;margin-bottom:5px">🔴 RECLAMO</h4>
+                <p style="font-size:.78rem;color:var(--gray);line-height:1.5">Disconformidad sobre el servicio. Posible vulneración de un derecho del consumidor.</p>
+              </div>
+              <div style="border:2px solid #e5e7eb;border-radius:var(--radius);padding:16px;cursor:pointer;transition:var(--ease);" id="ri-t-queja" onclick="elegirTipoInline('queja')">
+                <h4 style="font-family:var(--font-h);font-weight:700;margin-bottom:5px">🟡 QUEJA</h4>
+                <p style="font-size:.78rem;color:var(--gray);line-height:1.5">Malestar respecto a la atención al público, no relacionado directamente con el servicio.</p>
+              </div>
+            </div>
+            <input type="hidden" id="ri-tipo" value="">
+
+            <p style="font-family:var(--font-h);font-weight:700;font-size:.88rem;color:var(--blue);margin:24px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--gray-l);text-transform:uppercase;letter-spacing:.5px;">
+              <i class="fas fa-file-alt" style="color:#dc2626;margin-right:8px"></i>IV. Detalle
+            </p>
+            <div class="fg"><label style="font-size:.83rem;font-weight:600;display:block;margin-bottom:7px">Descripción detallada <span style="color:#dc2626">*</span></label>
+              <textarea class="fta" id="ri-desc" required style="min-height:130px" placeholder="Describe los hechos: fecha, circunstancias y cualquier información relevante..."></textarea></div>
+            <div class="fg"><label style="font-size:.83rem;font-weight:600;display:block;margin-bottom:7px">Solución que esperas <span style="color:#dc2626">*</span></label>
+              <textarea class="fta" id="ri-sol" required placeholder="¿Qué solución o compensación esperas de Hub Peru Cargo?"></textarea></div>
+
+            <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;">
+              <input type="checkbox" id="ri-aut1" required style="width:16px;height:16px;margin-top:3px;accent-color:#dc2626;flex-shrink:0">
+              <label for="ri-aut1" style="font-size:.81rem;color:var(--gray);cursor:pointer;line-height:1.55">Declaro que los datos son verídicos y autorizo a Hub Peru Cargo S.A.C. a usarlos para gestionar esta reclamación, conforme a la <strong>Ley N° 29733</strong>.</label>
+            </div>
+            <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:20px;">
+              <button type="submit" id="ri-submitBtn" style="display:flex;align-items:center;gap:9px;background:#dc2626;color:#fff;border:none;cursor:pointer;padding:14px 34px;border-radius:50px;font-family:var(--font-h);font-weight:700;font-size:.95rem;transition:var(--ease);" onmouseover="this.style.background='#b91c1c'" onmouseout="this.style.background='#dc2626'">
+                <i class="fas fa-paper-plane"></i> Registrar Reclamación
+              </button>
+              <div id="ri-num" style="font-size:.82rem;color:var(--gray);"></div>
+            </div>
+            <div id="ri-msg" style="display:none;margin-top:18px;padding:16px 20px;border-radius:var(--radius);font-size:.88rem;"></div>
+            <p style="font-size:.77rem;color:var(--gray);margin-top:16px;padding:12px;background:var(--gray-l);border-radius:var(--radius);line-height:1.6;">
+              <i class="fas fa-info-circle" style="color:#dc2626;margin-right:6px"></i>
+              Respuesta en máximo <strong>30 días calendario</strong>. Para más información: <strong>INDECOPI 224-7777</strong> (Lima) / <strong>0800-4-4040</strong> (gratuito).
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div><!-- /tab-reclamaciones -->
+
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="footer">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="fb">
+          <img src="assets/img/cropped-LOGO-2-80x123.png" alt="Hub Peru Cargo">
+          <p>Agencia de carga internacional fundada en 2017. Conectamos tu negocio con el mundo a través de soluciones logísticas de calidad, eficiencia y confianza.</p>
+          <div class="socials">
+            <a href="https://www.facebook.com/profile.php?id=61586793487504" class="soc" title="Facebook" target="_blank" rel="noopener" data-track="social_facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/hub.perugroup/" class="soc" title="Instagram" target="_blank" rel="noopener" data-track="social_instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://pe.linkedin.com/company/hub-per%C3%BA-cargo" class="soc" title="LinkedIn" target="_blank" rel="noopener" data-track="social_linkedin"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://wa.me/51923996689" class="soc" title="WhatsApp" target="_blank" data-track="social_whatsapp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="fc">
+          <h4>Servicios</h4>
+          <ul>
+            <li><button onclick="showTab('servicios')">Flete Marítimo FCL</button></li>
+            <li><button onclick="showTab('servicios')">Flete Marítimo LCL</button></li>
+            <li><button onclick="showTab('servicios')">Flete Aéreo</button></li>
+            <li><button onclick="showTab('servicios')">Agenciamiento Aduanero</button></li>
+            <li><button onclick="showTab('servicios')">Transporte Local</button></li>
+            <li><button onclick="showTab('servicios')">Seguro de Carga</button></li>
+          </ul>
+        </div>
+        <div class="fc">
+          <h4>Empresa</h4>
+          <ul>
+            <li><button onclick="showTab('inicio')">Sobre Nosotros</button></li>
+            <li><button onclick="showTab('network')">Network & Alianzas</button></li>
+            <li><button onclick="showTab('tarifario')">Tarifario</button></li>
+            <li><button onclick="showTab('clientes')">Nuestros Clientes</button></li>
+            <li><button onclick="showTab('clientes')" style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,.72);font-size:.83rem;font-family:var(--font-b);padding:0;transition:all .3s ease;" onmouseover="this.style.color='#ff8024';this.style.paddingLeft='4px'" onmouseout="this.style.color='rgba(255,255,255,.72)';this.style.paddingLeft='0'">Portal Clientes</button></li>
+          </ul>
+        </div>
+        <div class="fc">
+          <h4>Contacto</h4>
+          <div class="fci"><i class="fas fa-envelope"></i><a href="mailto:ventas@hubperucargo.com">ventas@hubperucargo.com</a></div>
+          <div class="fci"><i class="fab fa-whatsapp"></i><a href="https://wa.me/51923996689" target="_blank">+51 923 996 689</a></div>
+          <div class="fci"><i class="fas fa-map-marker-alt"></i><span>Lima, Perú</span></div>
+          <div class="fci"><i class="fas fa-clock"></i><span>Lun – Vie: 9am – 6pm</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <div class="container">
+      <p>© 2025 Hub Peru Cargo S.A.C. Todos los derechos reservados.</p>
+      <div class="fbadges"><span class="fbadge">RUC: 20602031188</span><span class="fbadge">LIMA · PERÚ</span><span class="fbadge">BASC · PERLIM01286</span></div>
+    </div>
+  </div>
+</footer>
+
+<!-- LIBRO DE RECLAMACIONES — Botón flotante inferior izquierdo -->
+<a class="rec-float" href="reclamaciones.html" title="Libro de Reclamaciones" data-track="rec_float_click">
+  <img src="assets/img/libro_reclamacion.png" alt="Libro de Reclamaciones">
+  <span>Libro de<br>Reclamaciones</span>
+</a>
+
+<!-- WHATSAPP FLOAT -->
+<div class="wa-float">
+  <a href="https://wa.me/51923996689?text=Hola%20Hub%20Peru%20Cargo%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20servicios" class="wa-btn" target="_blank" rel="noopener" id="waFloatBtn" data-track="wa_float_click">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <div class="wa-tip">¡Chatea con nosotros!</div>
+</div>
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+/* ============================================================
+   HUB TRACKER — Analytics & Base de Datos
+   ⚙️ CONFIGURACIÓN: Reemplaza los valores entre comillas
+   Para configurar el backend ve a: google_apps_script.js
+============================================================ */
+const HubTracker = {
+
+  /* 🔧 CONFIGURA AQUÍ — pega la URL de tu Google Apps Script */
+  ENDPOINT: 'https://script.google.com/macros/s/AKfycbw2e9qceObxajq3q0MuXST-ON87iUX-So9yYYthxfT3aZDsJrLxA401q_Tbf-7DHE6l8w/exec',
+
+  /* 🔧 OPCIONAL — Google Analytics 4 ID (ej: 'G-XXXXXXXXXX') */
+  GA_ID: '',
+
+  session: null,
+  tabStart: Date.now(),
+  currentTab: 'inicio',
+
+  init() {
+    this.session = this._session();
+    this._trackSession();
+    this._autoTrackClicks();
+    this._trackScrollDepth();
+
+    // Cargar GA4 si está configurado
+    if (this.GA_ID && this.GA_ID.startsWith('G-')) {
+      const s = document.createElement('script');
+      s.src = `https://www.googletagmanager.com/gtag/js?id=${this.GA_ID}`;
+      s.async = true; document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function(){ dataLayer.push(arguments); };
+      gtag('js', new Date()); gtag('config', this.GA_ID);
+    }
+  },
+
+  _session() {
+    let sid = sessionStorage.getItem('hpc_sid');
+    if (!sid) {
+      sid = 'S-' + Date.now() + '-' + Math.random().toString(36).substr(2,8).toUpperCase();
+      sessionStorage.setItem('hpc_sid', sid);
+    }
+    return sid;
+  },
+
+  _trackSession() {
+    const isNew = !localStorage.getItem('hpc_v');
+    if (isNew) localStorage.setItem('hpc_v', '1');
+    this.track('session_start', {
+      nuevo_visitante: isNew,
+      referrer: document.referrer || 'directo',
+      dispositivo: /Mobi|Android/i.test(navigator.userAgent) ? 'movil' : 'escritorio',
+      idioma: navigator.language,
+    });
+  },
+
+  _autoTrackClicks() {
+    document.addEventListener('click', (e) => {
+      const el = e.target.closest('[data-track]');
+      if (el) {
+        const trackId = el.getAttribute('data-track');
+        this.track('click', { elemento: trackId, texto: el.textContent?.trim()?.slice(0,60) });
+      }
+      // WhatsApp específico
+      const wa = e.target.closest('a[href*="wa.me"]');
+      if (wa) this.track('whatsapp_click', { href: wa.href, origen: this.currentTab });
+    }, true);
+  },
+
+  _trackScrollDepth() {
+    let maxDepth = 0;
+    window.addEventListener('scroll', () => {
+      const depth = Math.round((window.scrollY + window.innerHeight) / document.body.scrollHeight * 100);
+      if (depth > maxDepth + 25) {
+        maxDepth = depth;
+        this.track('scroll_depth', { porcentaje: depth, tab: this.currentTab });
+      }
+    }, { passive: true });
+  },
+
+  trackTabChange(nuevoTab) {
+    const seg = Math.round((Date.now() - this.tabStart) / 1000);
+    this.track('tab_salida', { tab: this.currentTab, segundos: seg });
+    this.tabStart = Date.now();
+    this.currentTab = nuevoTab;
+    this.track('tab_vista', { tab: nuevoTab });
+    if (window.gtag) gtag('event', 'page_view', { page_title: nuevoTab });
+  },
+
+  track(evento, datos = {}) {
+    const payload = {
+      type: 'tracking',
+      evento,
+      datos,
+      sesion: this.session,
+      tab_actual: this.currentTab,
+      timestamp: new Date().toISOString(),
+      url: location.href,
+    };
+
+    // 1. Guardar en localStorage (siempre, como respaldo)
+    try {
+      const log = JSON.parse(localStorage.getItem('hpc_log') || '[]');
+      log.push(payload);
+      if (log.length > 300) log.splice(0, log.length - 300);
+      localStorage.setItem('hpc_log', JSON.stringify(log));
+    } catch(e) {}
+
+    // 2. Enviar a Google Apps Script (si está configurado)
+    if (this.ENDPOINT && !this.ENDPOINT.includes('PEGA_AQUI')) {
+      fetch(this.ENDPOINT, {
+        method: 'POST', mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      }).catch(() => {});
+    }
+
+    // 3. Google Analytics 4 (si está configurado)
+    if (window.gtag && evento !== 'tab_salida') {
+      gtag('event', evento.replace(/_/g, ' '), { ...datos });
+    }
+  },
+
+  /* Método público para enviar datos de formularios */
+  async sendFormData(tipo, datos) {
+    const payload = {
+      type: tipo,
+      datos,
+      sesion: this.session,
+      timestamp: new Date().toISOString(),
+    };
+
+    // Guardar localmente
+    try {
+      const forms = JSON.parse(localStorage.getItem(`hpc_${tipo}`) || '[]');
+      forms.push(payload);
+      localStorage.setItem(`hpc_${tipo}`, JSON.stringify(forms));
+    } catch(e) {}
+
+    // Enviar al endpoint
+    if (this.ENDPOINT && !this.ENDPOINT.includes('PEGA_AQUI')) {
+      try {
+        await fetch(this.ENDPOINT, {
+          method: 'POST', mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        return { ok: true };
+      } catch(e) {
+        return { ok: true, local: true }; // Guardado localmente
+      }
+    }
+    return { ok: true, local: true };
+  }
+};
+
+/* ============================================================
+   TARIFF DATA  (actualizar desde tarifario_template.csv)
+============================================================ */
+const TARIFAS = [
+  {o:"CN",t:"FCL20",po:"SHANGHAI",    pd:"CALLAO", linea:"COSCO Shipping",    dias:"28-32 días",base:1200},
+  {o:"CN",t:"FCL20",po:"NINGBO",      pd:"CALLAO", linea:"Evergreen Line",    dias:"30-35 días",base:1100},
+  {o:"CN",t:"FCL20",po:"GUANGZHOU",   pd:"CALLAO", linea:"MSC",               dias:"32-38 días",base:1150},
+  {o:"CN",t:"FCL20",po:"QINGDAO",     pd:"CALLAO", linea:"CMA CGM",           dias:"30-34 días",base:1180},
+  {o:"US",t:"FCL20",po:"LOS ANGELES", pd:"CALLAO", linea:"Hapag-Lloyd",       dias:"14-18 días",base:1800},
+  {o:"US",t:"FCL20",po:"MIAMI",       pd:"CALLAO", linea:"Maersk",            dias:"10-14 días",base:1600},
+  {o:"ES",t:"FCL20",po:"BARCELONA",   pd:"CALLAO", linea:"MSC",               dias:"20-25 días",base:2200},
+  {o:"MX",t:"FCL20",po:"MANZANILLO",  pd:"CALLAO", linea:"CMA CGM",           dias:"12-16 días",base:1400},
+  {o:"BR",t:"FCL20",po:"SANTOS",      pd:"CALLAO", linea:"Hamburg Süd",       dias:"8-12 días", base:1000},
+  {o:"DE",t:"FCL20",po:"HAMBURGO",    pd:"CALLAO", linea:"Hapag-Lloyd",       dias:"22-28 días",base:2400},
+  {o:"JP",t:"FCL20",po:"TOKIO",       pd:"CALLAO", linea:"ONE",               dias:"22-26 días",base:1900},
+  {o:"KR",t:"FCL20",po:"BUSAN",       pd:"CALLAO", linea:"HMM",               dias:"24-28 días",base:1750},
+  {o:"TR",t:"FCL20",po:"MERSIN",      pd:"CALLAO", linea:"MSC",               dias:"25-30 días",base:2100},
+  {o:"IT",t:"FCL20",po:"GENOVA",      pd:"CALLAO", linea:"CMA CGM",           dias:"22-27 días",base:2300},
+  {o:"CO",t:"FCL20",po:"BUENAVENTURA",pd:"CALLAO", linea:"Hapag-Lloyd",       dias:"5-8 días",  base:800},
+  {o:"CL",t:"FCL20",po:"VALPARAISO",  pd:"CALLAO", linea:"CSAV",              dias:"4-6 días",  base:700},
+  {o:"IN",t:"FCL20",po:"NHAVA SHEVA", pd:"CALLAO", linea:"Maersk",            dias:"28-34 días",base:2000},
+  {o:"CN",t:"FCL40",po:"SHANGHAI",    pd:"CALLAO", linea:"COSCO Shipping",    dias:"28-32 días",base:1600},
+  {o:"CN",t:"FCL40",po:"NINGBO",      pd:"CALLAO", linea:"Evergreen Line",    dias:"30-35 días",base:1500},
+  {o:"US",t:"FCL40",po:"LOS ANGELES", pd:"CALLAO", linea:"Hapag-Lloyd",       dias:"14-18 días",base:2400},
+  {o:"US",t:"FCL40",po:"MIAMI",       pd:"CALLAO", linea:"Maersk",            dias:"10-14 días",base:2200},
+  {o:"ES",t:"FCL40",po:"BARCELONA",   pd:"CALLAO", linea:"MSC",               dias:"20-25 días",base:3000},
+  {o:"DE",t:"FCL40",po:"HAMBURGO",    pd:"CALLAO", linea:"Hapag-Lloyd",       dias:"22-28 días",base:3200},
+  {o:"JP",t:"FCL40",po:"TOKIO",       pd:"CALLAO", linea:"ONE",               dias:"22-26 días",base:2600},
+  {o:"KR",t:"FCL40",po:"BUSAN",       pd:"CALLAO", linea:"HMM",               dias:"24-28 días",base:2400},
+  {o:"BR",t:"FCL40",po:"SANTOS",      pd:"CALLAO", linea:"Hamburg Süd",       dias:"8-12 días", base:1400},
+  {o:"CO",t:"FCL40",po:"BUENAVENTURA",pd:"CALLAO", linea:"Hapag-Lloyd",       dias:"5-8 días",  base:1100},
+  {o:"CN",t:"FCL40HQ",po:"SHANGHAI",  pd:"CALLAO", linea:"COSCO Shipping",    dias:"28-32 días",base:1800},
+  {o:"CN",t:"FCL40HQ",po:"GUANGZHOU", pd:"CALLAO", linea:"CMA CGM",           dias:"30-36 días",base:1700},
+  {o:"US",t:"FCL40HQ",po:"LOS ANGELES",pd:"CALLAO",linea:"Maersk",            dias:"14-18 días",base:2700},
+  {o:"DE",t:"FCL40HQ",po:"HAMBURGO",  pd:"CALLAO", linea:"Hapag-Lloyd",       dias:"22-28 días",base:3600},
+  {o:"CN",t:"LCL",po:"SHANGHAI",      pd:"CALLAO", linea:"Hub Consolidador",  dias:"35-40 días",base:45,  u:"USD/CBM"},
+  {o:"CN",t:"LCL",po:"NINGBO",        pd:"CALLAO", linea:"Hub Consolidador",  dias:"38-42 días",base:42,  u:"USD/CBM"},
+  {o:"CN",t:"LCL",po:"GUANGZHOU",     pd:"CALLAO", linea:"Hub Consolidador",  dias:"36-41 días",base:44,  u:"USD/CBM"},
+  {o:"US",t:"LCL",po:"LOS ANGELES",   pd:"CALLAO", linea:"Hub Consolidador",  dias:"18-22 días",base:65,  u:"USD/CBM"},
+  {o:"US",t:"LCL",po:"MIAMI",         pd:"CALLAO", linea:"Hub Consolidador",  dias:"15-19 días",base:60,  u:"USD/CBM"},
+  {o:"ES",t:"LCL",po:"BARCELONA",     pd:"CALLAO", linea:"Hub Consolidador",  dias:"28-32 días",base:75,  u:"USD/CBM"},
+  {o:"MX",t:"LCL",po:"MANZANILLO",    pd:"CALLAO", linea:"Hub Consolidador",  dias:"15-19 días",base:55,  u:"USD/CBM"},
+  {o:"BR",t:"LCL",po:"SANTOS",        pd:"CALLAO", linea:"Hub Consolidador",  dias:"10-14 días",base:40,  u:"USD/CBM"},
+  {o:"DE",t:"LCL",po:"HAMBURGO",      pd:"CALLAO", linea:"Hub Consolidador",  dias:"30-35 días",base:80,  u:"USD/CBM"},
+  {o:"IT",t:"LCL",po:"GENOVA",        pd:"CALLAO", linea:"Hub Consolidador",  dias:"28-33 días",base:78,  u:"USD/CBM"},
+  {o:"CO",t:"LCL",po:"BUENAVENTURA",  pd:"CALLAO", linea:"Hub Consolidador",  dias:"5-8 días",  base:30,  u:"USD/CBM"},
+  {o:"CL",t:"LCL",po:"VALPARAISO",    pd:"CALLAO", linea:"Hub Consolidador",  dias:"4-6 días",  base:28,  u:"USD/CBM"},
+  {o:"IN",t:"LCL",po:"NHAVA SHEVA",   pd:"CALLAO", linea:"Hub Consolidador",  dias:"32-38 días",base:70,  u:"USD/CBM"},
+  {o:"CN",t:"AEREO",po:"SHANGHAI PVG",pd:"LIM",    linea:"LATAM Cargo",       dias:"3-5 días",  base:4.5, u:"USD/kg"},
+  {o:"CN",t:"AEREO",po:"GUANGZHOU CAN",pd:"LIM",   linea:"Avianca Cargo",     dias:"4-6 días",  base:4.2, u:"USD/kg"},
+  {o:"US",t:"AEREO",po:"MIAMI MIA",   pd:"LIM",    linea:"American Airlines", dias:"1-2 días",  base:3.8, u:"USD/kg"},
+  {o:"US",t:"AEREO",po:"NUEVA YORK JFK",pd:"LIM",  linea:"United Cargo",      dias:"1-2 días",  base:4.0, u:"USD/kg"},
+  {o:"ES",t:"AEREO",po:"MADRID MAD",  pd:"LIM",    linea:"Iberia Cargo",      dias:"2-3 días",  base:5.5, u:"USD/kg"},
+  {o:"DE",t:"AEREO",po:"FRANKFURT FRA",pd:"LIM",   linea:"Lufthansa Cargo",   dias:"2-3 días",  base:5.8, u:"USD/kg"},
+  {o:"MX",t:"AEREO",po:"CDMX MEX",    pd:"LIM",    linea:"Aeromexico Cargo",  dias:"1-2 días",  base:3.2, u:"USD/kg"},
+  {o:"CO",t:"AEREO",po:"BOGOTA BOG",  pd:"LIM",    linea:"Avianca Cargo",     dias:"1 día",     base:2.8, u:"USD/kg"},
+  {o:"JP",t:"AEREO",po:"TOKIO NRT",   pd:"LIM",    linea:"ANA Cargo",         dias:"3-4 días",  base:6.2, u:"USD/kg"},
+  {o:"KR",t:"AEREO",po:"SEUL ICN",    pd:"LIM",    linea:"Korean Air Cargo",  dias:"3-4 días",  base:6.0, u:"USD/kg"},
+  {o:"IT",t:"AEREO",po:"MILAN MXP",   pd:"LIM",    linea:"Alitalia Cargo",    dias:"2-3 días",  base:5.6, u:"USD/kg"},
+];
+
+const PUERTOS = {
+  CN:["SHANGHAI","NINGBO","GUANGZHOU","QINGDAO","TIANJIN","SHENZHEN","SHANGHAI PVG","GUANGZHOU CAN"],
+  US:["LOS ANGELES","MIAMI","NUEVA YORK JFK","HOUSTON","SEATTLE","MIAMI MIA"],
+  ES:["BARCELONA","VALENCIA","ALGECIRAS","MADRID MAD"],
+  MX:["MANZANILLO","VERACRUZ","LAZARO CARDENAS","CDMX MEX"],
+  BR:["SANTOS","PARANAGUA","ITAJAI"],
+  CO:["BUENAVENTURA","BARRANQUILLA","CARTAGENA","BOGOTA BOG"],
+  CL:["VALPARAISO","SAN ANTONIO","ANTOFAGASTA"],
+  JP:["TOKIO","OSAKA","NAGOYA","TOKIO NRT"],
+  KR:["BUSAN","SEUL ICN"],
+  DE:["HAMBURGO","BREMERHAVEN","FRANKFURT FRA"],
+  IT:["GENOVA","NAPOLES","LIVORNO","MILAN MXP"],
+  TR:["MERSIN","AMBARLI"],
+  IN:["NHAVA SHEVA","MUNDRA","CHENNAI"],
+};
+
+/* ============================================================
+   NAVEGACIÓN POR PESTAÑAS
+============================================================ */
+let currentTab = 'inicio';
+
+function showTab(tabId, pushState = true) {
+  if (tabId === currentTab && document.getElementById('tab-'+tabId).classList.contains('active')) return;
+
+  // Tracking de tiempo en pestaña anterior
+  HubTracker.trackTabChange(tabId);
+  currentTab = tabId;
+
+  // Ocultar todas las pestañas
+  document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
+
+  // Mostrar la pestaña seleccionada
+  const target = document.getElementById('tab-' + tabId);
+  if (target) {
+    target.classList.add('active');
+
+    // Re-disparar animaciones de reveal
+    target.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => el.classList.remove('vis'));
+    setTimeout(() => {
+      target.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => el.classList.add('vis'));
+    }, 60);
+  }
+
+  // Actualizar nav activo
+  document.querySelectorAll('.nav-link[data-tab]').forEach(l => {
+    l.classList.toggle('active', l.dataset.tab === tabId);
+  });
+
+  // URL hash para back/forward del navegador
+  if (pushState) {
+    history.pushState({ tab: tabId }, '', '#' + tabId);
+  }
+
+  // Ir arriba
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Cerrar menú móvil si está abierto
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobNav').classList.remove('open');
+}
+
+// Tab desde links con data-tab
+document.querySelectorAll('[data-tab]').forEach(el => {
+  el.addEventListener('click', function(e) {
+    e.preventDefault();
+    showTab(this.dataset.tab);
+  });
+});
+
+// Back/Forward del navegador
+window.addEventListener('popstate', e => {
+  if (e.state?.tab) showTab(e.state.tab, false);
+});
+
+// Cargar tab desde URL hash al inicio
+const hashTab = location.hash.replace('#','');
+if (hashTab && document.getElementById('tab-'+hashTab)) {
+  showTab(hashTab, false);
+} else {
+  history.replaceState({ tab:'inicio' }, '', '#inicio');
+}
+
+/* ============================================================
+   NAVBAR SCROLL
+============================================================ */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', scrollY > 50);
+}, { passive: true });
+
+/* ============================================================
+   MOBILE MENU
+============================================================ */
+const ham = document.getElementById('hamburger');
+const mob = document.getElementById('mobNav');
+ham.addEventListener('click', () => { ham.classList.toggle('open'); mob.classList.toggle('open'); });
+document.getElementById('mobClose').addEventListener('click', () => { ham.classList.remove('open'); mob.classList.remove('open'); });
+
+/* ============================================================
+   SCROLL REVEAL (para tab-inicio que carga primero)
+============================================================ */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => revealObs.observe(el));
+
+/* ============================================================
+   QUOTER
+============================================================ */
+document.getElementById('qOrigen').addEventListener('change', function() {
+  const sel = document.getElementById('qPuertoO');
+  sel.innerHTML = '<option value="">— Seleccionar —</option>';
+  (PUERTOS[this.value] || []).forEach(p => {
+    const o = document.createElement('option'); o.value = p; o.textContent = p; sel.appendChild(o);
+  });
+});
+
+document.getElementById('qTipo').addEventListener('change', function() {
+  const lbl = document.getElementById('qCantLabel');
+  const inp = document.getElementById('qCant');
+  const pd  = document.getElementById('qPuertoD');
+  if (this.value === 'LCL')        { lbl.textContent = 'Volumen (CBM)'; inp.placeholder = 'Ej: 5'; }
+  else if (this.value === 'AEREO') { lbl.textContent = 'Peso (kg)'; inp.placeholder = 'Ej: 500'; }
+  else                             { lbl.textContent = 'N° de contenedores'; inp.placeholder = 'Ej: 1'; }
+  if (this.value === 'AEREO') {
+    pd.innerHTML = '<option value="LIM">Aeropuerto Lima — Jorge Chávez (LIM)</option>';
+  } else {
+    pd.innerHTML = '<option value="CALLAO">Callao, Perú</option><option value="PAITA">Paita, Perú</option>';
+  }
+});
+
+function calcularTarifa() {
+  const origen = document.getElementById('qOrigen').value;
+  const tipo   = document.getElementById('qTipo').value;
+  const cant   = parseFloat(document.getElementById('qCant').value) || 1;
+  const inco   = document.getElementById('qInco').value;
+  const merca  = document.getElementById('qMerca').value;
+
+  if (!origen || !tipo) { alert('Por favor selecciona el país de origen y el tipo de carga.'); return; }
+
+  // Tracking
+  HubTracker.track('cotizacion_busqueda', { origen, tipo, cant, inco, merca });
+
+  const matches = TARIFAS.filter(r => r.o === origen && r.t === tipo);
+  const tbody   = document.getElementById('qTbody');
+  tbody.innerHTML = '';
+
+  if (!matches.length) {
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:28px;color:rgba(255,255,255,.5);">No se encontraron tarifas para esta combinación. <a href="https://wa.me/51923996689" target="_blank" style="color:var(--orange);">Consúltanos directamente →</a></td></tr>`;
+  } else {
+    matches.forEach((r, i) => {
+      const u      = r.u || '';
+      const total  = (r.base * cant).toFixed(u ? 2 : 0);
+      const disc   = (r.base * cant * 0.5).toFixed(u ? 2 : 0);
+      const waText = encodeURIComponent(`Hola Hub Peru Cargo, me interesa cotizar: ${r.t} ${r.po} → ${r.pd} via ${r.linea}`);
+      const note   = u ? `× ${cant} ${u.split('/')[1]}` : (r.t.startsWith('FCL') ? '/ contenedor' : '');
+      tbody.innerHTML += `
+        <tr>
+          <td><span class="tag-opt">Opción ${i+1}</span></td>
+          <td>${r.linea}</td>
+          <td style="font-size:.8rem">${r.po} → ${r.pd}</td>
+          <td><i class="fas fa-clock" style="color:var(--orange);margin-right:5px"></i>${r.dias}</td>
+          <td class="td-price">USD ${Number(total).toLocaleString('es-PE')}<br>
+            <span style="font-size:.67rem;color:rgba(255,255,255,.4);font-family:var(--font-b);font-weight:400">${note}</span>
+          </td>
+          <td class="td-disc">Consultar<small>Hasta 50% desc. s/evaluación</small></td>
+          <td><a href="https://wa.me/51923996689?text=${waText}" target="_blank" class="btn btn-orange" style="padding:7px 13px;font-size:.73rem"><i class="fab fa-whatsapp"></i> Reservar</a></td>
+        </tr>`;
+    });
+  }
+  const res = document.getElementById('qResults');
+  res.classList.add('show');
+  setTimeout(() => res.scrollIntoView({ behavior:'smooth', block:'nearest' }), 100);
+}
+
+/* ============================================================
+   CONTACT FORM — envía datos al tracker
+============================================================ */
+async function submitContact(e) {
+  e.preventDefault();
+  const btn = document.getElementById('contactSubmitBtn');
+  const msg = document.getElementById('contactMsg');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+
+  const datos = {
+    nombre:   document.getElementById('cNombre').value,
+    empresa:  document.getElementById('cEmpresa').value,
+    email:    document.getElementById('cEmail').value,
+    telefono: document.getElementById('cTel').value,
+    servicio: document.getElementById('cServicio').value,
+    mensaje:  document.getElementById('cMensaje').value,
+  };
+
+  await HubTracker.sendFormData('contacto', datos);
+
+  btn.disabled = false;
+  btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Mensaje';
+  msg.style.display = 'block';
+  msg.style.color = '#16a34a';
+  msg.innerHTML = '✓ Mensaje enviado con éxito. Te contactaremos pronto.';
+  document.getElementById('contactForm').reset();
+  setTimeout(() => { msg.style.display = 'none'; }, 5000);
+}
+
+/* ============================================================
+   RECLAMACIONES INLINE (dentro del tab)
+============================================================ */
+function elegirTipoInline(tipo) {
+  ['reclamo','queja'].forEach(t => {
+    const el = document.getElementById('ri-t-'+t);
+    if (el) el.style.cssText = el.style.cssText.replace(/border:[^;]+;/g,'') + 'border:2px solid ' + (t === tipo ? '#dc2626;background:#fff5f5;' : '#e5e7eb;background:#fff;');
+  });
+  document.getElementById('ri-tipo').value = tipo;
+}
+
+function genNumRec() {
+  const d = new Date(), p = n => String(n).padStart(2,'0');
+  return `HPC-REC-${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}-${Math.floor(Math.random()*90000+10000)}`;
+}
+
+async function enviarRecInline(e) {
+  e.preventDefault();
+  const v = id => document.getElementById(id);
+  if (!v('ri-nombre').value.trim()) { alert('Ingresa tus apellidos y nombres.'); v('ri-nombre').focus(); return; }
+  if (!v('ri-doc').value.trim())    { alert('Ingresa tu número de documento.');  v('ri-doc').focus();    return; }
+  if (!v('ri-dom').value.trim())    { alert('Ingresa tu domicilio.');             v('ri-dom').focus();    return; }
+  if (!v('ri-tel').value.trim())    { alert('Ingresa tu teléfono.');              v('ri-tel').focus();    return; }
+  if (!v('ri-email').value.trim())  { alert('Ingresa tu correo electrónico.');    v('ri-email').focus();  return; }
+  if (!v('ri-bien').value.trim())   { alert('Describe el servicio contratado.');  v('ri-bien').focus();   return; }
+  if (!v('ri-desc').value.trim())   { alert('Describe los hechos ocurridos.');    v('ri-desc').focus();   return; }
+  if (!v('ri-sol').value.trim())    { alert('Indica la solución que esperas.');   v('ri-sol').focus();    return; }
+  if (!v('ri-tipo').value)          { alert('Selecciona el tipo: Reclamo o Queja.'); return; }
+  if (!v('ri-aut1').checked)        { alert('Debes aceptar la autorización de datos.'); return; }
+
+  const btn = v('ri-submitBtn');
+  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Registrando...';
+
+  const numero = genNumRec();
+  const datos = {
+    numero_reclamacion: numero, tipo: v('ri-tipo').value.toUpperCase(),
+    nombre: v('ri-nombre').value.trim(), documento: v('ri-doc').value.trim(),
+    domicilio: v('ri-dom').value.trim(), telefono: v('ri-tel').value.trim(),
+    email: v('ri-email').value.trim(), monto_reclamado_usd: v('ri-monto').value,
+    pedido_referencia: v('ri-pedido').value.trim(), servicio_contratado: v('ri-bien').value.trim(),
+    descripcion: v('ri-desc').value.trim(), solucion_esperada: v('ri-sol').value.trim(),
+    estado: 'PENDIENTE', fecha_registro: new Date().toLocaleString('es-PE',{timeZone:'America/Lima'}),
+    timestamp_iso: new Date().toISOString(),
+  };
+
+  await HubTracker.sendFormData('reclamacion', datos);
+  HubTracker.track('reclamacion_enviada', { tipo: datos.tipo, numero });
+
+  btn.disabled = false; btn.innerHTML = '<i class="fas fa-paper-plane"></i> Registrar Reclamación';
+  v('ri-num').innerHTML = `<strong style="color:#16a34a">✓ N° ${numero}</strong><br><span style="font-size:.72rem">Guarda este número.</span>`;
+  const msg = v('ri-msg');
+  msg.style.cssText = 'display:block;background:#f0fdf4;border:1px solid #86efac;color:#166534;padding:16px 20px;border-radius:var(--radius);font-size:.88rem;margin-top:18px;';
+  msg.innerHTML = `<i class="fas fa-check-circle" style="margin-right:8px"></i><strong>Reclamación registrada.</strong> Número: <strong>${numero}</strong><br>Recibirás respuesta en máximo <strong>30 días calendario</strong>.`;
+  document.getElementById('formRecInline').reset();
+  ['reclamo','queja'].forEach(t => { const el = document.getElementById('ri-t-'+t); if(el) el.style.border='2px solid #e5e7eb'; });
+  v('ri-tipo').value = '';
+  msg.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+HubTracker.init();
+
+
+/* ============================================================
+   COOKIE CONSENT
+============================================================ */
+(function() {
+  const CONSENT_KEY = 'hpc_cookie_consent';
+  function initCookieConsent() {
+    const banner  = document.getElementById('cookieBanner');
+    const reopen  = document.getElementById('cookieReopen');
+    const accept  = document.getElementById('cookieAccept');
+    const decline = document.getElementById('cookieDecline');
+    const consent = localStorage.getItem(CONSENT_KEY);
+
+    if (!banner || !reopen || !accept || !decline) return;
+
+    if (!consent) {
+      setTimeout(() => banner.classList.add('show'), 1200);
+    } else if (consent === 'declined') {
+      reopen.style.display = 'block';
+    }
+
+    accept.addEventListener('click', () => {
+      localStorage.setItem(CONSENT_KEY, 'accepted');
+      banner.classList.remove('show');
+      reopen.style.display = 'none';
+      HubTracker.track('cookie_accepted');
+    });
+
+    decline.addEventListener('click', () => {
+      localStorage.setItem(CONSENT_KEY, 'declined');
+      banner.classList.remove('show');
+      reopen.style.display = 'block';
+      // Deshabilitar tracking analytics al rechazar
+      HubTracker.ENDPOINT = '';
+      HubTracker.GA_ID    = '';
+    });
+
+    reopen.addEventListener('click', () => {
+      banner.classList.add('show');
+      reopen.style.display = 'none';
+    });
+
+    // Si ya había rechazado, desactivar tracking
+    if (consent === 'declined') {
+      HubTracker.ENDPOINT = '';
+      HubTracker.GA_ID    = '';
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCookieConsent);
+  } else {
+    initCookieConsent();
+  }
+})();
+
+/* ============================================================
+   *** INICIO DEL CÓDIGO DEL MAPA — REEMPLAZAR TODO ESTE BLOQUE ***
+   (desde aquí hasta el comentario FIN DEL CÓDIGO DEL MAPA)
+============================================================ */
+    (function () {
+      var LON_L=-180, LON_R=180, LAT_T=82, LAT_B=-58, PW=800, PH=440;
+      function proj(lon,lat){ return { x:(lon-LON_L)/(LON_R-LON_L)*PW, y:(LAT_T-lat)/(LAT_T-LAT_B)*PH }; }
+
+      var PORTS=[
+        {id:'callao',      name:'Callao',        sub:'Lima, Peru',        lon:-77.1, lat:-12.1, isHub:true,  r:6,   rgb:'255,128,36'},
+        {id:'losangeles',  name:'L.A.',          sub:'Estados Unidos',    lon:-118.3,lat:33.7,  isHub:false, r:4,   rgb:'255,128,36'},
+        {id:'miami',       name:'Miami',         sub:'Estados Unidos',    lon:-80.2, lat:25.8,  isHub:false, r:4,   rgb:'255,128,36'},
+        {id:'hamburg',     name:'Hamburg',       sub:'Alemania',          lon:9.9,   lat:53.6,  isHub:false, r:4.5, rgb:'255,128,36'},
+        {id:'rotterdam',   name:'Rotterdam',     sub:'Paises Bajos',      lon:4.1,   lat:51.9,  isHub:false, r:3.5, rgb:'74,180,255'},
+        {id:'dubai',       name:'Dubai',         sub:'Emiratos Arabes',   lon:55.3,  lat:25.2,  isHub:false, r:4,   rgb:'74,180,255'},
+        {id:'shanghai',    name:'Shanghai',      sub:'China',             lon:121.5, lat:31.2,  isHub:false, r:5,   rgb:'255,128,36'},
+        {id:'tokyo',       name:'Tokyo',         sub:'Japon',             lon:139.7, lat:35.7,  isHub:false, r:4,   rgb:'255,128,36'},
+        {id:'santos',      name:'Santos',        sub:'Brasil',            lon:-46.3, lat:-23.9, isHub:false, r:3.5, rgb:'255,128,36'},
+        {id:'buenaventura',name:'Buenaventura',  sub:'Colombia',          lon:-77.1, lat:3.9,   isHub:false, r:3,   rgb:'74,180,255'},
+      ];
+
+      var ROUTES=[
+        {to:'losangeles',   cp:[-118,15], color:'rgba(0,190,255,.75)', rgb:'0,190,255', w:1.7, travel:.13, dash:false},
+        {to:'miami',        cp:[-78,4],   color:'rgba(0,190,255,.62)', rgb:'0,190,255', w:1.4, travel:.16, dash:false},
+        {to:'hamburg',      cp:[-25,38],  color:'rgba(255,145,40,.72)',rgb:'255,145,40',w:2.0, travel:.10, dash:false},
+        {to:'rotterdam',    cp:[-18,32],  color:'rgba(0,210,255,.58)', rgb:'0,210,255', w:1.5, travel:.105,dash:true},
+        {to:'dubai',        cp:[18,18],   color:'rgba(0,210,255,.58)', rgb:'0,210,255', w:1.5, travel:.09, dash:true},
+        {to:'shanghai',     cp:[40,4],    color:'rgba(0,220,255,.78)', rgb:'0,220,255', w:2.2, travel:.085,dash:false},
+        {to:'tokyo',        cp:[50,18],   color:'rgba(0,195,255,.65)', rgb:'0,195,255', w:1.7, travel:.088,dash:true},
+        {to:'santos',       cp:[-54,-32], color:'rgba(255,145,40,.48)',rgb:'255,145,40',w:1.2, travel:.18, dash:true},
+        {to:'buenaventura', cp:[-78,-5],  color:'rgba(255,145,40,.45)',rgb:'255,145,40',w:1.0, travel:.22, dash:true},
+      ];
+
+      var CONTINENTS=[
+        [[-168,63],[-165,60],[-160,58],[-154,57],[-150,59],[-143,60],[-136,57],[-131,54],[-128,50],[-124,49],[-124,44],[-122,37],[-118,34],[-117,32],[-115,30],[-110,23],[-106,22],[-104,19],[-97,15],[-92,15],[-90,13],[-85,10],[-83,9],[-79,9],[-78,9],[-84,11],[-87,16],[-88,21],[-90,21],[-91,19],[-96,19],[-97,22],[-97,26],[-94,29],[-90,29],[-88,30],[-85,30],[-82,29],[-82,26],[-81,25],[-80,25],[-80,30],[-75,35],[-72,41],[-70,41],[-67,44],[-60,46],[-53,47],[-56,52],[-64,64],[-80,68],[-95,76],[-120,70],[-140,70],[-155,71],[-162,67],[-168,63]],
+        [[-73,76],[-55,76],[-42,83],[-18,76],[-22,70],[-30,68],[-42,65],[-53,65],[-65,70],[-73,76]],
+        [[-77,8],[-73,11],[-65,11],[-61,10],[-53,4],[-50,0],[-44,-2],[-35,-5],[-35,-8],[-38,-13],[-40,-20],[-44,-23],[-48,-28],[-51,-33],[-53,-34],[-57,-38],[-62,-40],[-65,-44],[-66,-50],[-68,-55],[-72,-50],[-72,-42],[-71,-30],[-70,-18],[-75,-2],[-80,0],[-80,3],[-77,8]],
+        [[-9,37],[-9,44],[-4,44],[0,43],[3,43],[5,43],[7,44],[9,44],[13,38],[16,38],[18,40],[15,44],[20,38],[22,36],[24,40],[26,42],[28,43],[30,46],[32,46],[32,50],[28,54],[22,54],[18,57],[18,60],[18,64],[24,68],[28,70],[20,70],[16,68],[14,66],[10,62],[5,58],[10,55],[8,55],[5,53],[4,52],[2,52],[0,51],[-2,50],[-5,48],[-5,44],[-9,37]],
+        [[-5,36],[10,38],[15,33],[20,32],[26,31],[32,31],[36,24],[42,12],[44,10],[48,11],[51,11],[42,10],[40,4],[38,-4],[36,-10],[34,-18],[32,-26],[28,-30],[18,-34],[16,-30],[14,-22],[10,-14],[8,-4],[4,0],[2,4],[0,5],[-2,5],[-5,5],[-8,5],[-14,10],[-16,12],[-16,20],[-14,24],[-8,34],[-5,36]],
+        [[26,46],[30,47],[36,47],[40,44],[42,42],[44,38],[46,36],[55,24],[58,24],[60,22],[68,22],[74,18],[80,8],[80,12],[80,14],[84,20],[88,22],[92,22],[96,22],[100,20],[100,14],[100,4],[102,2],[108,2],[110,4],[114,2],[120,22],[122,22],[120,28],[122,32],[120,36],[122,38],[124,38],[128,36],[130,34],[128,44],[126,44],[124,48],[130,50],[134,48],[140,44],[140,48],[144,48],[150,50],[154,50],[158,52],[160,54],[162,64],[160,68],[154,62],[142,54],[134,50],[126,50],[122,52],[110,56],[100,60],[90,64],[84,70],[60,72],[44,68],[38,68],[34,70],[30,68],[28,68],[28,60],[24,56],[26,50],[26,46]],
+        [[68,22],[72,22],[80,22],[88,22],[88,18],[85,15],[82,10],[80,8],[78,8],[76,10],[74,14],[72,18],[68,20],[68,22]],
+        [[100,22],[104,18],[108,16],[108,12],[110,8],[108,4],[104,2],[102,2],[100,2],[98,4],[100,10],[100,16],[100,22]],
+        [[130,32],[132,34],[134,34],[136,36],[138,36],[140,38],[142,40],[142,44],[140,44],[138,40],[136,36],[132,34],[130,32]],
+        [[114,-22],[118,-20],[122,-18],[126,-14],[130,-12],[136,-12],[140,-16],[144,-14],[148,-18],[153,-25],[154,-28],[152,-30],[151,-33],[149,-38],[146,-38],[144,-38],[136,-36],[128,-34],[122,-34],[116,-28],[114,-26],[114,-22]],
+        [[168,-46],[170,-44],[172,-42],[170,-38],[168,-40],[166,-44],[168,-46]],
+      ];
+
+      var particles=ROUTES.map(function(){
+        return [0,0.25,0.5,0.75].map(function(t){return{t:t};});
+      });
+      var bgParticles=[
+        {x:.16,y:.28,s:.25,r:1.2},{x:.24,y:.62,s:.18,r:.9},{x:.36,y:.22,s:.20,r:1.0},
+        {x:.48,y:.72,s:.16,r:.8},{x:.62,y:.33,s:.22,r:1.1},{x:.73,y:.55,s:.19,r:.9},
+        {x:.84,y:.26,s:.24,r:1.2},{x:.92,y:.66,s:.17,r:.8},{x:.12,y:.78,s:.15,r:.7}
+      ];
+
+      var canvas,ctx,tooltip,animId,startTime=null;
+      var DPR=1,CW=800,CH=440,portPos=[];
+      var hovPort=null;
+      var mapImg=null,mapReady=false,mapFailed=false,mapLayer=null,mapLayerKey='';
+      var MAP_URL='https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/BlankMap-Equirectangular.svg/1280px-BlankMap-Equirectangular.svg.png';
+
+      function setup(){
+        var wrap=document.querySelector('.world-map-wrap');
+        if(!wrap)return;
+        wrap.innerHTML=
+          '<canvas id="wmc" class="world-canvas" aria-label="Mapa de rutas maritimas Hub Peru Cargo"></canvas>'+
+          '<div class="map-tooltip" id="wmt"></div>'+
+          '<div class="map-badge"><div class="n">+50</div><div class="t">paises conectados</div><div class="g">global network</div></div>';
+        canvas=document.getElementById('wmc');
+        tooltip=document.getElementById('wmt');
+        ctx=canvas.getContext('2d');
+        loadMapImage();
+        resize();
+        canvas.addEventListener('mousemove',onMove);
+        canvas.addEventListener('mouseleave',function(){hovPort=null;hideTip();});
+        canvas.addEventListener('touchstart',onTouch,{passive:true});
+        var ro=new ResizeObserver(resize);
+        ro.observe(wrap);
+        animId=requestAnimationFrame(frame);
+        document.addEventListener('visibilitychange',function(){
+          if(document.hidden){cancelAnimationFrame(animId);}
+          else{startTime=null;animId=requestAnimationFrame(frame);}
+        });
+      }
+
+      function resize(){
+        if(!canvas)return;
+        DPR=window.devicePixelRatio||1;
+        var w=canvas.parentElement?canvas.parentElement.clientWidth:800;
+        CW=w; CH=Math.round(w*440/800);
+        canvas.width=CW*DPR; canvas.height=CH*DPR;
+        canvas.style.width=CW+'px'; canvas.style.height=CH+'px';
+        portPos=PORTS.map(function(p){
+          var r=proj(p.lon,p.lat);
+          return{x:r.x*CW/PW,y:r.y*CH/PH};
+        });
+        mapLayer=null;
+        mapLayerKey='';
+      }
+
+      function cx(lx){return lx*CW/PW*DPR;}
+      function cy(ly){return ly*CH/PH*DPR;}
+      function rr(r){return r*DPR*(CW/800);}
+
+      function frame(ts){
+        if(!startTime)startTime=ts;
+        animId=requestAnimationFrame(frame);
+        draw((ts-startTime)/1000);
+      }
+
+      function draw(t){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        drawBg();
+        drawRealMap();
+        drawDepthParticles(t);
+        drawRouteLines(t);
+        drawParticles(t);
+        PORTS.forEach(function(p,i){if(!p.isHub)drawPort(p,i,t);});
+        var hi=PORTS.findIndex(function(p){return p.isHub;});
+        drawCallao(portPos[hi],t);
+      }
+
+      function rrect(x,y,w,h,r){
+        ctx.beginPath();
+        ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);
+        ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+        ctx.lineTo(x+w,y+h-r);
+        ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+        ctx.lineTo(x+r,y+h);
+        ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+        ctx.lineTo(x,y+r);
+        ctx.quadraticCurveTo(x,y,x+r,y);
+        ctx.closePath();
+      }
+
+      function drawBg(){
+        var bg=ctx.createLinearGradient(0,0,canvas.width,canvas.height);
+        bg.addColorStop(0,'#020b1a');
+        bg.addColorStop(.46,'#041c3a');
+        bg.addColorStop(1,'#020b1a');
+        rrect(0,0,canvas.width,canvas.height,rr(18));
+        ctx.fillStyle=bg;
+        ctx.fill();
+        var depth=ctx.createRadialGradient(canvas.width*.55,canvas.height*.44,0,canvas.width*.55,canvas.height*.44,canvas.width*.72);
+        depth.addColorStop(0,'rgba(0,157,255,.20)');
+        depth.addColorStop(.48,'rgba(0,70,150,.08)');
+        depth.addColorStop(1,'rgba(0,0,0,.42)');
+        ctx.fillStyle=depth;
+        ctx.fill();
+        ctx.save();
+        ctx.strokeStyle='rgba(0,191,255,.105)';
+        ctx.lineWidth=Math.max(.55,DPR*.55);
+        var gs=rr(16);
+        for(var gx=0;gx<canvas.width;gx+=gs){ctx.beginPath();ctx.moveTo(gx,0);ctx.lineTo(gx,canvas.height);ctx.stroke();}
+        for(var gy=0;gy<canvas.height;gy+=gs){ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(canvas.width,gy);ctx.stroke();}
+        ctx.strokeStyle='rgba(0,229,255,.05)';
+        ctx.lineWidth=Math.max(.5,DPR*.45);
+        var major=gs*4;
+        for(var mx=0;mx<canvas.width;mx+=major){ctx.beginPath();ctx.moveTo(mx,0);ctx.lineTo(mx,canvas.height);ctx.stroke();}
+        for(var my=0;my<canvas.height;my+=major){ctx.beginPath();ctx.moveTo(0,my);ctx.lineTo(canvas.width,my);ctx.stroke();}
+        ctx.fillStyle='rgba(0,229,255,.20)';
+        for(var dx=gs/2;dx<canvas.width;dx+=gs){for(var dy=gs/2;dy<canvas.height;dy+=gs){ctx.beginPath();ctx.arc(dx,dy,0.55*DPR,0,Math.PI*2);ctx.fill();}}
+        ctx.restore();
+        ctx.save();
+        ctx.globalCompositeOperation='screen';
+        for(var i=0;i<42;i++){var nx=((i*73)%997)/997*canvas.width;var ny=((i*151)%887)/887*canvas.height;var a=.035+(((i*37)%100)/100)*.055;ctx.fillStyle='rgba(0,229,255,'+a+')';ctx.fillRect(nx,ny,Math.max(1,DPR),Math.max(1,DPR));}
+        ctx.restore();
+        var og=ctx.createRadialGradient(canvas.width/2,canvas.height/2,0,canvas.width/2,canvas.height/2,canvas.width*.78);
+        og.addColorStop(0,'rgba(0,0,0,0)');og.addColorStop(.70,'rgba(0,0,0,.12)');og.addColorStop(1,'rgba(0,0,0,.44)');
+        rrect(0,0,canvas.width,canvas.height,rr(18));ctx.fillStyle=og;ctx.fill();
+      }
+
+      function drawDepthParticles(time){
+        ctx.save();ctx.globalCompositeOperation='screen';
+        bgParticles.forEach(function(p,i){
+          var x=((p.x+time*p.s*.012)%1)*canvas.width;
+          var y=(p.y+Math.sin(time*.35+i)*.012)*canvas.height;
+          var a=.20+.18*Math.sin(time*.9+i*1.7);
+          ctx.beginPath();ctx.arc(x,y,rr(p.r),0,Math.PI*2);
+          ctx.fillStyle='rgba(0,191,255,'+a+')';ctx.shadowColor='rgba(0,191,255,.65)';ctx.shadowBlur=rr(6);ctx.fill();
+        });
+        ctx.restore();
+      }
+
+      function loadMapImage(){
+        var img=new Image();img.crossOrigin='anonymous';
+        img.onload=function(){mapImg=img;mapReady=true;};
+        img.onerror=function(){mapFailed=true;};
+        img.src=MAP_URL;
+      }
+
+      function drawRealMap(){
+        if(!mapReady||!mapImg){if(mapFailed)drawContinents();return;}
+        var key=canvas.width+'x'+canvas.height+':'+DPR;
+        if(!mapLayer||mapLayerKey!==key){try{buildMapLayer(key);}catch(err){mapLayer=null;drawContinents();return;}}
+        if(mapLayer){ctx.drawImage(mapLayer,0,0);}
+      }
+
+      function buildMapLayer(key){
+        mapLayerKey=key;mapLayer=document.createElement('canvas');mapLayer.width=canvas.width;mapLayer.height=canvas.height;
+        var mctx=mapLayer.getContext('2d');var w=mapLayer.width;var h=mapLayer.height;
+        var iw=mapImg.width;var ih=mapImg.height;
+        var sy=(90-LAT_T)/180*ih;var sh=(LAT_T-LAT_B)/180*ih;
+        var sx=(LON_L+180)/360*iw;var sw1=(180-LON_L)/360*iw;var dw1=(180-LON_L)/(LON_R-LON_L)*canvas.width;
+        var sw2=(LON_R-180)/360*iw;var dw2=(LON_R-180)/(LON_R-LON_L)*canvas.width;
+        var mask=document.createElement('canvas');mask.width=w;mask.height=h;
+        var xctx=mask.getContext('2d',{willReadFrequently:true});
+        xctx.drawImage(mapImg,sx,sy,sw1,sh,0,0,dw1,h);
+        if(sw2>0){xctx.drawImage(mapImg,0,sy,sw2,sh,dw1,0,dw2,h);}
+        var source=xctx.getImageData(0,0,w,h);
+        var landData=xctx.createImageData(w,h);var edgeData=xctx.createImageData(w,h);var glowData=xctx.createImageData(w,h);
+        var sp=source.data;var lp=landData.data;var ep=edgeData.data;var gp=glowData.data;var maskBits=new Uint8Array(w*h);
+        for(var i=0;i<sp.length;i+=4){
+          var r=sp[i],g=sp[i+1],b=sp[i+2],a=sp[i+3];
+          var paper=a<12||(r>236&&g>236&&b>236)||(r<16&&g<16&&b<16);
+          if(!paper){var idx=i/4;maskBits[idx]=1;var x=idx%w;var y=(idx/w)|0;var grain=((x*17+y*31)%97)/97;var stripe=((x+y*2)%23===0)?14:0;
+            lp[i]=4;lp[i+1]=27+Math.round(grain*12);lp[i+2]=58+Math.round(grain*18)+stripe;lp[i+3]=214;
+            gp[i]=0;gp[i+1]=191;gp[i+2]=255;gp[i+3]=58;}
+        }
+        for(var py=1;py<h-1;py++){for(var px=1;px<w-1;px++){
+          var id=py*w+px;if(!maskBits[id])continue;
+          if(!maskBits[id-1]||!maskBits[id+1]||!maskBits[id-w]||!maskBits[id+w]){var p=id*4;ep[p]=0;ep[p+1]=229;ep[p+2]=255;ep[p+3]=230;}
+        }}
+        function imageCanvas(imageData){var c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').putImageData(imageData,0,0);return c;}
+        var landCanvas=imageCanvas(landData);var edgeCanvas=imageCanvas(edgeData);var glowCanvas=imageCanvas(glowData);
+        mctx.save();mctx.globalAlpha=.34;mctx.filter='blur('+Math.max(1.5,DPR*1.2)+'px)';mctx.drawImage(landCanvas,rr(2),rr(3));mctx.restore();
+        mctx.save();mctx.globalCompositeOperation='screen';mctx.globalAlpha=.34;mctx.filter='blur('+Math.max(1.1,DPR*.85)+'px)';mctx.drawImage(glowCanvas,0,0);mctx.restore();
+        mctx.save();mctx.globalAlpha=.96;mctx.drawImage(landCanvas,0,0);mctx.restore();
+        mctx.save();mctx.globalCompositeOperation='source-atop';mctx.strokeStyle='rgba(0,191,255,.055)';mctx.lineWidth=Math.max(.5,DPR*.45);
+        for(var ty=0;ty<h;ty+=rr(14)){mctx.beginPath();mctx.moveTo(0,ty);mctx.lineTo(w,ty);mctx.stroke();}mctx.restore();
+        mctx.save();mctx.globalCompositeOperation='screen';mctx.shadowColor='rgba(0,229,255,.55)';mctx.shadowBlur=rr(2.2);mctx.globalAlpha=.92;mctx.drawImage(edgeCanvas,0,0);mctx.restore();
+      }
+
+      function drawContinents(){
+        CONTINENTS.forEach(function(pts){
+          if(pts.length<3)return;
+          var cp=pts.map(function(p){var r=proj(p[0],p[1]);return[cx(r.x),cy(r.y)];});
+          var n=cp.length;ctx.save();ctx.shadowColor='rgba(0,190,255,.55)';ctx.shadowBlur=rr(9);
+          ctx.beginPath();ctx.moveTo((cp[n-1][0]+cp[0][0])/2,(cp[n-1][1]+cp[0][1])/2);
+          for(var i=0;i<n;i++){var c1=cp[i],c2=cp[(i+1)%n];ctx.quadraticCurveTo(c1[0],c1[1],(c1[0]+c2[0])/2,(c1[1]+c2[1])/2);}
+          ctx.closePath();ctx.fillStyle='rgba(4,20,48,.78)';ctx.strokeStyle='rgba(0,204,255,.92)';ctx.lineWidth=1.15*DPR;ctx.fill();ctx.stroke();ctx.restore();
+        });
+      }
+
+      function getBez(rt){
+        var f=proj(-77.1,-12.1),c=proj(rt.cp[0],rt.cp[1]);
+        var port=PORTS.find(function(p){return p.id===rt.to;});
+        var t2=proj(port.lon,port.lat);
+        var s=function(v,dim){return v*(dim==='x'?CW/PW:CH/PH);};
+        return{P0:{x:s(f.x,'x'),y:s(f.y,'y')},P1:{x:s(c.x,'x'),y:s(c.y,'y')},P2:{x:s(t2.x,'x'),y:s(t2.y,'y')}};
+      }
+
+      function bpt(P0,P1,P2,t){var mt=1-t;return{x:mt*mt*P0.x+2*mt*t*P1.x+t*t*P2.x,y:mt*mt*P0.y+2*mt*t*P1.y+t*t*P2.y};}
+
+      function drawRouteLines(time){
+        ROUTES.forEach(function(rt,i){
+          var b=getBez(rt);
+          ctx.save();ctx.beginPath();ctx.moveTo(b.P0.x*DPR,b.P0.y*DPR);ctx.quadraticCurveTo(b.P1.x*DPR,b.P1.y*DPR,b.P2.x*DPR,b.P2.y*DPR);
+          ctx.strokeStyle='rgba('+rt.rgb+',.18)';ctx.lineWidth=rt.w*DPR*4.2;ctx.shadowColor='rgba('+rt.rgb+',.45)';ctx.shadowBlur=rr(12);ctx.stroke();ctx.restore();
+          ctx.save();ctx.beginPath();ctx.moveTo(b.P0.x*DPR,b.P0.y*DPR);ctx.quadraticCurveTo(b.P1.x*DPR,b.P1.y*DPR,b.P2.x*DPR,b.P2.y*DPR);
+          if(rt.dash){ctx.setLineDash([rr(7),rr(7)]);ctx.lineDashOffset=-(time*34+i*9)*DPR;}
+          ctx.strokeStyle=rt.color;ctx.lineWidth=rt.w*DPR;ctx.lineCap='round';ctx.stroke();ctx.restore();
+          if(!rt.dash){ctx.save();ctx.beginPath();ctx.moveTo(b.P0.x*DPR,b.P0.y*DPR);ctx.quadraticCurveTo(b.P1.x*DPR,b.P1.y*DPR,b.P2.x*DPR,b.P2.y*DPR);
+            ctx.strokeStyle='rgba(220,250,255,.28)';ctx.lineWidth=Math.max(.7*DPR,rt.w*DPR*.38);ctx.lineCap='round';ctx.stroke();ctx.restore();}
+        });
+      }
+
+      function drawParticles(time){
+        ROUTES.forEach(function(rt,ri){
+          var b=getBez(rt);var speed=rt.travel||.1;
+          particles[ri].forEach(function(p){
+            var u=(p.t+time*speed+ri*.035)%1;var fade=Math.min(u/.09,1,(1-u)/.12);if(fade<=0.02)return;
+            drawRouteSegment(b,Math.max(0,u-.075),u,rt.rgb,fade,rt.w);
+            var pos=bpt(b.P0,b.P1,b.P2,u);var size=rt.w>=2?3.1:2.5;
+            ctx.save();ctx.shadowColor='rgba('+rt.rgb+','+(fade*.95)+')';ctx.shadowBlur=rr(12);
+            ctx.beginPath();ctx.arc(pos.x*DPR,pos.y*DPR,rr(size),0,Math.PI*2);ctx.fillStyle='rgba(235,255,255,'+fade+')';ctx.fill();
+            ctx.beginPath();ctx.arc(pos.x*DPR,pos.y*DPR,rr(size+3.5),0,Math.PI*2);ctx.fillStyle='rgba('+rt.rgb+','+(fade*.16)+')';ctx.fill();
+            ctx.restore();
+          });
+        });
+      }
+
+      function drawRouteSegment(b,from,to,rgb,alpha,width){
+        var steps=24;ctx.save();ctx.beginPath();
+        for(var i=0;i<=steps;i++){var t=from+(to-from)*(i/steps);var p=bpt(b.P0,b.P1,b.P2,t);if(i===0)ctx.moveTo(p.x*DPR,p.y*DPR);else ctx.lineTo(p.x*DPR,p.y*DPR);}
+        ctx.strokeStyle='rgba('+rgb+','+(alpha*.9)+')';ctx.lineWidth=Math.max(1.2*DPR,width*DPR*1.45);ctx.lineCap='round';
+        ctx.shadowColor='rgba('+rgb+','+alpha+')';ctx.shadowBlur=rr(9);ctx.stroke();ctx.restore();
+      }
+
+      function drawPort(port,idx,time){
+        var pos=portPos[idx];var px=pos.x*DPR,py=pos.y*DPR;var pulse=.5+.5*Math.sin(time*2.2+idx*1.1);
+        ctx.save();ctx.shadowColor='rgba('+port.rgb+',.65)';ctx.shadowBlur=rr(10);
+        ctx.beginPath();ctx.arc(px,py,rr(port.r+4*pulse),0,Math.PI*2);ctx.fillStyle='rgba('+port.rgb+','+(0.16*pulse)+')';ctx.fill();ctx.restore();
+        ctx.save();ctx.shadowColor='rgba('+port.rgb+',1)';ctx.shadowBlur=rr(8);
+        ctx.beginPath();ctx.arc(px,py,rr(port.r+1.5),0,Math.PI*2);ctx.fillStyle='rgba(255,255,255,.92)';ctx.fill();
+        ctx.beginPath();ctx.arc(px,py,rr(port.r),0,Math.PI*2);ctx.fillStyle='rgba('+port.rgb+',1)';ctx.fill();ctx.restore();
+      }
+
+      function drawCallao(pos,time){
+        var px=pos.x*DPR,py=pos.y*DPR;
+        [[16,10,.35,0],[11,7,.55,1.1],[7,4,.7,2.2]].forEach(function(ring){
+          var r=ring[0]+ring[1]*Math.abs(Math.sin(time*.9+ring[3]));var a=ring[2]*(1-Math.abs(Math.sin(time*.9+ring[3])));
+          ctx.save();ctx.shadowColor='rgba(255,128,36,'+(a*1.5)+')';ctx.shadowBlur=rr(10);
+          ctx.beginPath();ctx.arc(px,py,rr(r),0,Math.PI*2);ctx.strokeStyle='rgba(255,128,36,'+a+')';ctx.lineWidth=1.5*DPR;ctx.stroke();ctx.restore();
+        });
+        var grd=ctx.createRadialGradient(px,py,0,px,py,rr(12));
+        grd.addColorStop(0,'rgba(255,255,255,1)');grd.addColorStop(.35,'rgba(255,150,50,1)');grd.addColorStop(.75,'rgba(255,80,0,.65)');grd.addColorStop(1,'rgba(255,128,36,0)');
+        ctx.save();ctx.shadowColor='rgba(255,128,36,1)';ctx.shadowBlur=rr(18);
+        ctx.beginPath();ctx.arc(px,py,rr(9),0,Math.PI*2);ctx.fillStyle=grd;ctx.fill();
+        ctx.beginPath();ctx.arc(px,py,rr(5),0,Math.PI*2);ctx.fillStyle='#ff8024';ctx.fill();ctx.restore();
+        ctx.save();ctx.shadowColor='rgba(0,0,0,.95)';ctx.shadowBlur=rr(4);
+        ctx.font='800 '+rr(12)+'px Inter,Montserrat,Arial,sans-serif';ctx.fillStyle='#fff';
+        ctx.fillText('Lima, PERU',px+rr(10),py-rr(10));
+        ctx.save();ctx.globalCompositeOperation='screen';ctx.shadowColor='rgba(0,191,255,.65)';ctx.shadowBlur=rr(8);
+        ctx.fillStyle='rgba(0,191,255,.38)';ctx.fillText('Lima, PERU',px+rr(10),py-rr(10));ctx.restore();
+        ctx.font='800 '+rr(8)+'px Inter,Montserrat,Arial,sans-serif';ctx.fillStyle='rgba(255,140,26,.95)';
+        ctx.fillText('HUB PRINCIPAL',px+rr(10),py+rr(3));ctx.restore();
+      }
+
+      function onMove(e){
+        var rect=canvas.getBoundingClientRect();
+        var lx=(e.clientX-rect.left)*(PW/rect.width);var ly=(e.clientY-rect.top)*(PH/rect.height);
+        var port=hit(lx,ly);if(port!==hovPort){hovPort=port;port?showTip(port,e.clientX,e.clientY):hideTip();}
+      }
+      function onTouch(e){
+        var t=e.touches[0];if(!t)return;var rect=canvas.getBoundingClientRect();
+        var lx=(t.clientX-rect.left)*(PW/rect.width);var ly=(t.clientY-rect.top)*(PH/rect.height);
+        var port=hit(lx,ly);if(port){showTip(port,t.clientX,t.clientY);setTimeout(hideTip,2500);}
+      }
+      function hit(lx,ly){
+        var R=18;for(var i=0;i<PORTS.length;i++){var r=proj(PORTS[i].lon,PORTS[i].lat);if((lx-r.x)*(lx-r.x)+(ly-r.y)*(ly-r.y)<R*R)return PORTS[i];}return null;
+      }
+      function showTip(port,ex,ey){
+        if(!tooltip)return;var wr=canvas.parentElement.getBoundingClientRect();
+        tooltip.style.left=Math.min(ex-wr.left+14,wr.width-165)+'px';tooltip.style.top=Math.max(ey-wr.top-44,4)+'px';
+        tooltip.innerHTML='<div class="map-tt-name">'+port.name+'</div><div class="map-tt-sub">'+port.sub+'</div>'+(port.isHub?'<div class="map-tt-hub">Hub Principal</div>':'');
+        tooltip.classList.add('vis');
+      }
+      function hideTip(){if(tooltip)tooltip.classList.remove('vis');}
+
+      if(document.readyState==='loading'){
+        document.addEventListener('DOMContentLoaded',setup);
+      }else{
+        setup();
+      }
+    })();
+/* ============================================================
+   *** FIN DEL CÓDIGO DEL MAPA ***
+============================================================ */
+</script>
+
+<!-- ============================================================
+     COOKIE CONSENT BANNER
+============================================================ -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-icon">🍪</div>
+  <div class="cookie-text">
+    <h4>Usamos cookies para mejorar tu experiencia</h4>
+    <p>
+      Utilizamos cookies propias y de terceros para analizar el uso de nuestra web y personalizar tu experiencia,
+      conforme a la <strong>Política de Privacidad de Google</strong> y la <strong>Ley N° 29733</strong> de Protección de Datos Personales del Perú.
+      Puedes aceptar todas las cookies o usar solo las esenciales.
+    </p>
+  </div>
+  <div class="cookie-btns">
+    <button class="cookie-btn-accept" id="cookieAccept">
+      <i class="fas fa-check"></i> Aceptar todo
+    </button>
+    <button class="cookie-btn-decline" id="cookieDecline">Solo esenciales</button>
+  </div>
+</div>
+<button class="cookie-reopen" id="cookieReopen">🍪 Configurar cookies</button>
+
+</body>
+</html>
