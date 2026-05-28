@@ -487,9 +487,9 @@ input, select, textarea, button { font-family: var(--font-b); }
 .clients-dark { background:linear-gradient(135deg,#080f1e 0%,#003272 100%); }
 .clients-dark .h-title { color:#fff; }
 .clients-dark .tag { color:rgba(255,128,36,.9); }
-.clients-logos { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:44px; margin-top:48px; padding:0 20px; }
+.clients-logos { display:flex; align-items:center; justify-content:center; flex-wrap:nowrap; gap:28px; margin-top:48px; padding:0 20px; }
 .cli-logo {
-  height:64px; object-fit:contain; max-width:160px;
+  height:58px; object-fit:contain; max-width:142px;
   filter:brightness(0) invert(1) opacity(.65);
   transition:var(--ease);
 }
@@ -694,6 +694,8 @@ input, select, textarea, button { font-family: var(--font-b); }
   .net-visual { min-height:340px; max-width:560px; margin:0 auto; width:100%; }
   .about-grid { grid-template-columns:minmax(0,46fr) minmax(0,50fr); column-gap:34px; }
   .features-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .clients-logos { flex-wrap:wrap; gap:34px; }
+  .cli-logo { height:62px; max-width:160px; }
 }
 @media (max-width:840px) {
   .sec { padding:64px 0; }
@@ -1245,10 +1247,10 @@ input, select, textarea, button { font-family: var(--font-b); }
           <img src="assets/img/client-yobel.png"           alt="Yobel"            class="cli-logo reveal">
           <img src="assets/img/client-artesco.png"         alt="Artesco"          class="cli-logo reveal d1">
           <img src="assets/img/client-naltech.png"         alt="Naltech"          class="cli-logo reveal d2">
-          <img src="assets/img/client-socopur.png"         alt="Grupo Socopur"    class="cli-logo reveal d3">
           <img src="assets/img/client-maderas-america.png" alt="Maderas America"  class="cli-logo reveal">
           <img src="assets/img/client-peru-grass.png"      alt="Peru Grass"       class="cli-logo reveal d1">
           <img src="assets/img/client-flotex.png"          alt="Flotex"           class="cli-logo reveal d2">
+          <img src="assets/img/client-zapler.png"          alt="Zapler"           class="cli-logo reveal d3">
         </div>
         <div class="tc reveal" style="margin-top:56px;">
           <button class="btn btn-orange" onclick="showTab('contacto')" data-track="clientes_cta_contacto">
