@@ -812,7 +812,7 @@ input, select, textarea, button { font-family: var(--font-b); }
           </button>
         </div>
         <div class="hero-stats">
-          <div><div class="stat-num">8+</div><div class="stat-lbl">Años de experiencia</div></div>
+          <div><div class="stat-num" data-company-years data-founded-year="2017">9+</div><div class="stat-lbl">Años de experiencia</div></div>
           <div><div class="stat-num">500+</div><div class="stat-lbl">Clientes satisfechos</div></div>
           <div><div class="stat-num">50+</div><div class="stat-lbl">Países conectados</div></div>
           <div><div class="stat-num">3000+</div><div class="stat-lbl">Embarques exitosos</div></div>
@@ -1502,6 +1502,18 @@ input, select, textarea, button { font-family: var(--font-b); }
      JAVASCRIPT
 ============================================================ -->
 <script>
+function actualizarAniosExperiencia() {
+  const anioFundacion = 2017;
+  const anioActual = new Date().getFullYear();
+  const anios = Math.max(0, anioActual - anioFundacion);
+  document.querySelectorAll('[data-company-years]').forEach(el => {
+    el.textContent = anios + '+';
+    el.setAttribute('aria-label', anios + ' años de experiencia desde ' + anioFundacion);
+  });
+}
+
+actualizarAniosExperiencia();
+
 /* ============================================================
    HUB TRACKER — Analytics & Base de Datos
    ⚙️ CONFIGURACIÓN: Reemplaza los valores entre comillas
