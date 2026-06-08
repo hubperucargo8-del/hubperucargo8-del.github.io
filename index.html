@@ -2130,7 +2130,7 @@ HubTracker.init();
    COOKIE CONSENT
 ============================================================ */
 (function() {
-  const CONSENT_KEY = 'hpc_cookie_consent';
+  const CONSENT_KEY = 'hpc_cookie_consent_v2';
   function initCookieConsent() {
     const banner  = document.getElementById('cookieBanner');
     const reopen  = document.getElementById('cookieReopen');
@@ -2142,14 +2142,14 @@ HubTracker.init();
 
     if (!consent) {
       setTimeout(() => banner.classList.add('show'), 1200);
-    } else if (consent === 'declined') {
+    } else {
       reopen.style.display = 'block';
     }
 
     accept.addEventListener('click', () => {
       localStorage.setItem(CONSENT_KEY, 'accepted');
       banner.classList.remove('show');
-      reopen.style.display = 'none';
+      reopen.style.display = 'block';
       HubTracker.enableTracking();
       HubTracker.track('cookie_accepted');
     });
