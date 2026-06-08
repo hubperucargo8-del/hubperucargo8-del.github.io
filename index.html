@@ -481,6 +481,53 @@ input, select, textarea, button { font-family: var(--font-b); }
 .q-cta p { color:rgba(255,255,255,.88); font-size:.9rem; }
 .q-cta strong { color:var(--orange); }
 
+.tariff-switch { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:#eef3f8; border:1px solid rgba(0,50,114,.12); border-radius:999px; padding:6px; margin:28px auto 34px; box-shadow:0 12px 30px rgba(8,15,30,.06); }
+.tariff-switch-btn { border:0; background:transparent; color:var(--blue); font-family:var(--font-h); font-weight:800; font-size:.86rem; padding:12px 20px; border-radius:999px; cursor:pointer; transition:var(--ease); display:inline-flex; align-items:center; gap:8px; }
+.tariff-switch-btn.active { background:var(--blue); color:#fff; box-shadow:0 10px 22px rgba(0,50,114,.22); }
+.tariff-panel { display:none; animation:pageIn .45s ease; }
+.tariff-panel.active { display:block; }
+.price-range { display:flex; flex-direction:column; gap:4px; line-height:1.22; }
+.price-range span { display:flex; flex-direction:column; gap:1px; font-size:.64rem; letter-spacing:.7px; color:rgba(255,255,255,.48); }
+.price-range strong { color:var(--orange); font-size:1rem; letter-spacing:0; }
+.fixed-tariff-box { background:linear-gradient(135deg,var(--blue) 0%,#080f1e 100%); border-radius:var(--radius-lg); padding:42px; box-shadow:var(--shadow-lg); }
+.fixed-tariff-head { display:flex; align-items:flex-start; justify-content:space-between; gap:20px; margin-bottom:24px; flex-wrap:wrap; }
+.fixed-tariff-head h3 { font-family:var(--font-h); font-weight:900; color:#fff; font-size:1.35rem; margin-bottom:6px; }
+.fixed-tariff-head p { color:rgba(255,255,255,.66); font-size:.9rem; max-width:720px; }
+.fixed-note { display:flex; align-items:center; gap:8px; background:rgba(255,128,36,.12); border:1px solid rgba(255,128,36,.28); color:rgba(255,255,255,.86); padding:10px 14px; border-radius:12px; font-size:.78rem; font-weight:700; }
+.fixed-tariff-list { display:grid; gap:16px; }
+.fixed-card { border:1px solid rgba(255,255,255,.12); border-radius:16px; background:rgba(255,255,255,.045); overflow:hidden; }
+.fixed-card-btn { width:100%; border:0; background:rgba(255,255,255,.035); color:#fff; padding:18px 20px; display:flex; align-items:center; justify-content:space-between; gap:16px; cursor:pointer; text-align:left; }
+.fixed-card-title { display:flex; align-items:center; gap:13px; min-width:0; }
+.fixed-card-icon { width:42px; height:42px; border-radius:12px; background:var(--orange); display:flex; align-items:center; justify-content:center; color:#fff; flex-shrink:0; }
+.fixed-card-title h4 { font-family:var(--font-h); font-size:1rem; font-weight:900; margin-bottom:3px; }
+.fixed-card-title small { color:rgba(255,255,255,.56); font-size:.76rem; }
+.fixed-card-meta { display:flex; align-items:center; gap:10px; flex-shrink:0; color:rgba(255,255,255,.66); font-size:.8rem; font-weight:700; }
+.fixed-card-body { display:none; padding:0 20px 20px; }
+.fixed-card.open .fixed-card-body { display:block; }
+.fixed-table-wrap { overflow-x:auto; border-radius:12px; border:1px solid rgba(255,255,255,.08); }
+.fixed-table { width:100%; min-width:860px; border-collapse:collapse; background:rgba(255,255,255,.03); }
+.fixed-table th { background:rgba(255,128,36,.18); color:var(--orange); padding:12px 13px; font-size:.68rem; letter-spacing:.9px; text-transform:uppercase; text-align:left; font-family:var(--font-h); }
+.fixed-table td { padding:12px 13px; border-bottom:1px solid rgba(255,255,255,.06); color:rgba(255,255,255,.82); font-size:.8rem; vertical-align:top; }
+.fixed-table tr:last-child td { border-bottom:0; }
+.fixed-range { font-family:var(--font-h); color:#fff; font-weight:800; white-space:nowrap; }
+.fixed-range small { display:block; color:rgba(255,255,255,.46); font-family:var(--font-b); font-weight:500; font-size:.68rem; margin-top:2px; }
+.fixed-action { border:0; border-radius:999px; background:var(--orange); color:#fff; font-weight:800; font-size:.72rem; padding:8px 12px; cursor:pointer; white-space:nowrap; }
+@media (max-width:760px) {
+  .tariff-switch { width:100%; display:grid; grid-template-columns:1fr; border-radius:18px; }
+  .tariff-switch-btn { justify-content:center; }
+  .fixed-tariff-box { padding:24px 16px; border-radius:18px; }
+  .fixed-card-btn { align-items:flex-start; }
+  .fixed-card-meta { flex-direction:column; align-items:flex-end; gap:4px; }
+  .fixed-table { min-width:0; background:transparent; }
+  .fixed-table thead { display:none; }
+  .fixed-table, .fixed-table tbody, .fixed-table tr, .fixed-table td { display:block; width:100%; }
+  .fixed-table tr { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:14px; margin-bottom:12px; overflow:hidden; }
+  .fixed-table td { display:grid; grid-template-columns:118px 1fr; gap:10px; border-bottom:1px solid rgba(255,255,255,.06); }
+  .fixed-table td::before { content:attr(data-label); color:var(--orange); font-family:var(--font-h); font-weight:800; font-size:.66rem; letter-spacing:.7px; text-transform:uppercase; }
+  .fixed-action { width:100%; }
+}
+
+
 /* ============================================================
    CLIENTS (tab-clientes) — fondo oscuro para logos blancos
 ============================================================ */
@@ -1112,122 +1159,141 @@ input, select, textarea, button { font-family: var(--font-b); }
   <div class="tab-page" id="tab-tarifario">
     <section class="tarifario sec">
       <div class="container">
-        <div class="tc reveal" style="margin-bottom:46px;">
-          <p class="tag">Calculadora de Fletes</p>
-          <h2 class="h-title">Tarifario <span style="color:var(--orange)">Interactivo</span></h2>
+        <div class="tc reveal" style="margin-bottom:28px;">
+          <p class="tag">COTIZA TU SERVICIO</p>
+          <h2 class="h-title">Consulta nuestras tarifas</h2>
           <p class="h-sub center">
-            Tarifas <strong>referenciales</strong> actualizadas desde nuestro archivo de tarifas.
-            Contáctanos para obtener hasta un <strong>50% de descuento</strong>.
+            Revisa nuestras tarifas referenciales actualizadas. Para obtener una tarifa personalizada seg&uacute;n tu operaci&oacute;n, cont&aacute;ctanos y recibe una atenci&oacute;n m&aacute;s precisa.
           </p>
+          <div class="tariff-switch" role="tablist" aria-label="Tipo de tarifario">
+            <button class="tariff-switch-btn active" id="tariffModeInteractive" type="button" onclick="showTariffMode('interactive')" aria-selected="true"><i class="fas fa-calculator"></i> Cotizar ahora</button>
+            <button class="tariff-switch-btn" id="tariffModeFixed" type="button" onclick="showTariffMode('fixed')" aria-selected="false"><i class="fas fa-file-invoice-dollar"></i> Ver tarifas fijas</button>
+          </div>
         </div>
-        <div class="quoter-box reveal">
-          <h3 class="q-title"><i class="fas fa-calculator" style="color:var(--orange);margin-right:10px;"></i>Cotizador de Fletes</h3>
-          <p class="q-sub">Selecciona tu ruta y tipo de carga para ver opciones disponibles.</p>
-          <div class="q-form">
-            <div class="q-group">
-              <label class="q-label">País de Origen</label>
-              <select class="q-ctrl" id="qOrigen">
-                <option value="">— Seleccionar —</option>
-                <option value="CN">🇨🇳 China</option>
-                <option value="US">🇺🇸 Estados Unidos</option>
-                <option value="ES">🇪🇸 España</option>
-                <option value="MX">🇲🇽 México</option>
-                <option value="BR">🇧🇷 Brasil</option>
-                <option value="CO">🇨🇴 Colombia</option>
-                <option value="CL">🇨🇱 Chile</option>
-                <option value="JP">🇯🇵 Japón</option>
-                <option value="KR">🇰🇷 Corea del Sur</option>
-                <option value="DE">🇩🇪 Alemania</option>
-                <option value="IT">🇮🇹 Italia</option>
-                <option value="TR">🇹🇷 Turquía</option>
-                <option value="IN">🇮🇳 India</option>
-              </select>
+
+        <div class="tariff-panel active" id="tariffPanelInteractive">
+          <div class="quoter-box reveal">
+            <h3 class="q-title"><i class="fas fa-calculator" style="color:var(--orange);margin-right:10px;"></i>Cotizador de Fletes</h3>
+            <p class="q-sub">Selecciona tu ruta y tipo de carga para ver opciones disponibles.</p>
+            <div class="q-form">
+              <div class="q-group">
+                <label class="q-label">Pa&iacute;s de Origen</label>
+                <select class="q-ctrl" id="qOrigen">
+                  <option value="">&mdash; Seleccionar &mdash;</option>
+                  <option value="CN">China</option>
+                  <option value="TW">Taiw&aacute;n</option>
+                  <option value="HK">Hong Kong</option>
+                  <option value="US">Estados Unidos</option>
+                  <option value="UK">Reino Unido</option>
+                  <option value="ES">Espa&ntilde;a</option>
+                  <option value="MX">M&eacute;xico</option>
+                  <option value="BR">Brasil</option>
+                  <option value="CO">Colombia</option>
+                  <option value="CL">Chile</option>
+                  <option value="JP">Jap&oacute;n</option>
+                  <option value="KR">Corea del Sur</option>
+                  <option value="DE">Alemania</option>
+                  <option value="IT">Italia</option>
+                  <option value="TR">Turqu&iacute;a</option>
+                  <option value="IN">India</option>
+                </select>
+              </div>
+              <div class="q-group">
+                <label class="q-label">Pa&iacute;s de Destino</label>
+                <select class="q-ctrl" disabled>
+                  <option value="PE">Per&uacute; (destino principal)</option>
+                </select>
+              </div>
+              <div class="q-group">
+                <label class="q-label">Tipo de Carga</label>
+                <select class="q-ctrl" id="qTipo">
+                  <option value="">&mdash; Seleccionar &mdash;</option>
+                  <option value="FCL20">FCL &mdash; Contenedor 20'</option>
+                  <option value="FCL40">FCL &mdash; Contenedor 40'</option>
+                  <option value="LCL">LCL &mdash; Carga suelta (CBM)</option>
+                  <option value="AEREO">Flete A&eacute;reo (kg)</option>
+                </select>
+              </div>
+              <div class="q-group">
+                <label class="q-label">Puerto de Origen</label>
+                <select class="q-ctrl" id="qPuertoO">
+                  <option value="">&mdash; Primero selecciona pa&iacute;s &mdash;</option>
+                </select>
+              </div>
+              <div class="q-group">
+                <label class="q-label">Puerto de Destino</label>
+                <select class="q-ctrl" id="qPuertoD">
+                  <option value="CALLAO">Callao, Per&uacute;</option>
+                  <option value="PAITA">Paita, Per&uacute;</option>
+                </select>
+              </div>
+              <div class="q-group">
+                <label class="q-label" id="qCantLabel">Cantidad</label>
+                <input type="number" class="q-ctrl" id="qCant" placeholder="Ej: 1" min="1" value="1">
+              </div>
+              <div class="q-group">
+                <label class="q-label">Incoterm</label>
+                <select class="q-ctrl" id="qInco">
+                  <option value="">&mdash; Seleccionar &mdash;</option>
+                  <option value="EXW">EXW &mdash; Ex Works</option>
+                  <option value="FOB">FOB &mdash; Free on Board</option>
+                  <option value="CIF">CIF &mdash; Cost, Insurance, Freight</option>
+                  <option value="DDP">DDP &mdash; Delivered Duty Paid</option>
+                </select>
+              </div>
+              <div class="q-group">
+                <label class="q-label">Tipo de Mercanc&iacute;a</label>
+                <select class="q-ctrl" id="qMerca">
+                  <option value="GENERAL">Carga General</option>
+                  <option value="PELIGROSA">Carga Peligrosa (IMO)</option>
+                  <option value="REFRIGERADA">Refrigerada / Reefer</option>
+                  <option value="SOBREDIM">Sobredimensionada / OOG</option>
+                </select>
+              </div>
+              <div class="q-group">
+                <label class="q-label">Valor Mercanc&iacute;a (USD)</label>
+                <input type="number" class="q-ctrl" id="qValor" placeholder="Ej: 15000">
+              </div>
+              <div class="q-btn">
+                <button class="btn btn-orange" onclick="calcularTarifa()" data-track="quoter_search">
+                  <i class="fas fa-search-dollar"></i> Ver Tarifas Referenciales
+                </button>
+              </div>
             </div>
-            <div class="q-group">
-              <label class="q-label">País de Destino</label>
-              <select class="q-ctrl" disabled>
-                <option value="PE">🇵🇪 Perú (destino principal)</option>
-              </select>
-            </div>
-            <div class="q-group">
-              <label class="q-label">Tipo de Carga</label>
-              <select class="q-ctrl" id="qTipo">
-                <option value="">— Seleccionar —</option>
-                <option value="FCL20">FCL — Contenedor 20'</option>
-                <option value="FCL40">FCL — Contenedor 40'</option>
-                <option value="FCL40HQ">FCL — Contenedor 40' HC</option>
-                <option value="LCL">LCL — Carga suelta (CBM)</option>
-                <option value="AEREO">Flete Aéreo (kg)</option>
-              </select>
-            </div>
-            <div class="q-group">
-              <label class="q-label">Puerto de Origen</label>
-              <select class="q-ctrl" id="qPuertoO">
-                <option value="">— Primero selecciona país —</option>
-              </select>
-            </div>
-            <div class="q-group">
-              <label class="q-label">Puerto de Destino</label>
-              <select class="q-ctrl" id="qPuertoD">
-                <option value="CALLAO">Callao, Perú</option>
-                <option value="PAITA">Paita, Perú</option>
-              </select>
-            </div>
-            <div class="q-group">
-              <label class="q-label" id="qCantLabel">Cantidad</label>
-              <input type="number" class="q-ctrl" id="qCant" placeholder="Ej: 1" min="1" value="1">
-            </div>
-            <div class="q-group">
-              <label class="q-label">Incoterm</label>
-              <select class="q-ctrl" id="qInco">
-                <option value="">— Seleccionar —</option>
-                <option value="EXW">EXW — Ex Works</option>
-                <option value="FOB">FOB — Free on Board</option>
-                <option value="CIF">CIF — Cost, Insurance, Freight</option>
-                <option value="DDP">DDP — Delivered Duty Paid</option>
-              </select>
-            </div>
-            <div class="q-group">
-              <label class="q-label">Tipo de Mercancía</label>
-              <select class="q-ctrl" id="qMerca">
-                <option value="GENERAL">Carga General</option>
-                <option value="PELIGROSA">Carga Peligrosa (IMO)</option>
-                <option value="REFRIGERADA">Refrigerada / Reefer</option>
-                <option value="SOBREDIM">Sobredimensionada / OOG</option>
-              </select>
-            </div>
-            <div class="q-group">
-              <label class="q-label">Valor Mercancía (USD)</label>
-              <input type="number" class="q-ctrl" id="qValor" placeholder="Ej: 15000">
-            </div>
-            <div class="q-btn">
-              <button class="btn btn-orange" onclick="calcularTarifa()" data-track="quoter_search">
-                <i class="fas fa-search-dollar"></i> Ver Tarifas Referenciales
-              </button>
+            <div class="q-results" id="qResults">
+              <div class="q-results-head">
+                <div class="q-results-title"><i class="fas fa-list" style="color:var(--orange);margin-right:8px;"></i>Opciones disponibles</div>
+                <div class="disc-badge"><i class="fas fa-comments"></i> Consulta tu tarifa personalizada</div>
+              </div>
+              <div class="tbl-wrap">
+                <table class="rtbl">
+                  <thead>
+                    <tr>
+                      <th>Opci&oacute;n</th><th>L&iacute;nea / Agente</th><th>Ruta</th><th>Tr&aacute;nsito</th>
+                      <th>Rango Referencial</th><th>Tarifa Personalizada</th><th>Acci&oacute;n</th>
+                    </tr>
+                  </thead>
+                  <tbody id="qTbody"></tbody>
+                </table>
+              </div>
+              <div class="q-cta">
+                <p>Las tarifas mostradas son <strong>referenciales</strong>. Puedes acceder a mejores tarifas si nos contactas para darte una atenci&oacute;n m&aacute;s personalizada, seg&uacute;n ruta, volumen y disponibilidad. <strong>Cont&aacute;ctanos para cotizar.</strong></p>
+                <a href="https://wa.me/51923996689?text=Hola%20Hub%20Peru%20Cargo%2C%20quiero%20una%20cotizaci%C3%B3n%20personalizada" class="btn btn-orange" target="_blank" data-track="quoter_wa_click">
+                  <i class="fab fa-whatsapp"></i> Solicitar atenci&oacute;n personalizada
+                </a>
+              </div>
             </div>
           </div>
-          <div class="q-results" id="qResults">
-            <div class="q-results-head">
-              <div class="q-results-title"><i class="fas fa-list" style="color:var(--orange);margin-right:8px;"></i>Opciones disponibles</div>
-              <div class="disc-badge"><i class="fas fa-comments"></i> Consulta tu tarifa personalizada</div>
+        </div>
+
+        <div class="tariff-panel" id="tariffPanelFixed">
+          <div class="fixed-tariff-box reveal">
+            <div class="fixed-tariff-head">
+              <div>
+                <h3><i class="fas fa-file-contract" style="color:var(--orange);margin-right:10px;"></i>Tarifario Fijo</h3>
+              </div>
             </div>
-            <div class="tbl-wrap">
-              <table class="rtbl">
-                <thead>
-                  <tr>
-                    <th>Opción</th><th>Línea / Agente</th><th>Ruta</th><th>Tránsito</th>
-                    <th>Tarifa Referencial</th><th>Tarifa Personalizada</th><th>Acción</th>
-                  </tr>
-                </thead>
-                <tbody id="qTbody"></tbody>
-              </table>
-            </div>
-            <div class="q-cta">
-              <p>Las tarifas mostradas son <strong>referenciales</strong>. Puedes acceder a una tarifa personalizada con hasta <strong>50% de descuento</strong> según ruta, volumen y disponibilidad — sujeto a evaluación comercial. <strong>Contáctanos para cotizar.</strong></p>
-              <a href="https://wa.me/51923996689?text=Hola%20Hub%20Peru%20Cargo%2C%20quiero%20una%20cotizaci%C3%B3n%20con%20descuento" class="btn btn-orange" target="_blank" data-track="quoter_wa_click">
-                <i class="fab fa-whatsapp"></i> Obtener descuento
-              </a>
-            </div>
+            <div class="fixed-tariff-list" id="fixedTariffList"></div>
           </div>
         </div>
       </div>
@@ -1248,7 +1314,7 @@ input, select, textarea, button { font-family: var(--font-b); }
           <img src="assets/img/client-artesco.png"         alt="Artesco"          class="cli-logo reveal d1">
           <img src="assets/img/client-naltech.png"         alt="Naltech"          class="cli-logo reveal d2">
           <img src="assets/img/client-maderas-america.png" alt="Maderas America"  class="cli-logo reveal">
-          <img src="assets/img/client-peru-grass.png"      alt="Peru Grass"       class="cli-logo reveal d1">
+          <img src="assets/img/client-footloose.png"       alt="Footloose"        class="cli-logo reveal d1">
           <img src="assets/img/client-flotex.png"          alt="Flotex"           class="cli-logo reveal d2">
           <img src="assets/img/client-zapler.png"          alt="Zapler"           class="cli-logo reveal d3">
         </div>
@@ -1294,7 +1360,7 @@ input, select, textarea, button { font-family: var(--font-b); }
             </div>
             <div class="contact-actions">
               <button class="btn btn-blue" onclick="showTab('clientes')" data-track="contact_portal_clientes"><i class="fas fa-users"></i> Portal Clientes</button>
-              <a href="https://info.hubperucargo.com/tarifas" class="btn btn-ghost" target="_blank" data-track="contact_tarifas_oficiales"><i class="fas fa-file-invoice-dollar"></i> Tarifas Oficiales</a>
+              <button class="btn btn-ghost" type="button" onclick="showTariffFixed()" data-track="contact_tarifas_oficiales"><i class="fas fa-file-invoice-dollar"></i> Tarifas Oficiales</button>
             </div>
           </div>
           <div class="cf reveal-r">
@@ -1504,6 +1570,7 @@ input, select, textarea, button { font-family: var(--font-b); }
 <!-- ============================================================
      JAVASCRIPT
 ============================================================ -->
+<script src="assets/data/tarifario-data.js"></script>
 <script>
 function actualizarAniosExperiencia() {
   const anioFundacion = 2017;
@@ -1688,81 +1755,9 @@ const HubTracker = {
 };
 
 /* ============================================================
-   TARIFF DATA  (actualizar desde tarifario_template.csv)
+   TARIFF DATA
+   Datos externos cargados desde assets/data/tarifario-data.js
 ============================================================ */
-const TARIFAS = [
-  {o:"CN",t:"FCL20",po:"SHANGHAI",    pd:"CALLAO", linea:"COSCO Shipping",    dias:"28-32 días",base:1200},
-  {o:"CN",t:"FCL20",po:"NINGBO",      pd:"CALLAO", linea:"Evergreen Line",    dias:"30-35 días",base:1100},
-  {o:"CN",t:"FCL20",po:"GUANGZHOU",   pd:"CALLAO", linea:"MSC",               dias:"32-38 días",base:1150},
-  {o:"CN",t:"FCL20",po:"QINGDAO",     pd:"CALLAO", linea:"CMA CGM",           dias:"30-34 días",base:1180},
-  {o:"US",t:"FCL20",po:"LOS ANGELES", pd:"CALLAO", linea:"Hapag-Lloyd",       dias:"14-18 días",base:1800},
-  {o:"US",t:"FCL20",po:"MIAMI",       pd:"CALLAO", linea:"Maersk",            dias:"10-14 días",base:1600},
-  {o:"ES",t:"FCL20",po:"BARCELONA",   pd:"CALLAO", linea:"MSC",               dias:"20-25 días",base:2200},
-  {o:"MX",t:"FCL20",po:"MANZANILLO",  pd:"CALLAO", linea:"CMA CGM",           dias:"12-16 días",base:1400},
-  {o:"BR",t:"FCL20",po:"SANTOS",      pd:"CALLAO", linea:"Hamburg Süd",       dias:"8-12 días", base:1000},
-  {o:"DE",t:"FCL20",po:"HAMBURGO",    pd:"CALLAO", linea:"Hapag-Lloyd",       dias:"22-28 días",base:2400},
-  {o:"JP",t:"FCL20",po:"TOKIO",       pd:"CALLAO", linea:"ONE",               dias:"22-26 días",base:1900},
-  {o:"KR",t:"FCL20",po:"BUSAN",       pd:"CALLAO", linea:"HMM",               dias:"24-28 días",base:1750},
-  {o:"TR",t:"FCL20",po:"MERSIN",      pd:"CALLAO", linea:"MSC",               dias:"25-30 días",base:2100},
-  {o:"IT",t:"FCL20",po:"GENOVA",      pd:"CALLAO", linea:"CMA CGM",           dias:"22-27 días",base:2300},
-  {o:"CO",t:"FCL20",po:"BUENAVENTURA",pd:"CALLAO", linea:"Hapag-Lloyd",       dias:"5-8 días",  base:800},
-  {o:"CL",t:"FCL20",po:"VALPARAISO",  pd:"CALLAO", linea:"CSAV",              dias:"4-6 días",  base:700},
-  {o:"IN",t:"FCL20",po:"NHAVA SHEVA", pd:"CALLAO", linea:"Maersk",            dias:"28-34 días",base:2000},
-  {o:"CN",t:"FCL40",po:"SHANGHAI",    pd:"CALLAO", linea:"COSCO Shipping",    dias:"28-32 días",base:1600},
-  {o:"CN",t:"FCL40",po:"NINGBO",      pd:"CALLAO", linea:"Evergreen Line",    dias:"30-35 días",base:1500},
-  {o:"US",t:"FCL40",po:"LOS ANGELES", pd:"CALLAO", linea:"Hapag-Lloyd",       dias:"14-18 días",base:2400},
-  {o:"US",t:"FCL40",po:"MIAMI",       pd:"CALLAO", linea:"Maersk",            dias:"10-14 días",base:2200},
-  {o:"ES",t:"FCL40",po:"BARCELONA",   pd:"CALLAO", linea:"MSC",               dias:"20-25 días",base:3000},
-  {o:"DE",t:"FCL40",po:"HAMBURGO",    pd:"CALLAO", linea:"Hapag-Lloyd",       dias:"22-28 días",base:3200},
-  {o:"JP",t:"FCL40",po:"TOKIO",       pd:"CALLAO", linea:"ONE",               dias:"22-26 días",base:2600},
-  {o:"KR",t:"FCL40",po:"BUSAN",       pd:"CALLAO", linea:"HMM",               dias:"24-28 días",base:2400},
-  {o:"BR",t:"FCL40",po:"SANTOS",      pd:"CALLAO", linea:"Hamburg Süd",       dias:"8-12 días", base:1400},
-  {o:"CO",t:"FCL40",po:"BUENAVENTURA",pd:"CALLAO", linea:"Hapag-Lloyd",       dias:"5-8 días",  base:1100},
-  {o:"CN",t:"FCL40HQ",po:"SHANGHAI",  pd:"CALLAO", linea:"COSCO Shipping",    dias:"28-32 días",base:1800},
-  {o:"CN",t:"FCL40HQ",po:"GUANGZHOU", pd:"CALLAO", linea:"CMA CGM",           dias:"30-36 días",base:1700},
-  {o:"US",t:"FCL40HQ",po:"LOS ANGELES",pd:"CALLAO",linea:"Maersk",            dias:"14-18 días",base:2700},
-  {o:"DE",t:"FCL40HQ",po:"HAMBURGO",  pd:"CALLAO", linea:"Hapag-Lloyd",       dias:"22-28 días",base:3600},
-  {o:"CN",t:"LCL",po:"SHANGHAI",      pd:"CALLAO", linea:"Hub Consolidador",  dias:"35-40 días",base:45,  u:"USD/CBM"},
-  {o:"CN",t:"LCL",po:"NINGBO",        pd:"CALLAO", linea:"Hub Consolidador",  dias:"38-42 días",base:42,  u:"USD/CBM"},
-  {o:"CN",t:"LCL",po:"GUANGZHOU",     pd:"CALLAO", linea:"Hub Consolidador",  dias:"36-41 días",base:44,  u:"USD/CBM"},
-  {o:"US",t:"LCL",po:"LOS ANGELES",   pd:"CALLAO", linea:"Hub Consolidador",  dias:"18-22 días",base:65,  u:"USD/CBM"},
-  {o:"US",t:"LCL",po:"MIAMI",         pd:"CALLAO", linea:"Hub Consolidador",  dias:"15-19 días",base:60,  u:"USD/CBM"},
-  {o:"ES",t:"LCL",po:"BARCELONA",     pd:"CALLAO", linea:"Hub Consolidador",  dias:"28-32 días",base:75,  u:"USD/CBM"},
-  {o:"MX",t:"LCL",po:"MANZANILLO",    pd:"CALLAO", linea:"Hub Consolidador",  dias:"15-19 días",base:55,  u:"USD/CBM"},
-  {o:"BR",t:"LCL",po:"SANTOS",        pd:"CALLAO", linea:"Hub Consolidador",  dias:"10-14 días",base:40,  u:"USD/CBM"},
-  {o:"DE",t:"LCL",po:"HAMBURGO",      pd:"CALLAO", linea:"Hub Consolidador",  dias:"30-35 días",base:80,  u:"USD/CBM"},
-  {o:"IT",t:"LCL",po:"GENOVA",        pd:"CALLAO", linea:"Hub Consolidador",  dias:"28-33 días",base:78,  u:"USD/CBM"},
-  {o:"CO",t:"LCL",po:"BUENAVENTURA",  pd:"CALLAO", linea:"Hub Consolidador",  dias:"5-8 días",  base:30,  u:"USD/CBM"},
-  {o:"CL",t:"LCL",po:"VALPARAISO",    pd:"CALLAO", linea:"Hub Consolidador",  dias:"4-6 días",  base:28,  u:"USD/CBM"},
-  {o:"IN",t:"LCL",po:"NHAVA SHEVA",   pd:"CALLAO", linea:"Hub Consolidador",  dias:"32-38 días",base:70,  u:"USD/CBM"},
-  {o:"CN",t:"AEREO",po:"SHANGHAI PVG",pd:"LIM",    linea:"LATAM Cargo",       dias:"3-5 días",  base:4.5, u:"USD/kg"},
-  {o:"CN",t:"AEREO",po:"GUANGZHOU CAN",pd:"LIM",   linea:"Avianca Cargo",     dias:"4-6 días",  base:4.2, u:"USD/kg"},
-  {o:"US",t:"AEREO",po:"MIAMI MIA",   pd:"LIM",    linea:"American Airlines", dias:"1-2 días",  base:3.8, u:"USD/kg"},
-  {o:"US",t:"AEREO",po:"NUEVA YORK JFK",pd:"LIM",  linea:"United Cargo",      dias:"1-2 días",  base:4.0, u:"USD/kg"},
-  {o:"ES",t:"AEREO",po:"MADRID MAD",  pd:"LIM",    linea:"Iberia Cargo",      dias:"2-3 días",  base:5.5, u:"USD/kg"},
-  {o:"DE",t:"AEREO",po:"FRANKFURT FRA",pd:"LIM",   linea:"Lufthansa Cargo",   dias:"2-3 días",  base:5.8, u:"USD/kg"},
-  {o:"MX",t:"AEREO",po:"CDMX MEX",    pd:"LIM",    linea:"Aeromexico Cargo",  dias:"1-2 días",  base:3.2, u:"USD/kg"},
-  {o:"CO",t:"AEREO",po:"BOGOTA BOG",  pd:"LIM",    linea:"Avianca Cargo",     dias:"1 día",     base:2.8, u:"USD/kg"},
-  {o:"JP",t:"AEREO",po:"TOKIO NRT",   pd:"LIM",    linea:"ANA Cargo",         dias:"3-4 días",  base:6.2, u:"USD/kg"},
-  {o:"KR",t:"AEREO",po:"SEUL ICN",    pd:"LIM",    linea:"Korean Air Cargo",  dias:"3-4 días",  base:6.0, u:"USD/kg"},
-  {o:"IT",t:"AEREO",po:"MILAN MXP",   pd:"LIM",    linea:"Alitalia Cargo",    dias:"2-3 días",  base:5.6, u:"USD/kg"},
-];
-
-const PUERTOS = {
-  CN:["SHANGHAI","NINGBO","GUANGZHOU","QINGDAO","TIANJIN","SHENZHEN","SHANGHAI PVG","GUANGZHOU CAN"],
-  US:["LOS ANGELES","MIAMI","NUEVA YORK JFK","HOUSTON","SEATTLE","MIAMI MIA"],
-  ES:["BARCELONA","VALENCIA","ALGECIRAS","MADRID MAD"],
-  MX:["MANZANILLO","VERACRUZ","LAZARO CARDENAS","CDMX MEX"],
-  BR:["SANTOS","PARANAGUA","ITAJAI"],
-  CO:["BUENAVENTURA","BARRANQUILLA","CARTAGENA","BOGOTA BOG"],
-  CL:["VALPARAISO","SAN ANTONIO","ANTOFAGASTA"],
-  JP:["TOKIO","OSAKA","NAGOYA","TOKIO NRT"],
-  KR:["BUSAN","SEUL ICN"],
-  DE:["HAMBURGO","BREMERHAVEN","FRANKFURT FRA"],
-  IT:["GENOVA","NAPOLES","LIVORNO","MILAN MXP"],
-  TR:["MERSIN","AMBARLI"],
-  IN:["NHAVA SHEVA","MUNDRA","CHENNAI"],
-};
 
 /* ============================================================
    NAVEGACIÓN POR PESTAÑAS
@@ -1862,6 +1857,92 @@ const revealObs = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el => revealObs.observe(el));
 
+
+function showTariffMode(mode) {
+  const interactive = mode === 'interactive';
+  document.getElementById('tariffPanelInteractive')?.classList.toggle('active', interactive);
+  document.getElementById('tariffPanelFixed')?.classList.toggle('active', !interactive);
+  document.getElementById('tariffModeInteractive')?.classList.toggle('active', interactive);
+  document.getElementById('tariffModeFixed')?.classList.toggle('active', !interactive);
+  document.getElementById('tariffModeInteractive')?.setAttribute('aria-selected', interactive ? 'true' : 'false');
+  document.getElementById('tariffModeFixed')?.setAttribute('aria-selected', interactive ? 'false' : 'true');
+  if (!interactive) renderFixedTariffs();
+}
+
+function showTariffFixed() {
+  showTab('tarifario');
+  setTimeout(() => {
+    showTariffMode('fixed');
+    document.getElementById('tariffPanelFixed')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 80);
+}
+
+function toggleFixedTariff(index) {
+  document.querySelectorAll('.fixed-card').forEach((card, i) => {
+    card.classList.toggle('open', i === index ? !card.classList.contains('open') : false);
+  });
+}
+
+function requestFixedTariff(sectionIndex, rowIndex) {
+  const section = TARIFARIO_FIJO[sectionIndex];
+  const row = section?.rows?.[rowIndex];
+  if (!row) return;
+  const servicio = document.getElementById('cServicio');
+  if (servicio) {
+    servicio.value = row.d.includes('AEREO')
+      ? 'Flete A\u00e9reo'
+      : (row.com === 'EXPORTACION' ? 'Exportaci\u00f3n FCL' : 'Importaci\u00f3n FCL');
+  }
+  showTab('contacto');
+  setTimeout(() => {
+    const msg = document.getElementById('cMensaje');
+    if (msg) {
+      msg.value = `Hola Hub Peru Cargo, quisiera una atenci\u00f3n personalizada sobre ${row.d}. Rango publicado: desde ${row.desde} hasta ${row.hasta} ${row.m}.`;
+    }
+    document.getElementById('cNombre')?.focus();
+  }, 180);
+}
+
+function renderFixedTariffs() {
+  const list = document.getElementById('fixedTariffList');
+  if (!list || list.dataset.rendered === 'true') return;
+  const fixedValidity = '08/06/2026 - 11/11/2026';
+  list.innerHTML = TARIFARIO_FIJO.map((section, sectionIndex) => {
+    const icon = section.title.includes('A\u00e9reo') || section.title.includes('Aereo') ? 'fa-plane-departure' : 'fa-ship';
+    const rows = section.rows.map((row, rowIndex) => `
+      <tr>
+        <td data-label="Servicio">${row.s}</td>
+        <td data-label="Carga">${row.c}</td>
+        <td data-label="Comercio">${row.com}</td>
+        <td data-label="Ruta">${row.d}</td>
+        <td data-label="Unidad">${row.u}</td>
+        <td data-label="Rango"><span class="fixed-range">${row.desde} - ${row.hasta}<small>${row.m}</small></span></td>
+        <td data-label="Vigencia">${fixedValidity}</td>
+        <td data-label="Tiempo">${row.tp}</td>
+        <td data-label="Acci&oacute;n"><button type="button" class="fixed-action" onclick="requestFixedTariff(${sectionIndex},${rowIndex})">Contactar</button></td>
+      </tr>`).join('');
+    return `
+      <article class="fixed-card ${sectionIndex === 0 ? 'open' : ''}">
+        <button type="button" class="fixed-card-btn" onclick="toggleFixedTariff(${sectionIndex})" aria-expanded="${sectionIndex === 0 ? 'true' : 'false'}">
+          <div class="fixed-card-title">
+            <span class="fixed-card-icon"><i class="fas ${icon}"></i></span>
+            <div><h4>${section.title}</h4><small>${section.rows.length} rutas publicadas - Vigencia ${fixedValidity}</small></div>
+          </div>
+          <div class="fixed-card-meta"><span>Desde / Hasta</span><i class="fas fa-chevron-down"></i></div>
+        </button>
+        <div class="fixed-card-body">
+          <div class="fixed-table-wrap">
+            <table class="fixed-table">
+              <thead><tr><th>Servicio</th><th>Carga</th><th>Comercio</th><th>Ruta</th><th>Unidad</th><th>Desde / Hasta</th><th>Vigencia</th><th>Tiempo</th><th>Acci&oacute;n</th></tr></thead>
+              <tbody>${rows}</tbody>
+            </table>
+          </div>
+        </div>
+      </article>`;
+  }).join('');
+  list.dataset.rendered = 'true';
+}
+
 /* ============================================================
    QUOTER
 ============================================================ */
@@ -1888,40 +1969,59 @@ document.getElementById('qTipo').addEventListener('change', function() {
 });
 
 function calcularTarifa() {
-  const origen = document.getElementById('qOrigen').value;
-  const tipo   = document.getElementById('qTipo').value;
-  const cant   = parseFloat(document.getElementById('qCant').value) || 1;
-  const inco   = document.getElementById('qInco').value;
-  const merca  = document.getElementById('qMerca').value;
+  const origen  = document.getElementById('qOrigen').value;
+  const tipo    = document.getElementById('qTipo').value;
+  const puertoO = document.getElementById('qPuertoO').value;
+  const destino = document.getElementById('qPuertoD').value;
+  const cant    = parseFloat(document.getElementById('qCant').value) || 1;
+  const inco    = document.getElementById('qInco').value;
+  const merca   = document.getElementById('qMerca').value;
 
   if (!origen || !tipo) { alert('Por favor selecciona el país de origen y el tipo de carga.'); return; }
 
   // Tracking
-  HubTracker.track('cotizacion_busqueda', { origen, tipo, cant, inco, merca });
+  HubTracker.track('cotizacion_busqueda', { origen, tipo, puertoO, destino, cant, inco, merca });
 
-  const matches = TARIFAS.filter(r => r.o === origen && r.t === tipo);
+  if (origen === 'CN') {
+    const servicio = document.getElementById('cServicio');
+    if (servicio) servicio.value = tipo === 'AEREO' ? 'Flete Aéreo' : (tipo === 'LCL' ? 'Importación LCL' : 'Importación FCL');
+    showTab('contacto');
+    setTimeout(() => {
+      const msg = document.getElementById('cMensaje');
+      if (msg && !msg.value.trim()) {
+        msg.value = `Hola Hub Peru Cargo, quisiera una cotización personalizada para una carga ${tipo} desde China hacia Perú.`;
+      }
+      document.getElementById('cNombre')?.focus();
+    }, 180);
+    return;
+  }
+
+  const matches = TARIFAS.filter(r => r.o === origen && r.t === tipo && (!puertoO || r.po === puertoO) && (!destino || r.pd === destino));
   const tbody   = document.getElementById('qTbody');
   tbody.innerHTML = '';
 
   if (!matches.length) {
-    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:28px;color:rgba(255,255,255,.5);">No se encontraron tarifas para esta combinación. <a href="https://wa.me/51923996689" target="_blank" style="color:var(--orange);">Consúltanos directamente →</a></td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:28px;color:rgba(255,255,255,.55);">Para esta combinación podemos revisar una alternativa personalizada. <button onclick="showTab('contacto')" style="background:none;border:0;color:var(--orange);font-weight:700;cursor:pointer;">Contáctanos directamente →</button></td></tr>`;
   } else {
     matches.forEach((r, i) => {
-      const u      = r.u || '';
-      const total  = (r.base * cant).toFixed(u ? 2 : 0);
-      const disc   = (r.base * cant * 0.5).toFixed(u ? 2 : 0);
-      const waText = encodeURIComponent(`Hola Hub Peru Cargo, me interesa cotizar: ${r.t} ${r.po} → ${r.pd} via ${r.linea}`);
-      const note   = u ? `× ${cant} ${u.split('/')[1]}` : (r.t.startsWith('FCL') ? '/ contenedor' : '');
+      const u          = r.u || '';
+      const moneda     = r.moneda || (u.match(/^[A-Z]{3}/)?.[0]) || 'USD';
+      const unitLabel  = u ? u.replace(/^[A-Z]{3}\s*\/\s*/,'').trim() : '';
+      const decimals   = (r.t === 'LCL' || r.t === 'AEREO') ? 2 : 0;
+      const total      = (r.base * cant).toFixed(decimals);
+      const totalMax   = (r.base * cant * 1.4).toFixed(decimals);
+      const waText     = encodeURIComponent(`Hola Hub Peru Cargo, me interesa cotizar: ${r.t} ${r.po} → ${r.pd} via ${r.linea}`);
+      const note       = unitLabel ? `× ${cant} ${unitLabel}` : (r.t.startsWith('FCL') ? '/ contenedor' : '');
       tbody.innerHTML += `
         <tr>
           <td><span class="tag-opt">Opción ${i+1}</span></td>
           <td>${r.linea}</td>
           <td style="font-size:.8rem">${r.po} → ${r.pd}</td>
           <td><i class="fas fa-clock" style="color:var(--orange);margin-right:5px"></i>${r.dias}</td>
-          <td class="td-price">USD ${Number(total).toLocaleString('es-PE')}<br>
+          <td class="td-price"><div class="price-range"><span>DESDE <strong>${moneda} ${Number(total).toLocaleString('es-PE')}</strong></span><span>HASTA <strong>${moneda} ${Number(totalMax).toLocaleString('es-PE')}</strong></span></div>
             <span style="font-size:.67rem;color:rgba(255,255,255,.4);font-family:var(--font-b);font-weight:400">${note}</span>
           </td>
-          <td class="td-disc">Consultar<small>Hasta 50% desc. s/evaluación</small></td>
+          <td class="td-disc">Consultar<small>Mejor tarifa con asesoría personalizada</small></td>
           <td><a href="https://wa.me/51923996689?text=${waText}" target="_blank" class="btn btn-orange" style="padding:7px 13px;font-size:.73rem"><i class="fab fa-whatsapp"></i> Reservar</a></td>
         </tr>`;
     });
