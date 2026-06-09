@@ -162,15 +162,15 @@ input, select, textarea, button { font-family: var(--font-b); }
   padding: 4px 0;
   box-shadow: 0 4px 30px rgba(0,0,0,.28);
 }
-.navbar .container { display:flex; align-items:center; justify-content:center; gap:12px; }
+.navbar .container { max-width:none; display:flex; align-items:center; justify-content:flex-start; gap:12px; padding:0 26px; }
 
 .nav-logo { display:flex; align-items:center; cursor:pointer; flex-shrink:0; }
 .nav-logo-img-wrap {
   display:flex; align-items:center; justify-content:center;
 }
-.nav-logo-img-wrap img { height:86px; width:auto; display:block; }
+.nav-logo-img-wrap img { height:96px; width:auto; display:block; }
 
-.nav-links { display:flex; align-items:center; gap:2px; }
+.nav-links { display:flex; align-items:center; gap:10px; margin-left:auto; }
 .nav-link {
   padding: 7px 11px; border-radius:8px;
   font-family:var(--font-h); font-weight:600; font-size:.75rem;
@@ -187,13 +187,20 @@ input, select, textarea, button { font-family: var(--font-b); }
 }
 .nav-track i { font-size:.72rem; line-height:1; }
 
-.nav-wa {
-  display:flex; align-items:center; gap:7px; padding:9px 16px;
-  background:#25d366; color:#fff; border-radius:50px;
-  font-family:var(--font-h); font-weight:700; font-size:.8rem;
-  transition:var(--ease); flex-shrink:0; cursor:pointer; border:none;
+.nav-lang {
+  display:inline-flex; align-items:center; gap:3px; padding:5px;
+  border-radius:999px; background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.20); backdrop-filter:blur(8px);
+  flex-shrink:0; margin-left:0;
 }
-.nav-wa:hover { background:#1db855; transform:translateY(-1px); }
+.nav-lang button {
+  min-height:34px; min-width:82px; border:0; border-radius:999px;
+  background:transparent; color:rgba(255,255,255,.72);
+  font-family:var(--font-h); font-size:.72rem; font-weight:900;
+  cursor:pointer; transition:var(--ease);
+}
+.nav-lang button.is-active { background:var(--orange); color:#fff; box-shadow:0 8px 18px rgba(255,128,36,.30); }
+.nav-lang span { color:rgba(255,255,255,.38); font-size:.75rem; }
 
 .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; background:none; border:none; margin-left:auto; }
 .hamburger span { display:block; width:24px; height:2px; background:#fff; border-radius:2px; transition:var(--ease); }
@@ -461,51 +468,19 @@ input, select, textarea, button { font-family: var(--font-b); }
   mask-image:linear-gradient(180deg,transparent,black 18%,black 78%,transparent);
 }
 .services .container { position:relative; z-index:1; }
-.services-head { max-width:890px; margin:0 auto; }
+.services-head { max-width:930px; margin:0 auto; }
 .services .tag { color:var(--hub-orange); }
 .services .h-title { color:#fff; max-width:860px; margin-left:auto; margin-right:auto; }
-.services .h-sub { color:rgba(216,227,236,.82); max-width:760px; }
-.services-block { margin-top:52px; }
-.services-block + .services-block { margin-top:58px; }
-.services-block-head {
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:28px;
-  margin-bottom:24px;
-}
-.services-block-kicker {
-  margin-bottom:7px;
-  color:var(--hub-orange);
-  font-family:var(--font-h);
-  font-size:.76rem;
-  font-weight:900;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-}
-.services-block-head p:last-child {
-  max-width:520px;
-  color:rgba(216,227,236,.78);
-  font-size:.96rem;
-  line-height:1.55;
-}
+.services .h-sub { color:rgba(216,227,236,.82); max-width:820px; }
 .srv-grid {
   display:grid;
-  grid-template-columns:repeat(12,minmax(0,1fr));
-  gap:34px;
-}
-.srv-grid-main {
-  grid-template-columns:minmax(0,1.18fr) minmax(340px,.82fr);
-  grid-template-rows:repeat(2,minmax(250px,1fr));
-}
-.srv-grid-support {
   grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:32px;
+  gap:34px;
+  margin-top:52px;
 }
 .srv-card {
   position:relative;
-  grid-column:span 4;
-  min-height:315px;
+  min-height:330px;
   overflow:hidden;
   border:1px solid rgba(216,227,236,.20);
   border-radius:18px;
@@ -518,18 +493,6 @@ input, select, textarea, button { font-family: var(--font-b); }
 .srv-card:focus-visible {
   outline:3px solid rgba(242,140,40,.82);
   outline-offset:4px;
-}
-.srv-grid-main .srv-card,
-.srv-grid-support .srv-card { grid-column:auto; }
-.srv-grid-main .srv-card.featured {
-  grid-row:1 / span 2;
-  min-height:560px;
-}
-.srv-grid-main .srv-card:not(.featured) { min-height:262px; }
-.srv-grid-support .srv-card,
-.srv-grid-support .srv-card.integral,
-.srv-grid-support .srv-card.complementary {
-  min-height:285px;
 }
 .srv-card.complementary .srv-desc,
 .srv-card.complementary .srv-title { max-width:420px; }
@@ -775,6 +738,15 @@ input, select, textarea, button { font-family: var(--font-b); }
   font-size:.9rem;
 }
 .service-dialog-list li i { color:var(--orange); }
+.service-dialog-section { margin-top:18px; }
+.service-dialog-section h4 {
+  font-family:var(--font-h); color:#083876; font-size:.82rem; font-weight:900;
+  letter-spacing:.10em; text-transform:uppercase; margin-bottom:10px;
+}
+.service-dialog-section p {
+  margin:0 0 24px; padding:14px 16px; border-radius:14px;
+  background:rgba(0,50,114,.06); color:#465365; line-height:1.65;
+}
 .service-modal-actions {
   display:flex;
   flex-wrap:wrap;
@@ -1116,15 +1088,9 @@ input, select, textarea, button { font-family: var(--font-b); }
 ============================================================ */
 @media (max-width:1024px) {
   .navbar .container { justify-content:flex-start; }
-  .nav-wa { display:none; }
-  .srv-grid { gap:28px; }
-  .srv-grid-main { grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:auto; }
-  .srv-grid-main .srv-card.featured { grid-column:1 / -1; grid-row:auto; min-height:390px; }
-  .srv-grid-main .srv-card:not(.featured) { min-height:330px; }
-  .srv-grid-support { grid-template-columns:repeat(2,minmax(0,1fr)); }
-  .srv-grid-support .srv-card,
-  .srv-grid-support .srv-card.integral,
-  .srv-grid-support .srv-card.complementary { min-height:310px; }
+  .navbar > .container > .nav-lang { display:none; }
+  .srv-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px; }
+  .srv-card { min-height:320px; }
   .footer-grid { grid-template-columns:1fr 1fr; gap:32px; }
   .q-form { grid-template-columns:1fr 1fr; }
   .net-hero { grid-template-columns:1fr; text-align:center; }
@@ -1146,7 +1112,7 @@ input, select, textarea, button { font-family: var(--font-b); }
   .navbar { padding:6px 0; }
   .nav-logo-img-wrap img { height:68px; }
   .nav-links { margin-left:0; }
-  .nav-links,.nav-wa { display:none; }
+  .nav-links,.navbar > .container > .nav-lang { display:none; }
   .hamburger { display:flex; }
   .about-grid { grid-template-columns:1fr; gap:36px; }
   .about.sec { padding:64px 0; }
@@ -1165,17 +1131,8 @@ input, select, textarea, button { font-family: var(--font-b); }
   .purpose-mini { padding:18px; }
   .about-img-wrap { max-width:360px; margin:0 auto; }
   .about-badge, .map-badge { bottom:0; right:0; }
-  .services-block { margin-top:42px; }
-  .services-block + .services-block { margin-top:50px; }
-  .services-block-head { display:block; margin-bottom:20px; }
-  .srv-grid,
-  .srv-grid-main,
-  .srv-grid-support { grid-template-columns:1fr; margin-top:0; gap:26px; }
-  .srv-grid-main .srv-card.featured,
-  .srv-grid-main .srv-card:not(.featured),
-  .srv-grid-support .srv-card,
-  .srv-grid-support .srv-card.integral { min-height:360px; }
-  .srv-grid-support .srv-card.complementary { min-height:310px; }
+  .srv-grid { grid-template-columns:1fr; margin-top:38px; gap:26px; }
+  .srv-card { min-height:360px; }
   .srv-content { padding:24px 20px; }
   .service-dialog { grid-template-columns:1fr; max-height:88vh; overflow:auto; }
   .service-dialog-img { min-height:230px; }
@@ -1204,11 +1161,7 @@ input, select, textarea, button { font-family: var(--font-b); }
   .hero h1 { font-size:2.1rem; }
   .hero-btns { flex-direction:column; align-items:center; }
   .hero-stats { grid-template-columns:1fr 1fr; }
-  .srv-grid-main .srv-card.featured,
-  .srv-grid-main .srv-card:not(.featured),
-  .srv-grid-support .srv-card,
-  .srv-grid-support .srv-card.integral { min-height:390px; }
-  .srv-grid-support .srv-card.complementary { min-height:330px; }
+  .srv-card { min-height:390px; }
   .srv-topline { top:18px; left:18px; right:18px; }
   .srv-mark { width:38px; height:38px; border-radius:10px; }
   .service-modal { padding:14px; }
@@ -1241,9 +1194,11 @@ input, select, textarea, button { font-family: var(--font-b); }
       <li><button class="nav-link" data-tab="contacto">Contacto</button></li>
       <li><a class="nav-link nav-track" href="https://nube10.intelisoft.ws/HUBPeruCargo/NET/LoginINTRACKING.aspx" target="_blank" rel="noopener noreferrer"><i class="fas fa-satellite-dish"></i>Tracking</a></li>
     </ul>
-    <a href="https://wa.me/51923996689" class="nav-wa" target="_blank" rel="noopener" id="navWaBtn">
-      <i class="fab fa-whatsapp"></i> WhatsApp
-    </a>
+    <div class="nav-lang" aria-label="Cambiar idioma">
+      <button type="button" data-services-lang="en" aria-label="View in English">English</button>
+      <span>|</span>
+      <button type="button" data-services-lang="es" class="is-active" aria-label="Ver en español">Español</button>
+    </div>
     <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
   </div>
 </nav>
@@ -1258,9 +1213,11 @@ input, select, textarea, button { font-family: var(--font-b); }
   <button class="nav-link" data-tab="clientes">Clientes</button>
   <button class="nav-link" data-tab="contacto">Contacto</button>
   <a class="nav-link nav-track" href="https://nube10.intelisoft.ws/HUBPeruCargo/NET/LoginINTRACKING.aspx" target="_blank" rel="noopener noreferrer"><i class="fas fa-satellite-dish"></i>Tracking Online</a>
-  <a href="https://wa.me/51923996689" class="btn btn-orange" target="_blank">
-    <i class="fab fa-whatsapp"></i> WhatsApp
-  </a>
+  <div class="nav-lang" aria-label="Cambiar idioma">
+    <button type="button" data-services-lang="en" aria-label="View in English">English</button>
+    <span>|</span>
+    <button type="button" data-services-lang="es" class="is-active" aria-label="Ver en español">Español</button>
+  </div>
 </div>
 
 <!-- ============================================================
@@ -1448,13 +1405,12 @@ input, select, textarea, button { font-family: var(--font-b); }
     <section class="services sec">
       <div class="container">
         <div class="services-head tc reveal">
-          <p class="tag">OFRECEMOS</p>
-          <h2 class="h-title">Soluciones logísticas para mover tu carga <span style="color:var(--orange)">sin fricciones</span></h2>
-          <p class="h-sub center">Coordinamos operaciones marítimas, aéreas y terrestres con seguimiento, respaldo documentario y asesoría especializada para importadores y exportadores.</p>
+          <p class="tag" data-service-i18n="eyebrow">OFRECEMOS</p>
+          <h2 class="h-title" data-service-i18n="title">Soluciones logísticas para mover tu carga sin fricciones</h2>
+          <p class="h-sub center" data-service-i18n="subtitle">Coordinamos transporte internacional, soluciones Door to Door y servicios complementarios para importadores, exportadores y agencias de carga que necesitan eficiencia, trazabilidad y respaldo operativo.</p>
         </div>
-        <div class="services-block">
-          <div class="srv-grid srv-grid-main" aria-label="Servicios principales de Hub Peru Cargo">
-          <article class="srv-card featured reveal" data-service-card data-service-key="maritimo" role="button" tabindex="0" aria-label="Ver solución de Transporte de Carga Marítima Internacional" data-track="service_view_maritimo">
+        <div class="srv-grid" aria-label="Servicios logísticos de Hub Peru Cargo">
+          <article class="srv-card reveal" data-service-card data-service-key="maritimo" role="button" tabindex="0" aria-label="Ver solución de Transporte de Carga Marítima Internacional" data-track="service_view_maritimo">
             <img class="srv-image" src="assets/img/servicio-maritimo.png" alt="Buque portacontenedores en operación de carga marítima internacional" loading="lazy">
             <div class="srv-content">
               <div class="srv-topline">
@@ -1462,7 +1418,7 @@ input, select, textarea, button { font-family: var(--font-b); }
                 <span class="srv-mark"><i class="fas fa-ship"></i></span>
               </div>
               <h3 class="srv-title">Transporte de Carga Marítima Internacional</h3>
-              <p class="srv-desc">Conectamos tu carga con los principales puertos del mundo.</p>
+              <p class="srv-desc">Soluciones FCL y LCL para importaciones y exportaciones desde los principales puertos del mundo.</p>
               <button class="srv-action" type="button">Ver solución</button>
             </div>
           </article>
@@ -1474,7 +1430,7 @@ input, select, textarea, button { font-family: var(--font-b); }
                 <span class="srv-mark"><i class="fas fa-plane"></i></span>
               </div>
               <h3 class="srv-title">Transporte de Carga Aérea Internacional</h3>
-              <p class="srv-desc">Envíos rápidos para carga urgente o sensible.</p>
+              <p class="srv-desc">Soluciones rápidas para carga sensible, prioritaria o de alto valor.</p>
               <button class="srv-action" type="button">Ver solución</button>
             </div>
           </article>
@@ -1486,15 +1442,10 @@ input, select, textarea, button { font-family: var(--font-b); }
                 <span class="srv-mark"><i class="fas fa-truck"></i></span>
               </div>
               <h3 class="srv-title">Transporte de Carga Terrestre</h3>
-              <p class="srv-desc">Coordinación local y nacional con control operativo.</p>
+              <p class="srv-desc">Transporte nacional e internacional con control operativo y seguimiento GPS.</p>
               <button class="srv-action" type="button">Ver solución</button>
             </div>
           </article>
-          </div>
-        </div>
-
-        <div class="services-block">
-          <div class="srv-grid srv-grid-support" aria-label="Soluciones complementarias de Hub Peru Cargo">
           <article class="srv-card reveal d1" data-service-card data-service-key="seguros" role="button" tabindex="0" aria-label="Ver solución de Seguros de Carga" data-track="service_view_seguros">
             <img class="srv-image" src="assets/img/servicio-seguros.png" alt="Operación portuaria con contenedor asegurado" loading="lazy">
             <div class="srv-content">
@@ -1511,11 +1462,11 @@ input, select, textarea, button { font-family: var(--font-b); }
             <img class="srv-image" src="assets/img/servicio-integral.png" alt="Terminal logística internacional con nave, avión y camiones" loading="lazy">
             <div class="srv-content">
               <div class="srv-topline">
-                <span class="srv-chip"><i class="fas fa-layer-group"></i> End-to-End</span>
+                <span class="srv-chip"><i class="fas fa-layer-group"></i> Door to Door</span>
                 <span class="srv-mark"><i class="fas fa-network-wired"></i></span>
               </div>
               <h3 class="srv-title">Servicio Logístico Integral</h3>
-              <p class="srv-desc">Coordinamos tu operación logística de inicio a fin.</p>
+              <p class="srv-desc">Servicio Door to Door para coordinar tu operación completa.</p>
               <button class="srv-action" type="button">Ver solución</button>
             </div>
           </article>
@@ -1527,16 +1478,10 @@ input, select, textarea, button { font-family: var(--font-b); }
                 <span class="srv-mark"><i class="fas fa-handshake-angle"></i></span>
               </div>
               <h3 class="srv-title">Servicios Complementarios</h3>
-              <p class="srv-desc">Aduanas, asesoría comercial internacional y courier.</p>
+              <p class="srv-desc">Agenciamiento de aduanas, asesoría en comercio internacional y courier.</p>
               <button class="srv-action" type="button">Ver solución</button>
             </div>
           </article>
-          </div>
-        </div>
-        <div class="services-cta tc reveal">
-          <button class="btn btn-orange" onclick="showTab('contacto')" data-track="servicios_cta_contacto">
-            <i class="fas fa-file-invoice-dollar"></i> Solicita una cotización
-          </button>
         </div>
       </div>
       <div class="service-modal" id="serviceModal" aria-hidden="true">
@@ -1551,7 +1496,9 @@ input, select, textarea, button { font-family: var(--font-b); }
             <span class="service-dialog-tag" id="serviceModalTag">Servicio logístico</span>
             <h3 id="serviceModalTitle">Servicio logístico</h3>
             <p id="serviceModalText"></p>
-            <ul class="service-dialog-list" id="serviceModalList"></ul>
+            <div class="service-dialog-section">
+              <ul class="service-dialog-list" id="serviceModalList"></ul>
+            </div>
             <div class="service-modal-actions">
               <a class="btn btn-orange" id="serviceModalWa" href="#" target="_blank" rel="noopener">
                 <i class="fab fa-whatsapp"></i> Solicitar cotización
@@ -1616,14 +1563,14 @@ input, select, textarea, button { font-family: var(--font-b); }
             <div class="net-icon"><i class="fas fa-ship"></i></div>
             <h3>Co-loading & Consolidación</h3>
             <span class="h3-en">Co-loading & Consolidation</span>
-            <p>Compartimos espacios en contenedores FCL y servicios LCL consolidados desde los principales puertos del mundo hacia Callao, Paita y más.</p>
+            <p>Consolidamos espacios en contenedores FCL y servicios LCL consolidados desde los principales puertos del mundo hacia Callao, Paita y más.</p>
           </div>
 
           <div class="net-card reveal d2">
             <div class="net-icon"><i class="fas fa-file-contract"></i></div>
             <h3>Despacho Aduanero Local</h3>
             <span class="h3-en">Local Customs Clearance</span>
-            <p>Agencia de Aduana licenciada ante SUNAT. Gestionamos importaciones y exportaciones bajo los más altos estándares de compliance peruano.</p>
+            <p>Ofrecemos la nacionalización integral de tus productos. Gestionamos importaciones y exportaciones bajo los más altos estándares de compliance peruano.</p>
           </div>
 
           <div class="net-card reveal">
@@ -2358,56 +2305,311 @@ document.querySelectorAll('[data-tab]').forEach(el => {
   });
 });
 
-// Modal de servicios. Cambia este número si se actualiza el WhatsApp comercial.
-const SERVICE_WHATSAPP_NUMBER = '51923996689';
-const SERVICE_DETAILS = {
-  maritimo: {
-    tag: 'FCL / LCL',
-    title: 'Transporte de Carga Marítima Internacional',
-    image: 'assets/img/servicio-maritimo.png',
-    alt: 'Buque portacontenedores en operación de carga marítima internacional',
-    text: 'Movemos carga FCL y LCL desde los principales puertos del mundo hacia Perú, optimizando costos, tiempos y coordinación documental.',
-    points: ['FCL y LCL', "Contenedores 20', 40', HC y Reefer", 'Importación y exportación', 'Seguimiento de embarque']
+// Modal y traducción manual de Servicios. Cambia este número si se actualiza el WhatsApp comercial.
+const SERVICE_WHATSAPP_NUMBER = '51999999999';
+const SERVICE_LANG_KEY = 'hpc_services_lang';
+const GLOBAL_TRANSLATIONS = {
+  'Inicio':'Home',
+  'Servicios':'Services',
+  'Tarifario':'Rates',
+  'Clientes':'Clients',
+  'Contacto':'Contact',
+  'Tracking':'Tracking',
+  'Tracking Online':'Online Tracking',
+  'Conectando el Perú con el Mundo':'Connecting Peru with the World',
+  'Soluciones logísticas internacionales para importaciones y exportaciones. Coordinamos carga marítima, aérea y terrestre con trazabilidad, seguridad y atención cercana.':'International logistics solutions for imports and exports. We coordinate ocean, air and ground cargo with traceability, security and close support.',
+  'Cotizar ahora':'Quote now',
+  'Ver servicios':'View services',
+  'Años de experiencia':'Years of experience',
+  'Clientes satisfechos':'Satisfied clients',
+  'Países conectados':'Connected countries',
+  'Embarques exitosos':'Successful shipments',
+  'Sobre Nosotros':'About Us',
+  'Somos':'We are',
+  'Somos una agencia de carga internacional fundada en 2017, especializada en soluciones logísticas para importaciones y exportaciones.':'We are an international freight agency founded in 2017, specialized in logistics solutions for imports and exports.',
+  'Acompañamos a nuestros clientes con coordinación experta, atención cercana y procesos diseñados para que cada operación avance con seguridad y eficiencia.':'We support our clients with expert coordination, close service and processes designed so every operation moves forward safely and efficiently.',
+  'Nuestra meta es ser un socio logístico confiable para empresas que buscan crecer conectando su carga con el mundo.':'Our goal is to be a reliable logistics partner for companies seeking to grow by connecting their cargo with the world.',
+  'Respaldo y confianza':'Trust and support',
+  'Respaldamos cada operación con procesos seguros y aliados estratégicos':'We support every operation with secure processes and strategic partners',
+  'Combinamos certificaciones, trazabilidad y una red de aliados para brindar una experiencia logística más segura, clara y confiable.':'We combine certifications, traceability and a network of partners to provide a safer, clearer and more reliable logistics experience.',
+  'Certificación BASC y alianza Twig':'BASC certification and Twig alliance',
+  'Respaldo operativo para fortalecer la seguridad, confianza y calidad en nuestras operaciones logísticas internacionales.':'Operational support to strengthen safety, trust and quality across our international logistics operations.',
+  'Empresa certificada BASC · Código PERLIM01286':'BASC certified company · Code PERLIM01286',
+  'Alianza / plataforma Twig':'Twig alliance / platform',
+  'Tecnología y soporte para operaciones logísticas.':'Technology and support for logistics operations.',
+  'Seguimiento en tiempo real':'Real-time tracking',
+  'Información clara sobre el avance de tus embarques.':'Clear information about the progress of your shipments.',
+  'Red de aliados':'Partner network',
+  'Agentes y operadores conectados para operaciones internacionales.':'Agents and operators connected for international operations.',
+  'Nuestro compromiso':'Our commitment',
+  'Operamos con seguridad, trazabilidad y respaldo internacional':'We operate with safety, traceability and international support',
+  'Cada embarque requiere coordinación, documentación clara y seguimiento constante. Por eso trabajamos con procesos ordenados, atención cercana y aliados estratégicos para acompañar tu operación de inicio a fin.':'Every shipment requires coordination, clear documentation and constant follow-up. That is why we work with orderly processes, close service and strategic partners to support your operation from start to finish.',
+  'Control documental':'Document control',
+  'Atención cercana':'Close support',
+  'Gestión internacional':'International management',
+  'Entrega segura':'Secure delivery',
+  'Validación de carga':'Cargo validation',
+  'Seguimiento operativo':'Operational tracking',
+  'Trazabilidad constante':'Constant traceability',
+  'Coordinación con el cliente':'Client coordination',
+  'Seguridad logística':'Logistics security',
+  'Aplicamos procesos orientados al control, la documentación y la protección de la carga en cada etapa de la operación.':'We apply processes focused on control, documentation and cargo protection at every stage of the operation.',
+  'Mantenemos comunicación clara y oportuna para que conozcas el avance de tu embarque cuando lo necesites.':'We maintain clear and timely communication so you know the status of your shipment whenever you need it.',
+  'Red internacional':'International network',
+  'Conectamos tu carga con agentes, navieras y aliados estratégicos para gestionar operaciones desde y hacia distintos mercados.':'We connect your cargo with agents, carriers and strategic partners to manage operations to and from different markets.',
+  'Misión':'Mission',
+  'Visión':'Vision',
+  'Brindar soluciones logísticas integrales, eficientes y seguras para empresas que realizan operaciones de comercio internacional.':'Provide comprehensive, efficient and secure logistics solutions for companies involved in international trade operations.',
+  'Ser un socio logístico confiable, reconocido por la calidad de servicio, innovación y compromiso con nuestros clientes.':'Be a reliable logistics partner, recognized for service quality, innovation and commitment to our clients.',
+  '¿Cómo funciona?':'How does it work?',
+  'La cadena logística':'The logistics chain',
+  'a tu disposición':'at your disposal',
+  'Cuéntanos tu operación':'Tell us about your operation',
+  'Comparte origen, destino, tipo de carga y necesidad logística.':'Share origin, destination, cargo type and logistics needs.',
+  'Diseñamos tu solución':'We design your solution',
+  'Nuestro equipo propone la mejor ruta y el servicio adecuado para tu embarque.':'Our team proposes the best route and the right service for your shipment.',
+  'Coordinamos y hacemos seguimiento':'We coordinate and track',
+  'Ejecutamos la operación con comunicación constante y trazabilidad.':'We execute the operation with constant communication and traceability.',
+  'Tu Aliado Estratégico en':'Your Strategic Partner in',
+  'Logística Internacional':'International Logistics',
+  'Conectamos tu empresa con el mundo. Operamos como tu agente local en Perú con acceso a redes globales de freight forwarders, navieras y aerolíneas.':'We connect your company with the world. We operate as your local agent in Peru with access to global networks of freight forwarders, carriers and airlines.',
+  'Países Activos':'Active Countries',
+  'Socios Globales':'Global Partners',
+  'Soporte Operativo':'Operational Support',
+  'Certificados':'Certified',
+  'Agente Local Exclusivo':'Exclusive Local Agent',
+  'Actuamos como tu representante exclusivo en Perú. Gestionamos operaciones locales con la misma calidad y estándares que tus clientes esperan de ti.':'We act as your exclusive representative in Peru. We manage local operations with the same quality and standards your clients expect from you.',
+  'Co-loading & Consolidación':'Co-loading & Consolidation',
+  'Consolidamos espacios en contenedores FCL y servicios LCL consolidados desde los principales puertos del mundo hacia Callao, Paita y más.':'We consolidate space in FCL containers and consolidated LCL services from major ports worldwide to Callao, Paita and more.',
+  'Aduanas & Compliance':'Customs & Compliance',
+  'Ofrecemos la nacionalización integral de tus productos. Gestionamos importaciones y exportaciones bajo los más altos estándares de compliance peruano.':'We provide comprehensive product nationalization. We manage imports and exports under the highest Peruvian compliance standards.',
+  'Operaciones Aéreas':'Air Operations',
+  'Manejo de carga aérea en el aeropuerto Jorge Chávez (LIM). Coordinamos con las principales aerolíneas cargo para entregas express y prioritarias.':'Air cargo handling at Jorge Chávez Airport (LIM). We coordinate with major cargo airlines for express and priority deliveries.',
+  'Certificación BASC':'BASC Certification',
+  'Certificación N° PERLIM01286. Cumplimos con los más altos estándares de seguridad en la cadena de suministro para comercio exterior.':'Certification No. PERLIM01286. We comply with the highest supply chain security standards for foreign trade.',
+  'Tracking en Tiempo Real':'Real-Time Tracking',
+  'Portal de rastreo integrado para que tú y tus clientes monitoreen cada embarque en tiempo real. Visibilidad total de la cadena logística.':'Integrated tracking portal so you and your clients can monitor each shipment in real time. Full visibility of the logistics chain.',
+  '¿Listo para':'Ready to',
+  'Hacer Negocios?':'Do Business?',
+  'Contáctanos directamente. Nuestro Pricing Specialist responde en menos de 2 horas hábiles para evaluar tu operación y proponer la mejor estructura de alianza.':'Contact us directly. Our Pricing Specialist responds in less than 2 business hours to evaluate your operation and propose the best partnership structure.',
+  'Contactar por Email':'Contact by Email',
+  'WhatsApp Directo':'Direct WhatsApp',
+  'Sin costo de afiliación':'No membership cost',
+  'Respuesta en <2 horas hábiles':'Response in <2 business hours',
+  'Operamos desde Lima, Perú':'We operate from Lima, Peru',
+  '+10 años de experiencia':'+10 years of experience',
+  'COTIZA TU SERVICIO':'QUOTE YOUR SERVICE',
+  'Consulta nuestras tarifas':'Check our rates',
+  'Revisa nuestras tarifas referenciales actualizadas. Para obtener una tarifa personalizada según tu operación, contáctanos y recibe una atención más precisa.':'Review our updated reference rates. To obtain a personalized rate for your operation, contact us and receive more precise assistance.',
+  'Ver tarifas fijas':'View fixed rates',
+  'Quienes confían en nosotros':'Who trusts us',
+  'Nuestros clientes,':'Our clients,',
+  'nuestra razón de ser':'our reason for being',
+  'Empresas líderes que apuestan por nuestro servicio de calidad para sus operaciones de comercio exterior.':'Leading companies that trust our quality service for their foreign trade operations.',
+  'Únete a nuestros clientes':'Join our clients',
+  '¿Listo para iniciar':'Ready to start',
+  'tu operación?':'your operation?',
+  'Brindamos atención exclusiva a empresas. ¡Contáctanos y te asesoramos sin costo!':'We provide exclusive service for companies. Contact us and receive advice at no cost!',
+  'Oficina Principal':'Main Office',
+  'Lima, Perú':'Lima, Peru',
+  'Envíanos un Mensaje':'Send us a Message',
+  'Nombre completo *':'Full name *',
+  'Empresa *':'Company *',
+  'Email *':'Email *',
+  'Teléfono':'Phone',
+  'Tipo de Servicio':'Service Type',
+  'Mensaje *':'Message *',
+  'Enviar Mensaje':'Send Message',
+  'Tu nombre':'Your name',
+  'Nombre de empresa':'Company name',
+  'Cuéntanos sobre tu operación...':'Tell us about your operation...',
+  'Seleccionar servicio...':'Select service...',
+  'Importación FCL':'FCL Import',
+  'Importación LCL':'LCL Import',
+  'Exportación FCL':'FCL Export',
+  'Exportación LCL':'LCL Export',
+  'Consulta General':'General Inquiry',
+  '— Seleccionar —':'— Select —',
+  '— Primero selecciona país —':'— Select country first —',
+  'Estados Unidos':'United States',
+  'Reino Unido':'United Kingdom',
+  'España':'Spain',
+  'México':'Mexico',
+  'Japón':'Japan',
+  'Corea del Sur':'South Korea',
+  'Alemania':'Germany',
+  'Turquía':'Turkey',
+  'Perú (destino principal)':'Peru (main destination)',
+  'FCL — Contenedor 20\'':'FCL — 20\' Container',
+  'FCL — Contenedor 40\'':'FCL — 40\' Container',
+  'LCL — Carga suelta (CBM)':'LCL — Loose cargo (CBM)',
+  'Flete Aéreo (kg)':'Air Freight (kg)',
+  'Callao, Perú':'Callao, Peru',
+  'Paita, Perú':'Paita, Peru',
+  'Carga General':'General Cargo',
+  'Carga Peligrosa (IMO)':'Dangerous Cargo (IMO)',
+  'Refrigerada / Reefer':'Refrigerated / Reefer',
+  'Sobredimensionada / OOG':'Oversized / OOG',
+  'Ej: 1':'Ex: 1',
+  'Ej: 15000':'Ex: 15000',
+  'Libro de Reclamaciones Virtual':'Virtual Complaints Book',
+  'Registra tu reclamo conforme a la normativa peruana. Nuestro equipo evaluará tu caso y se comunicará contigo dentro de los plazos establecidos.':'Submit your complaint according to Peruvian regulations. Our team will review your case and contact you within the established deadlines.',
+  'Datos del consumidor':'Consumer information',
+  'Apellidos y Nombres':'Full Name',
+  'Apellidos y Nombres completos':'Complete full name',
+  'Domicilio':'Address',
+  'Dirección completa':'Complete address',
+  'Correo Electrónico':'Email',
+  'Datos del bien contratado':'Service information',
+  'Monto Reclamado (USD)':'Claimed Amount (USD)',
+  'N° Pedido / BL':'Order No. / BL',
+  'Número de referencia':'Reference number',
+  'Servicio Contratado':'Contracted Service',
+  'Detalle del reclamo':'Complaint details',
+  'Describe los hechos: fecha, circunstancias y cualquier información relevante...':'Describe the facts: date, circumstances and any relevant information...',
+  '¿Qué solución o compensación esperas de Hub Peru Cargo?':'What solution or compensation do you expect from Hub Peru Cargo?',
+  'Registrar Reclamo':'Submit Complaint',
+  'Agencia de carga internacional fundada en 2017. Conectamos tu negocio con el mundo a través de soluciones logísticas de calidad, eficiencia y confianza.':'International freight agency founded in 2017. We connect your business with the world through quality, efficient and trustworthy logistics solutions.',
+  'Servicios Principales':'Main Services',
+  'Flete Marítimo FCL':'Ocean Freight FCL',
+  'Flete Marítimo LCL':'Ocean Freight LCL',
+  'Flete Aéreo':'Air Freight',
+  'Agenciamiento Aduanero':'Customs Brokerage',
+  'Transporte Local':'Local Transport',
+  'Seguro de Carga':'Cargo Insurance',
+  'Enlaces Rápidos':'Quick Links',
+  'Nuestros Clientes':'Our Clients',
+  'Portal Clientes':'Client Portal',
+  'Legal':'Legal',
+  'Libro de Reclamaciones':'Complaints Book',
+  'Política de Seguridad BASC':'BASC Security Policy',
+  'Privacidad':'Privacy',
+  'Cookies':'Cookies',
+  'Contacto Directo':'Direct Contact',
+  'Configurar cookies':'Configure cookies',
+  'Navegación principal':'Main navigation',
+  'Navegación móvil':'Mobile navigation',
+  'Cambiar idioma':'Change language',
+  'Ver en español':'View in Spanish',
+  'View in English':'View in English',
+  'Servicios logísticos de Hub Peru Cargo':'Hub Peru Cargo logistics services',
+  'Abrir Política de Seguridad BASC en PDF':'Open BASC Security Policy PDF',
+  'Libro de Reclamaciones':'Complaints Book'
+};
+const SERVICE_ASSETS = {
+  maritimo: { image:'assets/img/servicio-maritimo.png', alt:'Buque portacontenedores en operación de carga marítima internacional', icon:'fas fa-ship', chipIcon:'fas fa-anchor' },
+  aereo: { image:'assets/img/servicio-aereo.png', alt:'Avión de carga en plataforma aeroportuaria al atardecer', icon:'fas fa-plane', chipIcon:'fas fa-clock' },
+  terrestre: { image:'assets/img/servicio-terrestre.png', alt:'Camión de carga transitando por ruta logística', icon:'fas fa-truck', chipIcon:'fas fa-route' },
+  seguros: { image:'assets/img/servicio-seguros.png', alt:'Operación portuaria con contenedor asegurado', icon:'fas fa-lock', chipIcon:'fas fa-shield-halved' },
+  integral: { image:'assets/img/servicio-integral.png', alt:'Terminal logística internacional con nave, avión y camiones', icon:'fas fa-network-wired', chipIcon:'fas fa-layer-group' },
+  complementarios: { image:'assets/img/servicio-complementarios.png', alt:'Operador logístico coordinando servicios complementarios en terminal de carga', icon:'fas fa-handshake-angle', chipIcon:'fas fa-briefcase' }
+};
+const SERVICES_COPY = {
+  es: {
+    eyebrow:'OFRECEMOS',
+    title:'Soluciones logísticas para mover tu carga sin fricciones',
+    subtitle:'Coordinamos transporte internacional, soluciones Door to Door y servicios complementarios para importadores, exportadores y agencias de carga que necesitan eficiencia, trazabilidad y respaldo operativo.',
+    solutionButton:'Ver solución',
+    quoteButton:'Solicitar cotización',
+    closeButton:'Cerrar',
+    waText:'Hola Hub Peru Cargo, quiero cotizar un servicio logístico',
+    cards: {
+      maritimo: {
+        tag:'FCL / LCL',
+        title:'Transporte de Carga Marítima Internacional',
+        card:'Soluciones FCL y LCL para importaciones y exportaciones desde los principales puertos del mundo.',
+        text:'Coordinamos embarques marítimos internacionales FCL y LCL, conectando origen y destino con seguimiento operativo, soporte documentario y alternativas según volumen, ruta y tipo de mercancía.',
+        points:['Carga FCL y LCL','Carga sobredimensionada, IMO y reefer','Importación y exportación','Coordinación con navieras y agentes internacionales','Seguimiento del embarque','Soporte documentario']
+      },
+      aereo: {
+        tag:'Prioritario',
+        title:'Transporte de Carga Aérea Internacional',
+        card:'Soluciones rápidas para carga sensible, prioritaria o de alto valor.',
+        text:'Gestionamos embarques aéreos internacionales para mercancía sensible o productos de alto valor, priorizando rapidez, seguridad y trazabilidad.',
+        points:['Carga sensible o de alto valor','Carga priority','Carga consolidada aérea','Servicio courier','Carga B2B']
+      },
+      terrestre: {
+        tag:'GPS',
+        title:'Transporte de Carga Terrestre',
+        card:'Transporte nacional e internacional con control operativo y seguimiento GPS.',
+        text:'Coordinamos transporte terrestre nacional e internacional, conectando puertos, aeropuertos, almacenes, depósitos y destinos finales con seguimiento vía GPS y comunicación operativa constante.',
+        points:['Transporte nacional e internacional','Retiro y entrega de carga','Traslado desde puerto, aeropuerto o almacén','Seguimiento vía GPS','Coordinación de unidades según operación']
+      },
+      seguros: {
+        tag:'Protección',
+        title:'Seguros de Carga',
+        card:'Protección para tu mercancía durante el transporte.',
+        text:'Brindamos protección para mercancías durante el transporte internacional, ayudando a reducir riesgos asociados a daños, pérdidas o imprevistos durante la operación logística.',
+        points:['Protección de mercancía','Cobertura según tipo de operación','Soporte documentario','Asesoría según tipo de carga','Mayor seguridad durante el traslado']
+      },
+      integral: {
+        tag:'Door to Door',
+        title:'Servicio Logístico Integral',
+        card:'Servicio Door to Door para coordinar tu operación completa.',
+        text:'Brindamos una gestión logística integral para operaciones Door to Door, coordinando procesos operativos, documentarios y servicios clave como Visto Bueno, Gate In, almacenes y depósitos temporales.',
+        points:['Servicio Door to Door','Gestión de Visto Bueno','Coordinación de Gate In','Coordinación con almacenes y depósitos','Seguimiento operativo de la carga']
+      },
+      complementarios: {
+        tag:'Soporte',
+        title:'Servicios Complementarios',
+        card:'Agenciamiento de aduanas, asesoría en comercio internacional y courier.',
+        text:'Complementamos tu operación logística con servicios adicionales que facilitan la gestión aduanera, la asesoría comercial internacional y el envío de documentación o paquetes.',
+        points:['Agenciamiento de aduanas','Asesoría en comercio internacional','Courier','Soporte documentario','Coordinación con aliados especializados']
+      }
+    }
   },
-  aereo: {
-    tag: 'Carga urgente',
-    title: 'Transporte de Carga Aérea Internacional',
-    image: 'assets/img/servicio-aereo.png',
-    alt: 'Avión de carga en plataforma aeroportuaria al atardecer',
-    text: 'Soluciones rápidas para mercancías urgentes, sensibles o de alto valor, con coordinación especializada en cada etapa del envío.',
-    points: ['Carga urgente', 'Carga de alto valor', 'Coordinación documental', 'Atención prioritaria']
-  },
-  terrestre: {
-    tag: 'Distribución local',
-    title: 'Transporte de Carga Terrestre',
-    image: 'assets/img/servicio-terrestre.png',
-    alt: 'Camión de carga transitando por ruta logística',
-    text: 'Coordinamos el traslado local y nacional de tu carga, conectando puerto, aeropuerto, almacén y destino final con control operativo.',
-    points: ['Retiro y entrega de carga', 'Distribución local', 'Coordinación de rutas', 'Seguimiento operativo']
-  },
-  seguros: {
-    tag: 'Protección de mercancía',
-    title: 'Seguros de Carga',
-    image: 'assets/img/servicio-seguros.png',
-    alt: 'Operación portuaria con contenedor asegurado',
-    text: 'Protegemos tu mercancía frente a riesgos durante el transporte internacional, brindándote mayor seguridad en cada operación.',
-    points: ['Cobertura para importación y exportación', 'Protección ante daños o pérdidas', 'Asesoría según tipo de carga', 'Gestión documentaria']
-  },
-  integral: {
-    tag: 'End-to-End',
-    title: 'Servicio Logístico Integral',
-    image: 'assets/img/servicio-integral.png',
-    alt: 'Terminal logística internacional con nave, avión y camiones',
-    text: 'Gestionamos tu operación de inicio a fin: transporte internacional, coordinación local, documentos, seguimiento y soluciones complementarias.',
-    points: ['Coordinación end-to-end', 'Asesoría operativa', 'Control documentario', 'Soluciones a medida']
-  },
-  complementarios: {
-    tag: 'Soporte estratégico',
-    title: 'Servicios Complementarios',
-    image: 'assets/img/servicio-complementarios.png',
-    alt: 'Operador logístico coordinando servicios complementarios en terminal de carga',
-    text: 'Brindamos soluciones adicionales que fortalecen tu operación logística, coordinando procesos aduaneros, asesoría especializada y envíos courier con aliados estratégicos y atención personalizada.',
-    points: ['Agenciamiento de Aduanas mediante aliados especializados', 'Asesoría en Comercio Internacional', 'Courier Internacional para documentos y paquetes', 'Soporte y coordinación operativa complementaria']
+  en: {
+    eyebrow:'WE OFFER',
+    title:'Logistics solutions to move your cargo without friction',
+    subtitle:'We coordinate international freight, Door to Door solutions and complementary services for importers, exporters and freight agencies that require efficiency, traceability and operational support.',
+    solutionButton:'View solution',
+    quoteButton:'Request a quote',
+    closeButton:'Close',
+    waText:'Hello Hub Peru Cargo, I want to quote a logistics service',
+    cards: {
+      maritimo: {
+        tag:'FCL / LCL',
+        title:'International Ocean Freight',
+        card:'FCL and LCL solutions for imports and exports from major ports worldwide.',
+        text:'We coordinate international ocean freight shipments in FCL and LCL, connecting origin and destination with operational tracking, document support and alternatives based on volume, route and cargo type.',
+        points:['FCL and LCL cargo','Oversized, IMO and reefer cargo','Imports and exports','Coordination with carriers and international agents','Shipment tracking','Document support']
+      },
+      aereo: {
+        tag:'Priority',
+        title:'International Air Freight',
+        card:'Fast solutions for sensitive, priority or high-value cargo.',
+        text:'We manage international air shipments for sensitive goods or high-value products, prioritizing speed, safety and traceability.',
+        points:['Sensitive or high-value cargo','Priority cargo','Consolidated air cargo','Courier service','B2B cargo']
+      },
+      terrestre: {
+        tag:'GPS',
+        title:'Ground Freight',
+        card:'National and international ground transport with operational control and GPS tracking.',
+        text:'We coordinate national and international ground transport, connecting ports, airports, warehouses, depots and final destinations with GPS tracking and constant operational communication.',
+        points:['National and international transport','Cargo pickup and delivery','Transport from port, airport or warehouse','GPS tracking','Unit coordination according to the operation']
+      },
+      seguros: {
+        tag:'Protection',
+        title:'Cargo Insurance',
+        card:'Protection for your goods during transit.',
+        text:'We provide protection for goods during international transport, helping reduce risks related to damage, loss or unexpected events during the logistics operation.',
+        points:['Cargo protection','Coverage according to operation type','Document support','Advisory according to cargo type','Greater security during transit']
+      },
+      integral: {
+        tag:'Door to Door',
+        title:'Integrated Logistics Service',
+        card:'Door to Door service to coordinate your full operation.',
+        text:'We provide integrated logistics management for Door to Door operations, coordinating operational and document processes as well as key services such as Visto Bueno, Gate In, warehouses and temporary depots.',
+        points:['Door to Door service','Visto Bueno management','Gate In coordination','Coordination with warehouses and depots','Operational cargo tracking']
+      },
+      complementarios: {
+        tag:'Support',
+        title:'Complementary Services',
+        card:'Customs brokerage, international trade advisory and courier.',
+        text:'We complement your logistics operation with additional services that support customs management, international trade advisory and the shipment of documentation or packages.',
+        points:['Customs brokerage','International trade advisory','Courier','Document support','Coordination with specialized partners']
+      }
+    }
   }
 };
 
@@ -2418,28 +2620,127 @@ const serviceModalText = document.getElementById('serviceModalText');
 const serviceModalImg = document.getElementById('serviceModalImg');
 const serviceModalList = document.getElementById('serviceModalList');
 const serviceModalWa = document.getElementById('serviceModalWa');
+let activeServicesLang = localStorage.getItem(SERVICE_LANG_KEY) === 'en' ? 'en' : 'es';
+let activeServiceKey = null;
 let lastServiceTrigger = null;
 
-function openServiceModal(key, trigger) {
-  const service = SERVICE_DETAILS[key];
-  if (!service || !serviceModal) return;
+function normalizeTextForLang(text) {
+  return String(text || '').replace(/\s+/g, ' ').trim();
+}
 
-  lastServiceTrigger = trigger || null;
+function translateTextNode(node, lang) {
+  if (!node.parentElement) return;
+  const current = normalizeTextForLang(node.nodeValue);
+  if (!current) return;
+  const original = node.__hpcOriginalText || current;
+  if (!original) return;
+  if (!node.__hpcOriginalText) node.__hpcOriginalText = original;
+  const nextText = lang === 'es' ? original : (GLOBAL_TRANSLATIONS[original] || original);
+  if (current !== nextText) node.nodeValue = node.nodeValue.replace(current, nextText);
+}
+
+function translateAttribute(el, attr, lang) {
+  const currentValue = el.getAttribute(attr);
+  const current = normalizeTextForLang(currentValue);
+  if (!current) return;
+  const key = `hpcI18n${attr.replace(/[^a-z]/gi, '')}`;
+  const original = el.dataset[key] || current;
+  if (!el.dataset[key]) el.dataset[key] = original;
+  const nextText = lang === 'es' ? original : (GLOBAL_TRANSLATIONS[original] || original);
+  if (current !== nextText) el.setAttribute(attr, currentValue.replace(current, nextText));
+}
+
+function applyGlobalStaticLanguage(lang) {
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      const parent = node.parentElement;
+      if (!parent) return NodeFilter.FILTER_REJECT;
+      const tag = parent.tagName;
+      if (['SCRIPT','STYLE','NOSCRIPT','OPTION'].includes(tag)) return NodeFilter.FILTER_REJECT;
+      if (parent.closest('.services')) return NodeFilter.FILTER_REJECT;
+      if (!normalizeTextForLang(node.nodeValue)) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(node => translateTextNode(node, lang));
+
+  document.querySelectorAll('option').forEach(option => {
+    const original = option.dataset.i18nOriginalText || normalizeTextForLang(option.textContent);
+    if (!option.dataset.i18nOriginalText) option.dataset.i18nOriginalText = original;
+    option.textContent = lang === 'es' ? original : (GLOBAL_TRANSLATIONS[original] || original);
+  });
+
+  document.querySelectorAll('[placeholder],[aria-label],[title]').forEach(el => {
+    ['placeholder','aria-label','title'].forEach(attr => {
+      if (el.hasAttribute(attr)) translateAttribute(el, attr, lang);
+    });
+  });
+}
+
+function serviceCopy(key) {
+  return SERVICES_COPY[activeServicesLang].cards[key];
+}
+
+function applyServicesLanguage(lang = activeServicesLang) {
+  activeServicesLang = lang === 'en' ? 'en' : 'es';
+  localStorage.setItem(SERVICE_LANG_KEY, activeServicesLang);
+  const copy = SERVICES_COPY[activeServicesLang];
+  document.querySelector('[data-service-i18n="eyebrow"]').textContent = copy.eyebrow;
+  document.querySelector('[data-service-i18n="title"]').textContent = copy.title;
+  document.querySelector('[data-service-i18n="subtitle"]').textContent = copy.subtitle;
+  document.querySelectorAll('[data-services-lang]').forEach(btn => {
+    const active = btn.dataset.servicesLang === activeServicesLang;
+    btn.classList.toggle('is-active', active);
+    btn.setAttribute('aria-pressed', String(active));
+  });
+  document.querySelectorAll('[data-service-card]').forEach(card => {
+    const key = card.dataset.serviceKey;
+    const item = copy.cards[key];
+    if (!item) return;
+    card.querySelector('.srv-chip').innerHTML = `<i class="${SERVICE_ASSETS[key].chipIcon}"></i> ${item.tag}`;
+    card.querySelector('.srv-title').textContent = item.title;
+    card.querySelector('.srv-desc').textContent = item.card;
+    card.querySelector('.srv-action').textContent = copy.solutionButton;
+    card.setAttribute('aria-label', `${copy.solutionButton}: ${item.title}`);
+  });
+  document.querySelectorAll('[data-service-close]').forEach(btn => {
+    if (!btn.getAttribute('aria-label')) btn.textContent = copy.closeButton;
+  });
+  if (serviceModal?.classList.contains('is-open') && activeServiceKey) {
+    openServiceModal(activeServiceKey, lastServiceTrigger, false);
+  }
+}
+
+function applySiteLanguage(lang = activeServicesLang) {
+  applyServicesLanguage(lang);
+  applyGlobalStaticLanguage(activeServicesLang);
+  document.documentElement.lang = activeServicesLang === 'en' ? 'en' : 'es-PE';
+}
+
+function openServiceModal(key, trigger, focusClose = true) {
+  const service = serviceCopy(key);
+  const asset = SERVICE_ASSETS[key];
+  if (!service || !asset || !serviceModal) return;
+
+  activeServiceKey = key;
+  lastServiceTrigger = trigger || lastServiceTrigger || null;
   serviceModalTitle.textContent = service.title;
   serviceModalTag.textContent = service.tag;
   serviceModalText.textContent = service.text;
-  serviceModalImg.src = service.image;
-  serviceModalImg.alt = service.alt;
+  serviceModalImg.src = asset.image;
+  serviceModalImg.alt = asset.alt;
   serviceModalList.innerHTML = service.points.map(point => `<li><i class="fas fa-check"></i><span>${point}</span></li>`).join('');
+  serviceModalWa.textContent = SERVICES_COPY[activeServicesLang].quoteButton;
 
-  const message = `Hola Hub Peru Cargo, quiero cotizar este servicio: ${service.title}`;
-  serviceModalWa.href = `https://wa.me/${SERVICE_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  serviceModalWa.href = `https://wa.me/${SERVICE_WHATSAPP_NUMBER}?text=${encodeURIComponent(SERVICES_COPY[activeServicesLang].waText)}`;
   serviceModal.classList.add('is-open');
   serviceModal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
   document.querySelectorAll('[data-service-card]').forEach(card => card.classList.remove('is-active'));
   trigger?.classList.add('is-active');
-  document.querySelector('[data-service-close]')?.focus();
+  if (focusClose) document.querySelector('[data-service-close]')?.focus();
 }
 
 function closeServiceModal() {
@@ -2448,8 +2749,17 @@ function closeServiceModal() {
   serviceModal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
   document.querySelectorAll('[data-service-card]').forEach(card => card.classList.remove('is-active'));
+  activeServiceKey = null;
   lastServiceTrigger?.focus?.();
 }
+
+document.querySelectorAll('[data-services-lang]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    applySiteLanguage(btn.dataset.servicesLang);
+    document.getElementById('hamburger')?.classList.remove('open');
+    document.getElementById('mobNav')?.classList.remove('open');
+  });
+});
 
 document.querySelectorAll('[data-service-card]').forEach(card => {
   card.addEventListener('click', e => {
@@ -2477,6 +2787,8 @@ document.addEventListener('keydown', e => {
     closeServiceModal();
   }
 });
+
+applySiteLanguage(activeServicesLang);
 
 // Back/Forward del navegador
 window.addEventListener('popstate', e => {
