@@ -2102,13 +2102,15 @@ const HubTracker = {
   GA_ID: '',
 
   session: null,
+  visitor: null,
   tabStart: Date.now(),
   currentTab: 'inicio',
-  consentKey: 'hpc_cookie_consent',
+  consentKey: 'hpc_cookie_consent_v2',
   analyticsReady: false,
 
   init() {
     this.session = this._session();
+    this.visitor = this._visitor();
     this._autoTrackClicks();
     this._trackScrollDepth();
     if (this._trackingAllowed()) {
@@ -2143,6 +2145,15 @@ const HubTracker = {
       sessionStorage.setItem('hpc_sid', sid);
     }
     return sid;
+  },
+
+  _visitor() {
+    let vid = localStorage.getItem('hpc_vid');
+    if (!vid) {
+      vid = 'V-' + Date.now() + '-' + Math.random().toString(36).substr(2,8).toUpperCase();
+      localStorage.setItem('hpc_vid', vid);
+    }
+    return vid;
   },
 
   _trackSession() {
@@ -2195,7 +2206,8 @@ const HubTracker = {
     const payload = {
       type: 'tracking',
       evento,
-      datos,
+      datos: { visitante_id: this.visitor, ...datos },
+      visitante: this.visitor,
       sesion: this.session,
       tab_actual: this.currentTab,
       timestamp: new Date().toISOString(),
